@@ -979,23 +979,23 @@
       const span = btn.querySelector('[data-i18n="form.submit"]');
       const form = e.target;
 
-      // Set email subject based on active language
-      let subjectField = form.querySelector('input[name="subject"]');
-      if (!subjectField) {
-        subjectField = document.createElement('input');
-        subjectField.type = 'hidden';
-        subjectField.name = 'subject';
-        form.appendChild(subjectField);
-      }
-      subjectField.value = currentLang === 'de'
-        ? 'Neue Kontaktanfrage – Hansa Neuron'
-        : 'New Contact Request – Hansa Neuron';
-
       btn.disabled = true;
       if (span) span.textContent = currentLang === 'de' ? 'Senden…' : 'Sending…';
 
+      // Build JSON payload from form fields
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      data.name    = [data.first_name, data.last_name].filter(Boolean).join(' ');
+      data.subject = currentLang === 'de'
+        ? 'Neue Kontaktanfrage – Hansa Neuron'
+        : 'New Contact Request – Hansa Neuron';
+
       try {
-        const res    = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+        const res    = await fetch('https://api.web3forms.com/submit', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    JSON.stringify(data)
+        });
         const result = await res.json();
 
         if (result.success) {
