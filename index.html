@@ -718,27 +718,30 @@
       </div>
 
       <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="access_key" value="1d902455-57dd-4772-96db-8347cb73e1d7" />
+        <input type="hidden" name="from_name" value="Hansa Neuron Website" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" data-i18n="form.firstName">Vorname</label>
-            <input class="form-input" type="text" data-i18n-placeholder="form.firstName.ph" placeholder="Anna" required />
+            <input class="form-input" type="text" name="first_name" data-i18n-placeholder="form.firstName.ph" placeholder="Anna" required />
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="form.lastName">Nachname</label>
-            <input class="form-input" type="text" data-i18n-placeholder="form.lastName.ph" placeholder="Schmidt" required />
+            <input class="form-input" type="text" name="last_name" data-i18n-placeholder="form.lastName.ph" placeholder="Schmidt" required />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.email">E-Mail-Adresse</label>
-          <input class="form-input" type="email" data-i18n-placeholder="form.email.ph" placeholder="anna@unternehmen.de" required />
+          <input class="form-input" type="email" name="email" data-i18n-placeholder="form.email.ph" placeholder="anna@unternehmen.de" required />
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.company">Unternehmen</label>
-          <input class="form-input" type="text" data-i18n-placeholder="form.company.ph" placeholder="Muster GmbH" />
+          <input class="form-input" type="text" name="company" data-i18n-placeholder="form.company.ph" placeholder="Muster GmbH" />
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.message">Wie können wir helfen?</label>
-          <textarea class="form-textarea" data-i18n-placeholder="form.message.ph" placeholder="Beschreiben Sie Ihren Bedarf oder die Herausforderung, bei der KI helfen könnte…" required></textarea>
+          <textarea class="form-textarea" name="message" data-i18n-placeholder="form.message.ph" placeholder="Beschreiben Sie Ihren Bedarf oder die Herausforderung, bei der KI helfen könnte…" required></textarea>
         </div>
         <button type="submit" class="form-submit" id="submitBtn">
           <span data-i18n="form.submit">Nachricht senden</span>
@@ -970,20 +973,52 @@
     }, { passive: true });
 
     // ── Contact form ─────────────────────────────────────
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
-      const btn = document.getElementById('submitBtn');
+      const btn  = document.getElementById('submitBtn');
       const span = btn.querySelector('[data-i18n="form.submit"]');
-      const originalText = span ? span.textContent : btn.textContent;
-      if (span) span.textContent = translations[currentLang]['form.sent'];
-      btn.style.background = 'var(--teal-dark)';
+      const form = e.target;
+
+      // Set email subject based on active language
+      let subjectField = form.querySelector('input[name="subject"]');
+      if (!subjectField) {
+        subjectField = document.createElement('input');
+        subjectField.type = 'hidden';
+        subjectField.name = 'subject';
+        form.appendChild(subjectField);
+      }
+      subjectField.value = currentLang === 'de'
+        ? 'Neue Kontaktanfrage – Hansa Neuron'
+        : 'New Contact Request – Hansa Neuron';
+
       btn.disabled = true;
-      setTimeout(() => {
-        if (span) span.textContent = translations[currentLang]['form.submit'];
-        btn.style.background = '';
-        btn.disabled = false;
-        e.target.reset();
-      }, 3000);
+      if (span) span.textContent = currentLang === 'de' ? 'Senden…' : 'Sending…';
+
+      try {
+        const res    = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+        const result = await res.json();
+
+        if (result.success) {
+          if (span) span.textContent = translations[currentLang]['form.sent'];
+          btn.style.background = 'var(--teal-dark)';
+          setTimeout(() => {
+            if (span) span.textContent = translations[currentLang]['form.submit'];
+            btn.style.background = '';
+            btn.disabled = false;
+            form.reset();
+          }, 3000);
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (err) {
+        if (span) span.textContent = currentLang === 'de' ? 'Fehler – bitte erneut versuchen' : 'Error – please try again';
+        btn.style.background = '#c0392b';
+        setTimeout(() => {
+          if (span) span.textContent = translations[currentLang]['form.submit'];
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3500);
+      }
     }
 
     // Apply default language on load
