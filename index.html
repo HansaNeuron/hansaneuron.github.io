@@ -37,7 +37,7 @@
 
     /* ── Reset ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 175px; }
     body {
       background: var(--bg);
       color: var(--text-main);
@@ -150,16 +150,33 @@
       top: 0; left: 0; right: 0; bottom: 0;
       background: var(--white);
       z-index: 99;
-      padding: 5rem 5vw 2rem;
+      padding: 185px 8vw 3rem;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 2.25rem;
+      overflow-y: auto;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
       text-decoration: none;
       color: var(--slate);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+    }
+    .mobile-menu a.btn-primary {
+      border-bottom: none;
+      padding-bottom: 0.9rem;
+      display: block;
+      text-align: center;
+    }
+    .mobile-close {
+      position: absolute;
+      top: 1.25rem; right: 5vw;
+      background: none; border: none;
+      font-size: 1.75rem; line-height: 1;
+      color: var(--slate); cursor: pointer;
+      padding: 0.5rem;
     }
 
     /* ── Hero ───────────────────────────────────────────── */
@@ -401,6 +418,7 @@
       .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       footer { flex-direction: column; text-align: center; }
+      .label { letter-spacing: .05em; font-size: .65rem; }
     }
   </style>
 </head>
@@ -430,10 +448,11 @@
 
   <!-- ── Mobile menu ──────────────────────────────────── -->
   <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Menü schließen">✕</button>
     <a href="#services" onclick="toggleMenu()" data-i18n="nav.services">Leistungen</a>
     <a href="#about" onclick="toggleMenu()" data-i18n="nav.about">Über uns</a>
     <a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact">Kontakt</a>
-    <a href="#contact" onclick="toggleMenu()" class="btn-primary" style="margin-top:1rem;width:fit-content;" data-i18n="nav.cta">Gespräch vereinbaren</a>
+    <a href="#contact" onclick="toggleMenu()" class="btn-primary" style="margin-top:0.5rem;text-align:center;" data-i18n="nav.cta">Gespräch vereinbaren</a>
   </div>
 
   <!-- ── Hero ────────────────────────────────────────── -->
