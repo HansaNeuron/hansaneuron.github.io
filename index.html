@@ -184,8 +184,8 @@
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 6rem 5vw 5rem;
+      align-items: start;
+      padding: 13rem 5vw 5rem;
       gap: 5rem;
       background: linear-gradient(160deg, var(--white) 0%, var(--teal-50) 100%);
       position: relative;
@@ -412,6 +412,7 @@
     /* ── Responsive ─────────────────────────────────────── */
     @media (max-width: 900px) {
       .hero, #about, .contact-inner, .services-header { grid-template-columns: 1fr; }
+      .hero { padding-top: 7rem; }
       .hero-visual { display: none; }
       .services-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
