@@ -37,7 +37,10 @@
 
     /* ── Reset ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 175px; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    /* Per-section scroll offsets — clears the fixed nav (145px) exactly */
+    section[id]  { scroll-margin-top: 145px; }
+    #services    { scroll-margin-top: 189px; } /* nav (145) + marquee (44) */
     body {
       background: var(--bg);
       color: var(--text-main);
