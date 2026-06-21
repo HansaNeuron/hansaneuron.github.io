@@ -430,6 +430,23 @@
       footer { flex-direction: column; text-align: center; }
       .label { letter-spacing: .05em; font-size: .65rem; }
     }
+
+    /* ── Desktop section viewport fills (≥901px only) ───── */
+    /* Each section fills exactly one viewport so adjacent sections
+       don't bleed in. Mobile layout is completely unchanged. */
+    @media (min-width: 901px) {
+      /* Hero: shorten by marquee height (~44px) so the blue ticker
+         bar is fully visible at the bottom of the initial view */
+      .hero { min-height: calc(100vh - 44px); }
+
+      /* Services: fill full viewport so About (green) section
+         doesn't appear at the bottom when navigated here */
+      #services { min-height: 100vh; }
+
+      /* About: fill full viewport so Contact doesn't bleed in below,
+         AND guarantees Contact starts flush below the nav bar */
+      #about { min-height: 100vh; }
+    }
   </style>
 </head>
 <body>
