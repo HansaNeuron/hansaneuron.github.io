@@ -431,6 +431,34 @@
       .label { letter-spacing: .05em; font-size: .65rem; }
     }
 
+    /* ── Cookie consent banner ─────────────────────────── */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--slate-dark);
+      color: rgba(255,255,255,.85);
+      padding: 1rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      border-top: 2px solid var(--teal);
+      box-shadow: 0 -4px 24px rgba(0,0,0,.18);
+    }
+    .cookie-text { font-size: .82rem; line-height: 1.6; flex: 1; min-width: 200px; }
+    .cookie-actions { display: flex; align-items: center; gap: 1.25rem; flex-shrink: 0; }
+    .cookie-link { font-size: .75rem; color: var(--teal-light); text-decoration: underline; white-space: nowrap; transition: color .2s; }
+    .cookie-link:hover { color: var(--white); }
+    .cookie-btn {
+      background: var(--teal); color: var(--white); border: none;
+      font-family: var(--ff-body); font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+      padding: .55rem 1.3rem; border-radius: 4px; cursor: pointer;
+      transition: background .2s; white-space: nowrap;
+    }
+    .cookie-btn:hover { background: var(--teal-dark); }
+
     /* ── Desktop section viewport fills (≥901px only) ───── */
     /* Each section fills exactly one viewport so adjacent sections
        don't bleed in. Mobile layout is completely unchanged. */
@@ -802,6 +830,17 @@
     <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
   </footer>
 
+  <!-- ── Cookie consent banner ────────────────────────── -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie notice" style="display:none">
+    <p class="cookie-text" data-i18n="cookie.text">Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.</p>
+    <div class="cookie-actions">
+      <a href="/datenschutz.html" class="cookie-link" id="cookiePolicyLink" data-i18n="cookie.policy">Datenschutzerklärung</a>
+      <button class="cookie-btn" onclick="acceptCookies()">
+        <span data-i18n="cookie.accept">Verstanden</span>
+      </button>
+    </div>
+  </div>
+
   <script>
     // ── Translations ─────────────────────────────────────
     const translations = {
@@ -875,6 +914,9 @@
         'footer.contact':      'Kontakt',
         'footer.privacy':      'Datenschutz',
         'footer.copy':         '© 2026 Hansa Neuron. Alle Rechte vorbehalten.',
+        'cookie.text':         'Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.',
+        'cookie.policy':       'Datenschutzerklärung',
+        'cookie.accept':       'Verstanden',
       },
       en: {
         'nav.services':        'Services',
@@ -946,6 +988,9 @@
         'footer.contact':      'Contact',
         'footer.privacy':      'Privacy Policy',
         'footer.copy':         '© 2026 Hansa Neuron. All rights reserved.',
+        'cookie.text':         'This website uses only technically necessary cookies. No tracking or analytics cookies are used.',
+        'cookie.policy':       'Privacy Policy',
+        'cookie.accept':       'Got it',
       }
     };
 
@@ -987,6 +1032,7 @@
       document.getElementById('btn-de').classList.toggle('active', lang === 'de');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       const pl = document.querySelector('a[data-i18n="footer.privacy"]'); if (pl) pl.href = lang === 'en' ? '/privacy.html' : '/datenschutz.html';
+      const cl = document.getElementById('cookiePolicyLink'); if (cl) cl.href = lang === 'en' ? '/privacy.html' : '/datenschutz.html';
     }
 
     // ── Mobile menu ──────────────────────────────────────
@@ -1063,8 +1109,20 @@
       }
     }
 
+    // ── Cookie banner ────────────────────────────────────
+    function initCookieBanner() {
+      if (!localStorage.getItem('hn_cookie_consent')) {
+        document.getElementById('cookieBanner').style.display = 'flex';
+      }
+    }
+    function acceptCookies() {
+      localStorage.setItem('hn_cookie_consent', 'accepted');
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
+
     // Apply default language on load
     setLang(defaultLang);
+    initCookieBanner();
   </script>
 </body>
 </html>
