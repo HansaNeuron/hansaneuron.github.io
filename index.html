@@ -439,13 +439,19 @@
          bar is fully visible at the bottom of the initial view */
       .hero { min-height: calc(100vh - 44px); }
 
-      /* Services: fill full viewport so About (green) section
+      /* Services: fill full viewport so About section
          doesn't appear at the bottom when navigated here */
       #services { min-height: 100vh; }
 
       /* About: fill full viewport so Contact doesn't bleed in below,
-         AND guarantees Contact starts flush below the nav bar */
-      #about { min-height: 100vh; }
+         AND guarantees Contact starts flush below the nav bar.
+         Override align-items/align-content so content sits at the
+         top of the section (not stretched/centred in a 100vh box). */
+      #about {
+        min-height: 100vh;
+        align-items: start;
+        align-content: start;
+      }
     }
   </style>
 </head>
