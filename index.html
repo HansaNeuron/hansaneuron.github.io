@@ -445,6 +445,12 @@
 
       /* About: min-height/alignment already set in base styles above;
          no desktop override needed. */
+
+      /* Contact: fill remaining viewport so footer sits at bottom.
+         300px = nav (145px) + footer (~155px). This ensures the white
+         contact area fills the page and the dark footer anchors the bottom,
+         balancing any teal gap at the top. */
+      #contact { min-height: calc(100vh - 300px); }
     }
   </style>
 </head>
