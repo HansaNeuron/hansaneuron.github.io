@@ -915,7 +915,7 @@
         'form.company.ph':     'Example Ltd.',
         'form.message':        'How can we help?',
         'form.message.ph':     'Describe your challenge or the AI capability you\'re exploring…',
-        'form.consent':        'I agree that my details will be stored to process my enquiry. For more information, see our <a href="/datenschutz.html">Privacy Policy</a>. *',
+        'form.consent':        'I agree that my details will be stored to process my enquiry. For more information, see our <a href="/privacy.html">Privacy Policy</a>. *',
         'form.submit':         'Send Message',
         'form.sent':           'Message sent ✓',
         'footer.home':         'Home',
@@ -964,6 +964,7 @@
       // Update toggle buttons
       document.getElementById('btn-de').classList.toggle('active', lang === 'de');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      const pl = document.querySelector('a[data-i18n="footer.privacy"]'); if (pl) pl.href = lang === 'en' ? '/privacy.html' : '/datenschutz.html';
     }
 
     // ── Mobile menu ──────────────────────────────────────
