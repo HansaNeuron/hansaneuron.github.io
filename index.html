@@ -320,7 +320,7 @@
     .service-link:hover { gap: .7rem; }
 
     /* ── About ──────────────────────────────────────────── */
-    #about { background: var(--teal-50); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    #about { background: var(--teal-50); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; align-content: start; min-height: 100vh; }
     .about-manifesto {
       font-family: var(--ff-display); font-size: 1.4rem; font-style: italic;
       color: var(--slate); line-height: 1.55; margin-bottom: 1.25rem;
@@ -443,15 +443,8 @@
          doesn't appear at the bottom when navigated here */
       #services { min-height: 100vh; }
 
-      /* About: fill full viewport so Contact doesn't bleed in below,
-         AND guarantees Contact starts flush below the nav bar.
-         Override align-items/align-content so content sits at the
-         top of the section (not stretched/centred in a 100vh box). */
-      #about {
-        min-height: 100vh;
-        align-items: start;
-        align-content: start;
-      }
+      /* About: min-height/alignment already set in base styles above;
+         no desktop override needed. */
     }
   </style>
 </head>
