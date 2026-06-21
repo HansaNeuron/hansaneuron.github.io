@@ -11,6 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ── GDPR Consent ────────────────────────────────── */
+    .form-consent { display:flex; align-items:flex-start; gap:.65rem; margin-bottom:1rem; }
+    .form-consent input[type="checkbox"] { flex-shrink:0; margin-top:.2rem; accent-color:var(--teal); width:1rem; height:1rem; cursor:pointer; }
+    .form-consent label { font-size:.8rem; color:var(--text-muted); line-height:1.5; cursor:pointer; }
+    .form-consent a { color:var(--teal); text-decoration:underline; }
+
     /* ── Brand tokens ──────────────────────────────────── */
     :root {
       --teal:        #6B9A8F;
@@ -747,6 +753,10 @@
           <label class="form-label" data-i18n="form.message">Wie können wir helfen?</label>
           <textarea class="form-textarea" name="message" data-i18n-placeholder="form.message.ph" placeholder="Beschreiben Sie Ihren Bedarf oder die Herausforderung, bei der KI helfen könnte…" required></textarea>
         </div>
+        <div class="form-consent">
+          <input type="checkbox" id="consent" name="consent" required />
+          <label for="consent" data-i18n="form.consent">Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Weitere Informationen finden Sie in unserer <a href="/datenschutz.html">Datenschutzerklärung</a>. *</label>
+        </div>
         <button type="submit" class="form-submit" id="submitBtn">
           <span data-i18n="form.submit">Nachricht senden</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -765,8 +775,9 @@
       <li><a href="#services" data-i18n="footer.services">Leistungen</a></li>
       <li><a href="#about" data-i18n="footer.about">Über uns</a></li>
       <li><a href="#contact" data-i18n="footer.contact">Kontakt</a></li>
+      <li><a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a></li>
     </ul>
-    <div class="footer-copy" data-i18n="footer.copy">© 2025 Hansa Neuron. Alle Rechte vorbehalten.</div>
+    <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
   </footer>
 
   <script>
@@ -833,13 +844,15 @@
         'form.company.ph':     'Muster GmbH',
         'form.message':        'Wie können wir helfen?',
         'form.message.ph':     'Beschreiben Sie Ihren Bedarf oder die Herausforderung, bei der KI helfen könnte…',
+        'form.consent':        'Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Weitere Informationen finden Sie in unserer <a href="/datenschutz.html">Datenschutzerklärung</a>. *',
         'form.submit':         'Nachricht senden',
         'form.sent':           'Nachricht gesendet ✓',
         'footer.home':         'Startseite',
         'footer.services':     'Leistungen',
         'footer.about':        'Über uns',
         'footer.contact':      'Kontakt',
-        'footer.copy':         '© 2025 Hansa Neuron. Alle Rechte vorbehalten.',
+        'footer.privacy':      'Datenschutz',
+        'footer.copy':         '© 2026 Hansa Neuron. Alle Rechte vorbehalten.',
       },
       en: {
         'nav.services':        'Services',
@@ -902,13 +915,15 @@
         'form.company.ph':     'Example Ltd.',
         'form.message':        'How can we help?',
         'form.message.ph':     'Describe your challenge or the AI capability you\'re exploring…',
+        'form.consent':        'I agree that my details will be stored to process my enquiry. For more information, see our <a href="/datenschutz.html">Privacy Policy</a>. *',
         'form.submit':         'Send Message',
         'form.sent':           'Message sent ✓',
         'footer.home':         'Home',
         'footer.services':     'Services',
         'footer.about':        'About',
         'footer.contact':      'Contact',
-        'footer.copy':         '© 2025 Hansa Neuron. All rights reserved.',
+        'footer.privacy':      'Privacy Policy',
+        'footer.copy':         '© 2026 Hansa Neuron. All rights reserved.',
       }
     };
 

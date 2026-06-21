@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung — Hansa Neuron</title>
+  <meta name="description" content="Datenschutzerklärung von Hansa Neuron gemäß DSGVO." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:       #6B9A8F;
+      --teal-dark:  #4A7A6E;
+      --teal-50:    #EBF2F0;
+      --slate:      #3A4354;
+      --slate-dark: #252D3A;
+      --bg:         #FAFAFA;
+      --white:      #FFFFFF;
+      --border:     #E5E9E8;
+      --text-main:  #2C2C2C;
+      --text-muted: #6B7280;
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--ff-body);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 5vw;
+      background: rgba(250,250,250,.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-logo-img { height: 72px; width: auto; display: block; }
+    .nav-back {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--teal-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: gap .2s;
+    }
+    .nav-back:hover { gap: .7rem; }
+
+    /* Main content */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 5vw 6rem;
+    }
+    .page-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--slate);
+      line-height: 1.15;
+      margin-bottom: .5rem;
+    }
+    .page-updated {
+      font-size: .8rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+    h2 {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin: 2.5rem 0 .75rem;
+      padding-top: .5rem;
+      border-top: 1px solid var(--border);
+    }
+    h2:first-of-type { margin-top: 0; border-top: none; }
+    p { margin-bottom: 1rem; color: var(--text-muted); font-size: .95rem; }
+    ul { margin: .5rem 0 1rem 1.5rem; color: var(--text-muted); font-size: .95rem; }
+    li { margin-bottom: .4rem; }
+    a { color: var(--teal-dark); }
+    strong { color: var(--text-main); font-weight: 600; }
+
+    /* Info box */
+    .info-box {
+      background: var(--teal-50);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      font-size: .9rem;
+      color: var(--slate);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--slate-dark);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: .65rem; letter-spacing: .06em; color: rgba(255,255,255,.25); }
+    .footer-link { font-size: .75rem; color: rgba(255,255,255,.45); text-decoration: none; }
+    .footer-link:hover { color: #8BB8AE; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/assets/HansaNeuron_Logo_transparent.png" alt="Hansa Neuron Logo" class="nav-logo-img" />
+    </a>
+    <a href="/" class="nav-back">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M11 6H1M5 2L1 6l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Zurück zur Startseite
+    </a>
+  </nav>
+
+  <main>
+    <h1 class="page-title">Datenschutzerklärung</h1>
+    <p class="page-updated">Stand: Juni 2026</p>
+
+    <div class="info-box">
+      Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzerklärung informiert Sie darüber, welche Daten wir erheben, wie wir sie verwenden und welche Rechte Sie haben.
+    </div>
+
+    <h2>1. Verantwortlicher</h2>
+    <p>
+      Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br /><br />
+      <strong>Hansa Neuron</strong><br />
+      Hamburg, Deutschland<br />
+      E-Mail: <a href="mailto:info@hansaneuron.de">info@hansaneuron.de</a>
+    </p>
+
+    <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+    <p>Wir erheben personenbezogene Daten nur, wenn Sie uns diese freiwillig mitteilen, z. B. über unser Kontaktformular.</p>
+    <p>Beim Ausfüllen des Kontaktformulars werden folgende Daten erhoben:</p>
+    <ul>
+      <li>Vorname und Nachname</li>
+      <li>E-Mail-Adresse</li>
+      <li>Unternehmen (optional)</li>
+      <li>Ihre Nachricht</li>
+    </ul>
+    <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) und Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).</p>
+
+    <h2>3. Zweck der Datenverarbeitung</h2>
+    <p>Ihre Daten werden ausschließlich verwendet, um:</p>
+    <ul>
+      <li>Ihre Anfrage zu bearbeiten und Ihnen zu antworten</li>
+      <li>mit Ihnen in Kontakt zu treten, wenn Sie eine Dienstleistung anfragen</li>
+    </ul>
+    <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nicht, außer wenn dies zur Bearbeitung Ihrer Anfrage erforderlich ist oder wir gesetzlich dazu verpflichtet sind.</p>
+
+    <h2>4. Drittanbieter — Formularverarbeitung</h2>
+    <p>Unser Kontaktformular nutzt den Dienst <strong>Web3Forms</strong> (web3forms.com) zur sicheren Übermittlung Ihrer Nachricht. Web3Forms verarbeitet Ihre eingegebenen Daten ausschließlich zur Weiterleitung an unsere E-Mail-Adresse und speichert diese nicht dauerhaft.</p>
+    <p>Weitere Informationen finden Sie in der <a href="https://web3forms.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Web3Forms</a>.</p>
+
+    <h2>5. Speicherdauer</h2>
+    <p>Ihre Daten werden nur so lange gespeichert, wie es zur Bearbeitung Ihrer Anfrage erforderlich ist, oder solange gesetzliche Aufbewahrungspflichten bestehen.</p>
+
+    <h2>6. Hosting</h2>
+    <p>Diese Website wird über <strong>GitHub Pages</strong> (GitHub, Inc., San Francisco, USA) und das Content Delivery Network von <strong>Cloudflare</strong> (Cloudflare, Inc., San Francisco, USA) ausgeliefert. Dabei können Server-Logdaten (IP-Adresse, Browsertyp, aufgerufene Seiten) verarbeitet werden. Weitere Informationen finden Sie in den Datenschutzerklärungen von <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub</a> und <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener">Cloudflare</a>.</p>
+
+    <h2>7. Externe Schriftarten</h2>
+    <p>Diese Website lädt Schriftarten von <strong>Google Fonts</strong> (Google LLC, USA). Dabei wird Ihre IP-Adresse an Google übermittelt. Wir nutzen Google Fonts im Interesse einer einheitlichen und ansprechenden Darstellung unserer Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+    <h2>8. Ihre Rechte</h2>
+    <p>Sie haben das Recht auf:</p>
+    <ul>
+      <li><strong>Auskunft</strong> über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO)</li>
+      <li><strong>Berichtigung</strong> unrichtiger Daten (Art. 16 DSGVO)</li>
+      <li><strong>Löschung</strong> Ihrer Daten (Art. 17 DSGVO)</li>
+      <li><strong>Einschränkung</strong> der Verarbeitung (Art. 18 DSGVO)</li>
+      <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+      <li><strong>Widerspruch</strong> gegen die Verarbeitung (Art. 21 DSGVO)</li>
+      <li><strong>Widerruf</strong> einer erteilten Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+    </ul>
+    <p>Zur Wahrnehmung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:info@hansaneuron.de">info@hansaneuron.de</a></p>
+    <p>Sie haben außerdem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Die zuständige Aufsichtsbehörde für Hamburg ist der <a href="https://datenschutz.hamburg.de/" target="_blank" rel="noopener">Hamburgische Beauftragte für Datenschutz und Informationsfreiheit</a>.</p>
+
+    <h2>9. Keine Cookies / Tracking</h2>
+    <p>Diese Website setzt keine Tracking-Cookies und verwendet keine Analyse-Tools wie Google Analytics. Es werden keine Nutzerprofile erstellt.</p>
+
+    <h2>10. Aktualität dieser Erklärung</h2>
+    <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf zu aktualisieren, um sie an aktuelle rechtliche Anforderungen oder Änderungen unserer Dienste anzupassen. Es gilt jeweils die aktuell auf dieser Seite veröffentlichte Fassung.</p>
+  </main>
+
+  <footer>
+    <a href="/" class="footer-link">← Startseite</a>
+    <span class="footer-copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</span>
+  </footer>
+
+</body>
+</html>
