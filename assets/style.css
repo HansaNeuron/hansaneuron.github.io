@@ -163,9 +163,9 @@ section { padding: 6rem 5vw; }
 
 /* ── Home hero ─────────────────────────────────────── */
 .hero {
-  min-height: 92vh;
+  min-height: 50vh;
   display: grid; grid-template-columns: 1.1fr 1fr; align-items: center;
-  padding: 13rem 5vw 5rem; gap: 5rem;
+  padding: 2rem 5vw 5rem; gap: 5rem;
   background: linear-gradient(160deg, var(--white) 0%, var(--teal-50) 100%);
   position: relative; overflow: hidden;
 }
@@ -660,7 +660,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
   nav { padding: .5rem 5vw; }
   .nav-logo-img { height: 54px; }
   .mobile-menu { padding-top: 120px; }
-  .hero { padding-top: 8.5rem; }
+  .hero { padding-top: 2rem; min-height: auto; }
   .page-hero { padding-top: 8.5rem; }
   section[id] { scroll-margin-top: 96px; }
   .price-options { grid-template-columns: 1fr; }
