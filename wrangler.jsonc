@@ -5,8 +5,8 @@
   "observability": {
     "enabled": true
   },
-  "assets": {
-    "directory": "."
+  "site": {
+    "bucket": "."
   },
   "compatibility_flags": [
     "nodejs_compat"
