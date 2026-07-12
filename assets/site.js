@@ -24,6 +24,8 @@ const COMMON_T = {
     'cookie.text':   'Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.',
     'cookie.policy': 'Datenschutzerklärung',
     'cookie.accept': 'Verstanden',
+    'banner.title': 'Sichere Praxis-Websites kommen bald.',
+    'banner.cta': 'Registrieren Sie sich jetzt, um exklusive Angebote zur Verfügung zu erhalten.',
   },
   en: {
     'nav.leistungen': 'Services',
@@ -44,6 +46,8 @@ const COMMON_T = {
     'cookie.text':   'This website uses only technically necessary cookies. No tracking or analytics cookies are used.',
     'cookie.policy': 'Privacy Policy',
     'cookie.accept': 'Got it',
+    'banner.title': 'Secure practice websites coming soon.',
+    'banner.cta': 'Sign up now to receive exclusive offers.',
   }
 };
 
