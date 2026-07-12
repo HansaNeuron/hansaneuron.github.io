@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impressum — Hansa Neuron</title>
+  <meta name="description" content="Impressum von Hansa Neuron — Anbieterkennzeichnung gemäß § 5 DDG." />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:       #6B9A8F;
+      --teal-dark:  #4A7A6E;
+      --teal-50:    #EBF2F0;
+      --slate:      #3A4354;
+      --slate-dark: #252D3A;
+      --bg:         #FAFAFA;
+      --white:      #FFFFFF;
+      --border:     #E5E9E8;
+      --text-main:  #2C2C2C;
+      --text-muted: #6B7280;
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--ff-body);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 5vw;
+      background: rgba(250,250,250,.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-logo-img { height: 72px; width: auto; display: block; }
+    .nav-back {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--teal-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: gap .2s;
+    }
+    .nav-back:hover { gap: .7rem; }
+
+    /* Main content */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 5vw 6rem;
+    }
+    .page-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--slate);
+      line-height: 1.15;
+      margin-bottom: .5rem;
+    }
+    .page-updated {
+      font-size: .8rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+    h2 {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin: 2.5rem 0 .75rem;
+      padding-top: .5rem;
+      border-top: 1px solid var(--border);
+    }
+    h2:first-of-type { margin-top: 0; border-top: none; }
+    p { margin-bottom: 1rem; color: var(--text-muted); font-size: .95rem; }
+    ul { margin: .5rem 0 1rem 1.5rem; color: var(--text-muted); font-size: .95rem; }
+    li { margin-bottom: .4rem; }
+    a { color: var(--teal-dark); }
+    strong { color: var(--text-main); font-weight: 600; }
+
+    /* Info box */
+    .info-box {
+      background: var(--teal-50);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      font-size: .9rem;
+      color: var(--slate);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--slate-dark);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: .65rem; letter-spacing: .06em; color: rgba(255,255,255,.25); }
+    .footer-link { font-size: .75rem; color: rgba(255,255,255,.45); text-decoration: none; }
+    .footer-link:hover { color: #8BB8AE; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/assets/HansaNeuron_Logo_transparent.png" alt="Hansa Neuron Logo" class="nav-logo-img" />
+    </a>
+    <a href="/" class="nav-back">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M11 6H1M5 2L1 6l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Zurück zur Startseite
+    </a>
+  </nav>
+
+  <main>
+    <h1 class="page-title">Impressum</h1>
+    <p class="page-updated">Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)</p>
+
+    <div style="background:#FBF4E4;border:2px solid #D9A441;border-radius:8px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:.9rem;">
+      <strong>⚠ VOR VERÖFFENTLICHUNG:</strong> Alle Platzhalter in eckigen Klammern ausfüllen und diesen Hinweiskasten entfernen. Ein unvollständiges Impressum ist abmahnfähig.
+    </div>
+
+    <h2>Anbieter</h2>
+    <p>
+      [VOLLSTÄNDIGER VOR- UND NACHNAME]<br />
+      Hansa Neuron [RECHTSFORM ERGÄNZEN ODER ENTFERNEN, z. B. — Einzelunternehmen]<br />
+      [STRASSE UND HAUSNUMMER]<br />
+      [PLZ] Hamburg<br />
+      Deutschland
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>
+      E-Mail: <a href="mailto:info@hansaneuron.de">info@hansaneuron.de</a><br />
+      Telefon: [TELEFONNUMMER — empfohlen für schnelle Erreichbarkeit]
+    </p>
+
+    <h2>Umsatzsteuer</h2>
+    <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: [UST-IDNR — FALLS NICHT VORHANDEN, ABSCHNITT ENTFERNEN ODER KLEINUNTERNEHMERREGELUNG § 19 UStG ANGEBEN]</p>
+
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p>[VOLLSTÄNDIGER NAME, ANSCHRIFT WIE OBEN]</p>
+
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).</p>
+
+    <h2>Haftung für Inhalte und Links</h2>
+    <p>Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für Inhalte externer Links übernehmen wir keine Gewähr; für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar.</p>
+
+    <p style="margin-top:2.5rem;font-size:.85rem;color:var(--text-muted);"><em>English note: This page is the legally required German provider identification (Impressum) for hansaneuron.de and hansaneuron.com, operated from Hamburg, Germany.</em></p>
+  </main>
+
+  <footer>
+    <a href="impressum.html" class="footer-link">Impressum</a>
+    <a href="/" class="footer-link">← Startseite</a>
+    <span class="footer-copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</span>
+  </footer>
+
+</body>
+</html>

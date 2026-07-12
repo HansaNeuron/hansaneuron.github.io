@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Häufige Fragen zu Website-Betreuung für Praxen | Hansa Neuron</title>
+  <meta name="description" content="Antworten auf häufige Fragen: Was enthält ein Care Plan? Warum 12 Monate Laufzeit? Was prüft das Website-Audit? Wie funktioniert der Umzug zu deutschem Hosting?" />
+  <link rel="alternate" hreflang="de" href="https://hansaneuron.de/faq.html" />
+  <link rel="alternate" hreflang="en" href="https://hansaneuron.com/faq.html" />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Was ist in einem Care Plan enthalten?", "acceptedAnswer": { "@type": "Answer", "text": "Jeder Care Plan enthält Hosting auf deutschen Servern, WordPress- und Plugin-Updates, Sicherheits- und Website-Monitoring, Backup-Management und technisches Compliance-Monitoring. Die Pläne Bronze (120 €/Monat), Silber (180 €/Monat) und Gold (250 €/Monat) unterscheiden sich im Umfang der Betreuung – u. a. beim monatlichen Änderungskontingent (Bronze 45 Min., Silber 1 Std., Gold 2 Std.)." } },
+      { "@type": "Question", "name": "Warum gibt es eine Mindestlaufzeit von 12 Monaten?", "acceptedAnswer": { "@type": "Answer", "text": "Website-Sicherheit und technische Compliance sind laufende Prozesse: Updates, Schwachstellen und Anforderungen entwickeln sich ständig weiter. Einmalige Reparaturen verlieren schnell ihre Wirkung. Die 12-Monats-Laufzeit stellt sicher, dass Ihre Website kontinuierlich betreut wird – dafür erhalten Care-Plan-Kunden das Audit zum halben Preis (490 € statt 980 €)." } },
+      { "@type": "Question", "name": "Was prüft das Website-Audit?", "acceptedAnswer": { "@type": "Answer", "text": "Das Audit umfasst ein Website-Sicherheits-Audit, eine technische Compliance-Prüfung, Plugin- und WordPress-Review, SSL-Verifizierung, Cookie-Consent-Prüfung und Sicherheits-Härtung. Gefundene Probleme werden direkt behoben (bis zu 4 Stunden Umsetzung inklusive). Sie erhalten einen verständlichen Compliance- und Website-Gesundheitsbericht. Das Audit ist auch einzeln buchbar: 980 € ohne weitere Vertragsbindung – Care-Plan-Kunden zahlen 490 €." } },
+      { "@type": "Question", "name": "Sind Sie eine Rechtsanwaltskanzlei? Garantieren Sie Rechtskonformität?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Wir identifizieren technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten. Wir versprechen keine Rechtskonformität und keinen Schutz vor Bußgeldern – wir sorgen dafür, dass die technische Basis stimmt." } },
+      { "@type": "Question", "name": "Warum Hosting auf deutschen Servern?", "acceptedAnswer": { "@type": "Answer", "text": "Deutsche Server-Standorte bedeuten Datensouveränität, Transparenz, kurze Ladezeiten für Ihre Patienten und vereinfachtes Management. Für medizinische Praxen reduziert das Komplexität – ein Anbieter, ein Ansprechpartner, klare Verhältnisse. Deutsches Hosting ist in jedem Care Plan enthalten." } },
+      { "@type": "Question", "name": "Kann meine bestehende Website übernommen werden?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Wir übernehmen bestehende Praxis-Websites – in der Regel WordPress – und ziehen sie kontrolliert auf unsere deutsche Hosting-Umgebung um. Der Umzug ist Teil des Onboardings und wird so geplant, dass Ihre Website ohne spürbare Unterbrechung erreichbar bleibt." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────── -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/HansaNeuron_Logo_transparent.png" alt="Hansa Neuron Logo" class="nav-logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
+      <li><a href="preise.html" data-i18n="nav.preise">Preise</a></li>
+      <li><a href="faq.html" class="active" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="index.html#kontakt" data-i18n="nav.kontakt">Kontakt</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-de" onclick="setLang('de', true)">DE</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en', true)">EN</button>
+      </div>
+      <a href="website-check.html" class="nav-cta" data-i18n="nav.cta">Kostenloser Website-Check</a>
+      <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Menü schließen">✕</button>
+    <a href="index.html#leistungen" data-i18n="nav.leistungen">Leistungen</a>
+    <a href="preise.html" data-i18n="nav.preise">Preise</a>
+    <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="index.html#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+    <a href="website-check.html" class="btn-primary" style="margin-top:.5rem;text-align:center;" data-i18n="nav.cta">Kostenloser Website-Check</a>
+  </div>
+
+  <!-- ── Page hero ────────────────────────────────────── -->
+  <section class="page-hero">
+    <span class="label" data-i18n="ph.badge">Häufige Fragen</span>
+    <h1 class="section-title" data-i18n="ph.title">Klare Antworten.<br/><em>Ohne Fachchinesisch.</em></h1>
+    <p class="section-body" data-i18n="ph.sub">
+      Die häufigsten Fragen von Ärzten und Zahnärzten zu unseren Care Plans, dem Audit und dem Hosting – offen beantwortet. Ihre Frage fehlt? Schreiben Sie uns.
+    </p>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────── -->
+  <section style="background:var(--white);padding-top:3rem;">
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary data-i18n="q1.q">Was ist in einem Care Plan enthalten?</summary>
+        <div class="faq-answer" data-i18n="q1.a">Jeder Care Plan enthält Hosting auf deutschen Servern, WordPress- und Plugin-Updates, Sicherheits- und Website-Monitoring, Backup-Management und technisches Compliance-Monitoring. Die Pläne Bronze (120 €/Monat), Silber (180 €/Monat) und Gold (250 €/Monat) unterscheiden sich im Umfang der Betreuung – vom monatlichen Änderungskontingent bis zu vierteljährlichen Berichten und Prioritäts-Support.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="q2.q">Warum gibt es eine Mindestlaufzeit von 12 Monaten?</summary>
+        <div class="faq-answer" data-i18n="q2.a">Website-Sicherheit und technische Compliance sind laufende Prozesse: Updates, Schwachstellen und Anforderungen entwickeln sich ständig weiter. Einmalige Reparaturen verlieren schnell ihre Wirkung – kontinuierliches Monitoring ist nachweislich wirksamer. Die 12-Monats-Laufzeit stellt diese Kontinuität sicher. Als Gegenleistung erhalten Care-Plan-Kunden das Audit zum halben Preis: 490 € statt 980 €.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="q3.q">Was prüft das Website-Audit genau?</summary>
+        <div class="faq-answer" data-i18n="q3.a">Das Audit umfasst ein Website-Sicherheits-Audit, eine technische Compliance-Prüfung, Plugin- und WordPress-Review, SSL-Verifizierung, Cookie-Consent-Prüfung und Sicherheits-Härtung. Gefundene Probleme beheben wir direkt – bis zu 4 Stunden Umsetzungsarbeit sind enthalten, weitere Arbeiten berechnen wir nach Absprache mit 120 €/Stunde. Sie erhalten einen verständlichen Compliance- und Website-Gesundheitsbericht. Das Audit ist auch einzeln buchbar: 980 € ohne weitere Vertragsbindung – Care-Plan-Kunden zahlen 490 €.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="q4.q">Sind Sie eine Rechtsanwaltskanzlei? Garantieren Sie Rechtskonformität?</summary>
+        <div class="faq-answer" data-i18n="q4.a">Nein – und das sagen wir bewusst deutlich: Wir identifizieren technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten. Wir versprechen keine Rechtskonformität und keinen Schutz vor Bußgeldern. Was wir leisten: eine technisch saubere, gepflegte und überwachte Website-Basis – die Grundlage, auf der Compliance überhaupt erst möglich ist.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="q5.q">Warum Hosting auf deutschen Servern?</summary>
+        <div class="faq-answer" data-i18n="q5.a">Deutsche Server-Standorte bedeuten Datensouveränität, Transparenz und kurze Ladezeiten für Ihre Patienten. Für medizinische Praxen reduziert das Komplexität: ein Anbieter, ein Ansprechpartner, klare Verhältnisse – statt verteilter Dienste in unterschiedlichen Rechtsräumen. Deutsches Hosting ist deshalb kein Zusatz, sondern fester Bestandteil jedes Care Plans.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="q6.q">Kann meine bestehende Website übernommen werden?</summary>
+        <div class="faq-answer" data-i18n="q6.a">Ja. Wir übernehmen bestehende Praxis-Websites – in der Regel WordPress – und ziehen sie kontrolliert auf unsere deutsche Hosting-Umgebung um. Der Umzug ist Teil des Onboardings und wird so geplant, dass Ihre Website ohne spürbare Unterbrechung erreichbar bleibt. Zugangsdaten, Domains und E-Mail-Konfiguration klären wir gemeinsam mit Ihnen oder Ihrer bisherigen Agentur.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="q7.q">Was passiert, wenn mein Änderungskontingent nicht reicht?</summary>
+        <div class="faq-answer" data-i18n="q7.a">Bronze enthält bis zu 45 Minuten Website-Änderungen pro Monat, Silber bis zu 1 Stunde und Gold bis zu 2 Stunden. Reicht das einmal nicht – etwa bei einer neuen Unterseite oder größeren Umbauten – berechnen wir zusätzliche Arbeiten transparent mit 120 €/Stunde, immer nach vorheriger Absprache. Kein Kleingedrucktes, keine Überraschungen auf der Rechnung.</div>
+      </details>
+
+<details class="faq-item">
+        <summary data-i18n="q9.q">Kann ich meinen Care Plan wechseln oder upgraden?</summary>
+        <div class="faq-answer" data-i18n="q9.a">Ja, ein Upgrade (z. B. von Bronze auf Silber) ist jederzeit zum nächsten Monat möglich – die bisherige Laufzeit wird angerechnet. Ein Downgrade ist zum Ende der 12-Monats-Laufzeit möglich. Viele Praxen starten mit Bronze und wechseln zu Silber, sobald sie regelmäßige Berichte und bevorzugte Bearbeitung schätzen lernen.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="q10.q">Bieten Sie auch KI-Lösungen an?</summary>
+        <div class="faq-answer" data-i18n="q10.a">Ja. Hansa Neuron hat seine Wurzeln in der KI-Beratung. Für Care-Plan-Kunden, deren Website-Basis sicher steht, bieten wir KI-Beratung für Praxisabläufe an – etwa automatisierte Dokumentenverarbeitung oder intelligente Assistenten. Sprechen Sie uns einfach an.</div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ── CTA band ─────────────────────────────────────── -->
+  <section class="cta-band">
+    <h2 class="section-title reveal" data-i18n="cta.title">Noch Fragen offen?</h2>
+    <p class="section-body reveal reveal-delay-1" style="margin:0 auto;" data-i18n="cta.body">Schreiben Sie uns – wir antworten innerhalb von 24 Stunden. Oder sehen Sie sich zuerst an, wo Ihre Website steht.</p>
+    <a href="website-check.html" class="btn-primary reveal reveal-delay-2" data-i18n="cta.btn">Kostenlosen Website-Check starten</a>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/HansaNeuron_Icon_transparent.png" alt="Hansa Neuron" class="footer-logo-img" />
+      </a>
+      <ul class="footer-links">
+        <li><a href="index.html" data-i18n="footer.home">Startseite</a></li>
+        <li><a href="index.html#leistungen" data-i18n="footer.leistungen">Leistungen</a></li>
+        <li><a href="preise.html" data-i18n="footer.preise">Preise</a></li>
+        <li><a href="website-check.html" data-i18n="footer.check">Website-Check</a></li>
+        <li><a href="faq.html" data-i18n="footer.faq">FAQ</a></li>
+        <li><a href="index.html#kontakt" data-i18n="footer.kontakt">Kontakt</a></li>
+        <li><a href="datenschutz.html" data-privacy-link data-i18n="footer.privacy">Datenschutz</a></li>
+        <li><a href="impressum.html" data-i18n="footer.impressum">Impressum</a></li>
+      </ul>
+      <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
+    </div>
+    <div class="footer-disclaimer" data-i18n="footer.disclaimer">
+      Hansa Neuron identifiziert technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Wir sind keine Rechtsanwaltskanzlei und erbringen keine Rechtsberatung. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten.
+    </div>
+  </footer>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie notice" style="display:none">
+    <p class="cookie-text" data-i18n="cookie.text">Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.</p>
+    <div class="cookie-actions">
+      <a href="datenschutz.html" class="cookie-link" data-privacy-link data-i18n="cookie.policy">Datenschutzerklärung</a>
+      <button class="cookie-btn" onclick="acceptCookies()"><span data-i18n="cookie.accept">Verstanden</span></button>
+    </div>
+  </div>
+
+  <script>
+    window.pageMeta = {
+      de: {
+        title: 'FAQ — Häufige Fragen zu Website-Betreuung für Praxen | Hansa Neuron',
+        desc:  'Antworten auf häufige Fragen: Was enthält ein Care Plan? Warum 12 Monate Laufzeit? Was prüft das Website-Audit? Wie funktioniert der Umzug zu deutschem Hosting?'
+      },
+      en: {
+        title: 'FAQ — Common Questions About Practice Website Care | Hansa Neuron',
+        desc:  'Answers to common questions: What does a Care Plan include? Why a 12-month term? What does the website audit cover? How does migration to German hosting work?'
+      }
+    };
+    window.pageTranslations = {
+      de: {
+        'ph.badge': 'Häufige Fragen',
+        'ph.title': 'Klare Antworten.<br/><em>Ohne Fachchinesisch.</em>',
+        'ph.sub':   'Die häufigsten Fragen von Ärzten und Zahnärzten zu unseren Care Plans, dem Audit und dem Hosting – offen beantwortet. Ihre Frage fehlt? Schreiben Sie uns.',
+        'q1.q': 'Was ist in einem Care Plan enthalten?',
+        'q1.a': 'Jeder Care Plan enthält Hosting auf deutschen Servern, WordPress- und Plugin-Updates, Sicherheits- und Website-Monitoring, Backup-Management und technisches Compliance-Monitoring. Die Pläne Bronze (120 €/Monat), Silber (180 €/Monat) und Gold (250 €/Monat) unterscheiden sich im Umfang der Betreuung – vom monatlichen Änderungskontingent bis zu vierteljährlichen Berichten und Prioritäts-Support.',
+        'q2.q': 'Warum gibt es eine Mindestlaufzeit von 12 Monaten?',
+        'q2.a': 'Website-Sicherheit und technische Compliance sind laufende Prozesse: Updates, Schwachstellen und Anforderungen entwickeln sich ständig weiter. Einmalige Reparaturen verlieren schnell ihre Wirkung – kontinuierliches Monitoring ist nachweislich wirksamer. Die 12-Monats-Laufzeit stellt diese Kontinuität sicher. Als Gegenleistung erhalten Care-Plan-Kunden das Audit zum halben Preis: 490 € statt 980 €.',
+        'q3.q': 'Was prüft das Website-Audit genau?',
+        'q3.a': 'Das Audit umfasst ein Website-Sicherheits-Audit, eine technische Compliance-Prüfung, Plugin- und WordPress-Review, SSL-Verifizierung, Cookie-Consent-Prüfung und Sicherheits-Härtung. Gefundene Probleme beheben wir direkt – bis zu 4 Stunden Umsetzungsarbeit sind enthalten, weitere Arbeiten berechnen wir nach Absprache mit 120 €/Stunde. Sie erhalten einen verständlichen Compliance- und Website-Gesundheitsbericht. Das Audit ist auch einzeln buchbar: 980 € ohne weitere Vertragsbindung – Care-Plan-Kunden zahlen 490 €.',
+        'q4.q': 'Sind Sie eine Rechtsanwaltskanzlei? Garantieren Sie Rechtskonformität?',
+        'q4.a': 'Nein – und das sagen wir bewusst deutlich: Wir identifizieren technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten. Wir versprechen keine Rechtskonformität und keinen Schutz vor Bußgeldern. Was wir leisten: eine technisch saubere, gepflegte und überwachte Website-Basis – die Grundlage, auf der Compliance überhaupt erst möglich ist.',
+        'q5.q': 'Warum Hosting auf deutschen Servern?',
+        'q5.a': 'Deutsche Server-Standorte bedeuten Datensouveränität, Transparenz und kurze Ladezeiten für Ihre Patienten. Für medizinische Praxen reduziert das Komplexität: ein Anbieter, ein Ansprechpartner, klare Verhältnisse – statt verteilter Dienste in unterschiedlichen Rechtsräumen. Deutsches Hosting ist deshalb kein Zusatz, sondern fester Bestandteil jedes Care Plans.',
+        'q6.q': 'Kann meine bestehende Website übernommen werden?',
+        'q6.a': 'Ja. Wir übernehmen bestehende Praxis-Websites – in der Regel WordPress – und ziehen sie kontrolliert auf unsere deutsche Hosting-Umgebung um. Der Umzug ist Teil des Onboardings und wird so geplant, dass Ihre Website ohne spürbare Unterbrechung erreichbar bleibt. Zugangsdaten, Domains und E-Mail-Konfiguration klären wir gemeinsam mit Ihnen oder Ihrer bisherigen Agentur.',
+        'q7.q': 'Was passiert, wenn mein Änderungskontingent nicht reicht?',
+        'q7.a': 'Bronze enthält bis zu 45 Minuten Website-Änderungen pro Monat, Silber bis zu 1 Stunde und Gold bis zu 2 Stunden. Reicht das einmal nicht – etwa bei einer neuen Unterseite oder größeren Umbauten – berechnen wir zusätzliche Arbeiten transparent mit 120 €/Stunde, immer nach vorheriger Absprache. Kein Kleingedrucktes, keine Überraschungen auf der Rechnung.',
+        'q9.q': 'Kann ich meinen Care Plan wechseln oder upgraden?',
+        'q9.a': 'Ja, ein Upgrade (z. B. von Bronze auf Silber) ist jederzeit zum nächsten Monat möglich – die bisherige Laufzeit wird angerechnet. Ein Downgrade ist zum Ende der 12-Monats-Laufzeit möglich. Viele Praxen starten mit Bronze und wechseln zu Silber, sobald sie regelmäßige Berichte und bevorzugte Bearbeitung schätzen lernen.',
+        'q10.q': 'Bieten Sie auch KI-Lösungen an?',
+        'q10.a': 'Ja. Hansa Neuron hat seine Wurzeln in der KI-Beratung. Für Care-Plan-Kunden, deren Website-Basis sicher steht, bieten wir KI-Beratung für Praxisabläufe an – etwa automatisierte Dokumentenverarbeitung oder intelligente Assistenten. Sprechen Sie uns einfach an.',
+        'cta.title': 'Noch Fragen offen?',
+        'cta.body':  'Schreiben Sie uns – wir antworten innerhalb von 24 Stunden. Oder sehen Sie sich zuerst an, wo Ihre Website steht.',
+        'cta.btn':   'Kostenlosen Website-Check starten',
+      },
+      en: {
+        'ph.badge': 'Common questions',
+        'ph.title': 'Clear answers.<br/><em>No jargon.</em>',
+        'ph.sub':   'The questions doctors and dentists ask us most often about our Care Plans, the audit and hosting – answered openly. Question missing? Just write to us.',
+        'q1.q': 'What is included in a Care Plan?',
+        'q1.a': 'Every Care Plan includes German-based hosting, WordPress and plugin updates, security and website monitoring, backup management and technical compliance monitoring. The Bronze (€120/month), Silver (€180/month) and Gold (€250/month) plans differ in the depth of support – including the monthly change allowance (Bronze 45 min., Silver 1 hr, Gold 2 hrs).',
+        'q2.q': 'Why is there a 12-month minimum term?',
+        'q2.a': 'Website security and technical compliance are ongoing processes: updates, vulnerabilities and requirements evolve constantly. One-off repairs lose their effect quickly – continuous monitoring is demonstrably more effective. The 12-month term ensures that continuity. In return, Care Plan clients receive the audit at half price: €490 instead of €980.',
+        'q3.q': 'What exactly does the website audit cover?',
+        'q3.a': 'The audit includes a website security audit, a technical compliance review, plugin and WordPress review, SSL verification, cookie consent review and security hardening. We fix the issues found directly – up to 4 hours of implementation are included; additional work is billed at €120/hour by prior agreement. You receive a clear compliance and website health report. The audit can also be booked on its own: €980 with no further commitment – Care Plan clients pay €490.',
+        'q4.q': 'Are you a law firm? Do you guarantee legal compliance?',
+        'q4.a': 'No – and we say this deliberately clearly: we identify technical security, maintenance and compliance risks on practice websites. Legal assessments remain the responsibility of the practice and its legal advisers. We do not promise legal compliance or protection from fines. What we deliver: a technically sound, maintained and monitored website foundation – the basis that makes compliance possible in the first place.',
+        'q5.q': 'Why hosting on German servers?',
+        'q5.a': 'German server locations mean data sovereignty, transparency and fast load times for your patients. For medical practices, this reduces complexity: one provider, one point of contact, clear arrangements – instead of scattered services across different jurisdictions. That is why German hosting is not an add-on but a core part of every Care Plan.',
+        'q6.q': 'Can you take over my existing website?',
+        'q6.a': 'Yes. We take over existing practice websites – usually WordPress – and migrate them to our German hosting environment in a controlled way. The migration is part of onboarding and is planned so that your website remains reachable without noticeable interruption. Credentials, domains and email configuration are sorted out together with you or your previous agency.',
+        'q7.q': 'What happens if my change allowance is not enough?',
+        'q7.a': 'Bronze includes up to 45 minutes of website changes per month, Silver up to 1 hour, and Gold up to 2 hours. If that is not enough one month – say for a new subpage or bigger changes – additional work is billed transparently at €120/hour, always by prior agreement. No fine print, no surprises on the invoice.',
+        'q9.q': 'Can I switch or upgrade my Care Plan?',
+        'q9.a': 'Yes, upgrading (e.g. from Bronze to Silver) is possible at any time from the next month – your existing term carries over. Downgrading is possible at the end of the 12-month term. Many practices start with Bronze and move to Silver once they come to value regular reports and priority handling.',
+        'q10.q': 'Do you also offer AI solutions?',
+        'q10.a': 'Yes. Hansa Neuron has its roots in AI consulting. For Care Plan clients whose website foundation is secure, we offer AI consulting for practice workflows – such as automated document processing or intelligent assistants. Just ask us.',
+        'cta.title': 'Still have questions?',
+        'cta.body':  'Write to us – we reply within 24 hours. Or first see where your website stands.',
+        'cta.btn':   'Start your free website check',
+      }
+    };
+  </script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

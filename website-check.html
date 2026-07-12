@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kostenloser Praxis-Website-Check | Hansa Neuron</title>
+  <meta name="description" content="Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: SSL, Sicherheits-Header, WordPress-Status, Cookie-Consent, Impressum-Verlinkung und Ladezeit. Sofortergebnis, ohne Anmeldung." />
+  <link rel="alternate" hreflang="de" href="https://hansaneuron.de/website-check.html" />
+  <link rel="alternate" hreflang="en" href="https://hansaneuron.com/website-check.html" />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────── -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/HansaNeuron_Logo_transparent.png" alt="Hansa Neuron Logo" class="nav-logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
+      <li><a href="preise.html" data-i18n="nav.preise">Preise</a></li>
+      <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="index.html#kontakt" data-i18n="nav.kontakt">Kontakt</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-de" onclick="setLang('de', true)">DE</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en', true)">EN</button>
+      </div>
+      <a href="website-check.html" class="nav-cta" data-i18n="nav.cta">Kostenloser Website-Check</a>
+      <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Menü schließen">✕</button>
+    <a href="index.html#leistungen" data-i18n="nav.leistungen">Leistungen</a>
+    <a href="preise.html" data-i18n="nav.preise">Preise</a>
+    <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="index.html#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+  </div>
+
+  <!-- ── Check hero ───────────────────────────────────── -->
+  <section class="page-hero" style="padding-bottom:6rem;">
+    <span class="label" data-i18n="ch.badge">Kostenlos · Ohne Anmeldung · Sofortergebnis</span>
+    <h1 class="section-title" data-i18n="ch.title">Wie sicher ist<br/><em>Ihre Praxis-Website?</em></h1>
+    <p class="section-body" data-i18n="ch.sub">
+      Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – von SSL über Sicherheits-Header bis Cookie-Consent.
+    </p>
+
+    <div class="check-form-wrap">
+      <form class="check-form" id="checkForm" onsubmit="runCheck(event)">
+        <input type="text" id="checkUrl" name="url" placeholder="www.ihre-praxis.de" autocomplete="url" required
+               aria-label="Website-Adresse" data-i18n-placeholder="ch.placeholder" />
+        <button type="submit" class="btn-primary" id="checkBtn">
+          <span id="checkBtnLabel" data-i18n="ch.btn">Jetzt prüfen</span>
+        </button>
+      </form>
+      <p class="check-note" data-i18n="ch.note">
+        Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Informationen Ihrer Website geprüft. Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.
+      </p>
+      <div class="check-error" id="checkError"></div>
+    </div>
+
+    <!-- Results: security report dashboard -->
+    <div class="scorecard" id="scorecard">
+      <div class="hn-dash" aria-live="polite">
+        <header class="hn-dash__header">
+          <h2 class="hn-dash__title" data-i18n="ch.reportTitle">Praxis-Website Sicherheitsbericht</h2>
+          <p class="hn-dash__meta">
+            <span data-i18n="ch.checkedAt">Geprüft am:</span> <strong id="reportTime"></strong> · <strong id="scoreHost"></strong>
+          </p>
+        </header>
+        <hr class="hn-dash__divider" />
+        <div class="hn-dash__body">
+          <div class="hn-dash__score">
+            <div class="hn-dash__ring hn-dash__ring--fail" id="scoreRing" style="--hnd-score:0" role="img">
+              <div class="hn-dash__ring-inner"><span class="hn-dash__score-num" id="scoreNum">–</span></div>
+            </div>
+            <p class="hn-dash__score-label" data-i18n="ch.scoreLabel">von 100 Punkten im technischen Schnell-Check</p>
+          </div>
+          <div class="hn-dash__grid" id="checkItems"></div>
+        </div>
+      </div>
+
+      <div class="check-cta">
+        <h3 data-i18n="ch.ctaTitle">Das war der Schnell-Check. Das vollständige Audit geht tiefer.</h3>
+        <p data-i18n="ch.ctaBody">Unser Website-Audit prüft über 50 technische Punkte – WordPress, Plugins, Formulare, Backups, Performance – und behebt die gefundenen Probleme direkt (bis zu 4 Stunden Umsetzung inklusive). Für Care-Plan-Kunden: 490 € statt 980 €.</p>
+        <a href="preise.html" class="btn-primary" data-i18n="ch.ctaBtn">Zum Audit-Angebot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ─────────────────────────────────── -->
+  <section style="background:var(--white);">
+    <div class="section-center">
+      <div class="section-kicker reveal" data-i18n="how.kicker">Was wird geprüft?</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="how.title">Zehn technische Prüfpunkte.<br/><em>Sofort verständlich erklärt.</em></h2>
+      <p class="section-body reveal reveal-delay-2" data-i18n="how.body">
+        SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, Cookie-Consent-Lösung, Verlinkung von Impressum und Datenschutzerklärung, unsichere Einbindungen und die Antwortzeit Ihrer Website. Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/HansaNeuron_Icon_transparent.png" alt="Hansa Neuron" class="footer-logo-img" />
+      </a>
+      <ul class="footer-links">
+        <li><a href="index.html" data-i18n="footer.home">Startseite</a></li>
+        <li><a href="index.html#leistungen" data-i18n="footer.leistungen">Leistungen</a></li>
+        <li><a href="preise.html" data-i18n="footer.preise">Preise</a></li>
+        <li><a href="website-check.html" data-i18n="footer.check">Website-Check</a></li>
+        <li><a href="faq.html" data-i18n="footer.faq">FAQ</a></li>
+        <li><a href="index.html#kontakt" data-i18n="footer.kontakt">Kontakt</a></li>
+        <li><a href="datenschutz.html" data-privacy-link data-i18n="footer.privacy">Datenschutz</a></li>
+        <li><a href="impressum.html" data-i18n="footer.impressum">Impressum</a></li>
+      </ul>
+      <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
+    </div>
+    <div class="footer-disclaimer" data-i18n="footer.disclaimer">
+      Hansa Neuron identifiziert technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Wir sind keine Rechtsanwaltskanzlei und erbringen keine Rechtsberatung. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten.
+    </div>
+  </footer>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie notice" style="display:none">
+    <p class="cookie-text" data-i18n="cookie.text">Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.</p>
+    <div class="cookie-actions">
+      <a href="datenschutz.html" class="cookie-link" data-privacy-link data-i18n="cookie.policy">Datenschutzerklärung</a>
+      <button class="cookie-btn" onclick="acceptCookies()"><span data-i18n="cookie.accept">Verstanden</span></button>
+    </div>
+  </div>
+
+  <script>
+    window.pageMeta = {
+      de: {
+        title: 'Kostenloser Praxis-Website-Check | Hansa Neuron',
+        desc:  'Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: SSL, Sicherheits-Header, WordPress-Status, Cookie-Consent, Impressum-Verlinkung und Ladezeit. Sofortergebnis, ohne Anmeldung.'
+      },
+      en: {
+        title: 'Free Practice Website Check | Hansa Neuron',
+        desc:  'Check your practice website free of charge in 60 seconds: SSL, security headers, WordPress status, cookie consent, legal page links and load time. Instant results, no sign-up.'
+      }
+    };
+    window.pageTranslations = {
+      de: {
+        'ch.badge':     'Kostenlos · Ohne Anmeldung · Sofortergebnis',
+        'ch.title':     'Wie sicher ist<br/><em>Ihre Praxis-Website?</em>',
+        'ch.sub':       'Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – von SSL über Sicherheits-Header bis Cookie-Consent.',
+        'ch.placeholder':'www.ihre-praxis.de',
+        'ch.btn':       'Jetzt prüfen',
+        'ch.note':      'Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Informationen Ihrer Website geprüft. Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.',
+        'ch.scoreLabel':'von 100 Punkten im technischen Schnell-Check',
+        'ch.reportTitle':'Praxis-Website Sicherheitsbericht',
+        'ch.checkedAt': 'Geprüft am:',
+        'ch.ctaTitle':  'Das war der Schnell-Check. Das vollständige Audit geht tiefer.',
+        'ch.ctaBody':   'Unser Website-Audit prüft über 50 technische Punkte – WordPress, Plugins, Formulare, Backups, Performance – und behebt die gefundenen Probleme direkt (bis zu 4 Stunden Umsetzung inklusive). Für Care-Plan-Kunden: 490 € statt 980 €.',
+        'ch.ctaBtn':    'Zum Audit-Angebot',
+        'how.kicker':   'Was wird geprüft?',
+        'how.title':    'Zehn technische Prüfpunkte.<br/><em>Sofort verständlich erklärt.</em>',
+        'how.body':     'SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, Cookie-Consent-Lösung, Verlinkung von Impressum und Datenschutzerklärung, unsichere Einbindungen und die Antwortzeit Ihrer Website. Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch.',
+      },
+      en: {
+        'ch.badge':     'Free · No sign-up · Instant results',
+        'ch.title':     'How secure is<br/><em>your practice website?</em>',
+        'ch.sub':       'Enter your website address. In about 60 seconds you will see where your website stands technically – from SSL and security headers to cookie consent.',
+        'ch.placeholder':'www.your-practice.com',
+        'ch.btn':       'Check now',
+        'ch.note':      'Automated technical quick check. Only publicly accessible information about your website is examined. Not legal advice. The address you enter is processed to run the check and is not stored.',
+        'ch.scoreLabel':'out of 100 points in the technical quick check',
+        'ch.reportTitle':'Practice Website Security Report',
+        'ch.checkedAt': 'Checked on:',
+        'ch.ctaTitle':  'That was the quick check. The full audit goes deeper.',
+        'ch.ctaBody':   'Our website audit examines over 50 technical points – WordPress, plugins, forms, backups, performance – and fixes the issues found directly (up to 4 hours of implementation included). For Care Plan clients: €490 instead of €980.',
+        'ch.ctaBtn':    'See the audit offer',
+        'how.kicker':   'What is checked?',
+        'how.title':    'Ten technical checkpoints.<br/><em>Explained in plain language.</em>',
+        'how.body':     'SSL encryption and HTTPS redirection, modern security headers, exposed WordPress versions, cookie consent tooling, links to mandatory legal pages, insecure embeds and your website’s response time. Every result comes with a clear explanation – no jargon.',
+      }
+    };
+
+    // ── Localized check texts ──────────────────────────
+    const CHECK_TEXTS = {
+      de: {
+        ssl:            { title: 'SSL-Verschlüsselung', pass: 'Ihre Website ist über HTTPS erreichbar.', warn: 'Ihre Website antwortet über HTTPS mit einem Fehler – das sollte geprüft werden.', fail: 'Ihre Website ist nicht sicher über HTTPS erreichbar.' },
+        https_redirect: { title: 'HTTPS-Weiterleitung', pass: 'Unverschlüsselte Aufrufe werden automatisch auf HTTPS umgeleitet.', warn: 'Die Weiterleitung von HTTP auf HTTPS ist nicht eindeutig konfiguriert.', fail: 'Ihre Website ist auch unverschlüsselt über HTTP erreichbar – Daten können mitgelesen werden.' },
+        hsts:           { title: 'HSTS (erzwungene Verschlüsselung)', pass: 'HSTS ist aktiv – Browser verbinden sich nur noch verschlüsselt.', warn: 'HSTS ist nur teilweise konfiguriert.', fail: 'HSTS fehlt – Browser könnten unverschlüsselte Verbindungen aufbauen.' },
+        sec_headers:    { title: 'Sicherheits-Header', pass: '{count} von {total} modernen Sicherheits-Headern sind gesetzt.', warn: 'Nur {count} von {total} Sicherheits-Headern gesetzt. Es fehlen: {missing}.', fail: 'Keiner der {total} geprüften Sicherheits-Header ist gesetzt ({missing}).' },
+        wp_version:     { title: 'WordPress-Version', pass: 'WordPress erkannt – die Versionsnummer ist nicht öffentlich sichtbar. Gut.', warn: 'WordPress-Status unklar.', fail: 'Ihre WordPress-Version ({version}) ist öffentlich sichtbar – das erleichtert gezielte Angriffe.', info: 'Kein WordPress erkannt – einige Prüfpunkte entfallen.' },
+        cookie_consent: { title: 'Cookie-Consent-Lösung', pass: 'Eine Cookie-Consent-Lösung wurde erkannt ({tool}).', warn: 'Keine bekannte Cookie-Consent-Lösung erkannt. Falls Ihre Website Cookies oder Drittdienste nutzt, ist eine Einwilligungslösung erforderlich.', fail: 'Keine Cookie-Consent-Lösung erkannt.' },
+        impressum:      { title: 'Impressum-Verlinkung', pass: 'Ein Impressum-Link wurde auf der Startseite gefunden.', warn: 'Kein Impressum-Link auf der Startseite gefunden – für deutsche Praxis-Websites ein wichtiger Punkt.', fail: 'Kein Impressum-Link gefunden.' },
+        datenschutz:    { title: 'Datenschutz-Verlinkung', pass: 'Ein Link zur Datenschutzerklärung wurde gefunden.', warn: 'Kein Link zur Datenschutzerklärung auf der Startseite gefunden.', fail: 'Kein Datenschutz-Link gefunden.' },
+        mixed_content:  { title: 'Unsichere Einbindungen', pass: 'Keine unsicheren (HTTP-)Einbindungen auf der Startseite gefunden.', warn: 'Einzelne unsichere Einbindungen gefunden.', fail: '{count} unsichere Einbindungen gefunden – Browser blockieren oder bemängeln diese Inhalte.' },
+        response_time:  { title: 'Antwortzeit', pass: 'Ihre Website antwortet schnell ({ms} ms).', warn: 'Ihre Website antwortet spürbar langsam ({ms} ms).', fail: 'Ihre Website antwortet sehr langsam ({ms} ms) – das kostet Patienten und Google-Sichtbarkeit.' }
+      },
+      en: {
+        ssl:            { title: 'SSL encryption', pass: 'Your website is reachable via HTTPS.', warn: 'Your website responds over HTTPS with an error – worth investigating.', fail: 'Your website is not securely reachable via HTTPS.' },
+        https_redirect: { title: 'HTTPS redirect', pass: 'Unencrypted requests are automatically redirected to HTTPS.', warn: 'The HTTP → HTTPS redirect is not clearly configured.', fail: 'Your website is also served unencrypted over HTTP – data can be intercepted.' },
+        hsts:           { title: 'HSTS (enforced encryption)', pass: 'HSTS is active – browsers will only connect over encryption.', warn: 'HSTS is only partially configured.', fail: 'HSTS is missing – browsers may establish unencrypted connections.' },
+        sec_headers:    { title: 'Security headers', pass: '{count} of {total} modern security headers are set.', warn: 'Only {count} of {total} security headers set. Missing: {missing}.', fail: 'None of the {total} checked security headers are set ({missing}).' },
+        wp_version:     { title: 'WordPress version', pass: 'WordPress detected – the version number is not publicly visible. Good.', warn: 'WordPress status unclear.', fail: 'Your WordPress version ({version}) is publicly visible – this makes targeted attacks easier.', info: 'No WordPress detected – some checkpoints do not apply.' },
+        cookie_consent: { title: 'Cookie consent tooling', pass: 'A cookie consent solution was detected ({tool}).', warn: 'No known cookie consent solution detected. If your website uses cookies or third-party services, a consent solution is required.', fail: 'No cookie consent solution detected.' },
+        impressum:      { title: 'Imprint (Impressum) link', pass: 'An Impressum link was found on the homepage.', warn: 'No Impressum link found on the homepage – an important point for German practice websites.', fail: 'No Impressum link found.' },
+        datenschutz:    { title: 'Privacy policy link', pass: 'A privacy policy link was found.', warn: 'No privacy policy link found on the homepage.', fail: 'No privacy policy link found.' },
+        mixed_content:  { title: 'Insecure embeds', pass: 'No insecure (HTTP) embeds found on the homepage.', warn: 'Some insecure embeds found.', fail: '{count} insecure embeds found – browsers block or flag this content.' },
+        response_time:  { title: 'Response time', pass: 'Your website responds quickly ({ms} ms).', warn: 'Your website responds noticeably slowly ({ms} ms).', fail: 'Your website responds very slowly ({ms} ms) – costing patients and Google visibility.' }
+      }
+    };
+    // Status badges + localized status labels for the dashboard items
+    const STATUS_META = {
+      de: { pass: { icon: '✓', label: '✓ Erfolgreich' }, warn: { icon: '!', label: '! Warnung' }, fail: { icon: '✕', label: '✕ Fehler' },  info: { icon: 'i', label: 'Info' } },
+      en: { pass: { icon: '✓', label: '✓ Passed' },      warn: { icon: '!', label: '! Warning' }, fail: { icon: '✕', label: '✕ Failed' }, info: { icon: 'i', label: 'Info' } }
+    };
+    let lastResult = null;
+
+    // "15.10.2023, 11:45 Uhr" (DE) / "15/10/2023, 11:45" (EN) from ISO checkedAt
+    function fmtCheckedAt(iso, lang) {
+      const d = iso ? new Date(iso) : new Date();
+      const locale = lang === 'de' ? 'de-DE' : 'en-GB';
+      const date = d.toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' });
+      const time = d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+      return lang === 'de' ? date + ', ' + time + ' Uhr' : date + ', ' + time;
+    }
+
+    function fmt(tpl, detail) {
+      return tpl.replace(/\{(\w+)\}/g, (_, k) => {
+        const v = detail ? detail[k] : undefined;
+        return Array.isArray(v) ? v.join(', ') : (v !== undefined ? v : '');
+      });
+    }
+
+    function renderResult(data) {
+      lastResult = data;
+      const lang = currentLang;
+      const texts = CHECK_TEXTS[lang];
+      const meta = STATUS_META[lang];
+      const sc = document.getElementById('scorecard');
+
+      // Score ring: red <50, amber 50–79, green 80+
+      const score = Math.max(0, Math.min(100, Number(data.score) || 0));
+      const tier = score < 50 ? 'fail' : score < 80 ? 'warn' : 'pass';
+      const ring = document.getElementById('scoreRing');
+      ring.className = 'hn-dash__ring hn-dash__ring--' + tier;
+      ring.style.setProperty('--hnd-score', score);
+      ring.setAttribute('aria-label', lang === 'de'
+        ? 'Gesamtergebnis: ' + score + ' von 100 Punkten'
+        : 'Overall result: ' + score + ' out of 100 points');
+      document.getElementById('scoreNum').textContent = score;
+      document.getElementById('scoreHost').textContent = data.host;
+      document.getElementById('reportTime').textContent = fmtCheckedAt(data.checkedAt, lang);
+
+      const wrap = document.getElementById('checkItems');
+      wrap.innerHTML = '';
+      data.checks.forEach(c => {
+        const tx = texts[c.id];
+        if (!tx) return;
+        const s = meta[c.status] || meta.info;
+        const desc = fmt(tx[c.status] || '', c.detail);
+        const item = document.createElement('article');
+        item.className = 'hn-dash__item hn-dash__item--' + (STATUS_META.de[c.status] ? c.status : 'info');
+        item.innerHTML =
+          '<div class="hn-dash__item-head"><span class="hn-dash__badge" aria-hidden="true"></span><h3 class="hn-dash__item-title"></h3></div>' +
+          '<span class="hn-dash__status"></span><p class="hn-dash__item-desc"></p>';
+        item.querySelector('.hn-dash__badge').textContent = s.icon;
+        item.querySelector('.hn-dash__item-title').textContent = tx.title;
+        item.querySelector('.hn-dash__status').textContent = s.label;
+        item.querySelector('.hn-dash__item-desc').textContent = desc;
+        wrap.appendChild(item);
+      });
+      sc.classList.add('visible');
+      sc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Re-render results when language switches
+    document.addEventListener('hn:langchange', () => { if (lastResult) renderResult(lastResult); });
+
+    let checking = false;
+    async function runCheck(e) {
+      e.preventDefault();
+      if (checking) return;
+      checking = true;
+      const btn = document.getElementById('checkBtn');
+      const label = document.getElementById('checkBtnLabel');
+      const errBox = document.getElementById('checkError');
+      errBox.classList.remove('visible');
+      btn.disabled = true;
+      const origLabel = label.textContent;
+      label.innerHTML = '<span class="spinner"></span>';
+
+      try {
+        const res = await fetch('/api/check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: document.getElementById('checkUrl').value })
+        });
+        const data = await res.json();
+        if (!data.ok) {
+          const msgs = {
+            de: { invalid_url: 'Bitte geben Sie eine gültige Website-Adresse ein, z. B. www.ihre-praxis.de.',
+                  rate_limited: 'Zu viele Prüfungen in kurzer Zeit. Bitte warten Sie eine Minute und versuchen Sie es erneut.',
+                  unreachable: 'Die Website konnte nicht erreicht werden. Bitte prüfen Sie die Adresse – oder kontaktieren Sie uns direkt, wir schauen es uns an.',
+                  default: 'Die Prüfung konnte nicht durchgeführt werden. Bitte versuchen Sie es erneut.' },
+            en: { invalid_url: 'Please enter a valid website address, e.g. www.your-practice.com.',
+                  rate_limited: 'Too many checks in a short time. Please wait a minute and try again.',
+                  unreachable: 'The website could not be reached. Please check the address – or contact us directly and we will take a look.',
+                  default: 'The check could not be completed. Please try again.' }
+          };
+          const m = msgs[currentLang];
+          errBox.textContent = m[data.error] || m.default;
+          errBox.classList.add('visible');
+        } else {
+          renderResult(data);
+        }
+      } catch (err) {
+        const offline = {
+          de: 'Der Check-Dienst ist gerade nicht erreichbar. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.',
+          en: 'The check service is currently unavailable. Please try again later or contact us directly.'
+        };
+        errBox.textContent = offline[currentLang];
+        errBox.classList.add('visible');
+      } finally {
+        btn.disabled = false;
+        label.textContent = origLabel;
+        checking = false;
+      }
+    }
+  </script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

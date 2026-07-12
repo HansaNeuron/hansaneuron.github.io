@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hansa Neuron — Sicherheitsbericht Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   HANSA NEURON — SECURITY DASHBOARD COMPONENT
+   Self-contained. All selectors scoped under .hn-dash to allow safe
+   embedding in index.html (#probleme) or the check tool results view.
+   No JavaScript required for the static initial state.
+   ===================================================================== */
+
+.hn-dash {
+  /* Brand tokens (mirrors assets/style.css) */
+  --hnd-teal:       #6B9A8F;
+  --hnd-teal-dark:  #4A7A6E;
+  --hnd-teal-50:    #EBF2F0;
+  --hnd-slate:      #3A4354;
+  --hnd-slate-dark: #252D3A;
+  --hnd-terra:      #E07A5F;
+  --hnd-terra-dark: #C45E43;
+  --hnd-terra-50:   #FDF1EE;
+  --hnd-amber:      #D9A441;
+  --hnd-amber-dark: #A87A22;
+  --hnd-amber-50:   #FBF4E4;
+  --hnd-white:      #FFFFFF;
+  --hnd-bg:         #FAFAFA;
+  --hnd-border:     #E5E9E8;
+  --hnd-text:       #2C2C2C;
+  --hnd-muted:      #6B7280;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--hnd-text);
+  background: var(--hnd-bg);
+  border: 1px solid var(--hnd-border);
+  border-radius: 12px;
+  padding: 32px clamp(20px, 4vw, 44px) 40px;
+  max-width: 1080px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.hn-dash *, .hn-dash *::before, .hn-dash *::after { box-sizing: inherit; }
+
+/* ---------- Header ---------- */
+.hn-dash__header { margin-bottom: 20px; }
+.hn-dash__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(1.35rem, 3.2vw, 2.1rem);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--hnd-slate-dark);
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+.hn-dash__meta {
+  font-size: 0.95rem;
+  color: var(--hnd-muted);
+  margin: 0;
+}
+.hn-dash__meta strong { color: var(--hnd-slate); font-weight: 600; }
+.hn-dash__divider {
+  border: 0;
+  border-top: 1px solid var(--hnd-border);
+  margin: 20px 0 32px;
+}
+
+/* ---------- Layout: score left, grid right ---------- */
+.hn-dash__body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+}
+
+/* ---------- Score circle ---------- */
+.hn-dash__score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.hn-dash__ring {
+  --hnd-score: 42;              /* set inline per instance */
+  --hnd-ring-color: var(--hnd-terra);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    conic-gradient(var(--hnd-ring-color) calc(var(--hnd-score) * 1%),
+                   var(--hnd-border) 0);
+}
+.hn-dash__ring-inner {
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  border-radius: 50%;
+  background: var(--hnd-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hn-dash__score-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--hnd-ring-color);
+}
+.hn-dash__score-label {
+  font-size: 1rem;
+  color: var(--hnd-muted);
+  margin: 0;
+}
+/* Score color states: fail <50, warn 50–79, pass 80+ */
+.hn-dash__ring--fail { --hnd-ring-color: var(--hnd-terra); }
+.hn-dash__ring--warn { --hnd-ring-color: var(--hnd-amber); }
+.hn-dash__ring--pass { --hnd-ring-color: var(--hnd-teal-dark); }
+
+/* ---------- Check grid ---------- */
+.hn-dash__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.hn-dash__item {
+  background: var(--hnd-white);
+  border: 1px solid var(--hnd-border);
+  border-radius: 10px;
+  padding: 18px 18px 20px;
+  box-shadow: 0 2px 3px rgba(37, 45, 58, 0.06);
+}
+.hn-dash__item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.hn-dash__badge {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.hn-dash__item-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hnd-slate-dark);
+  margin: 0;
+}
+.hn-dash__status {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 8px 44px;
+}
+.hn-dash__item-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--hnd-muted);
+  margin: 0;
+}
+
+/* Status variants */
+.hn-dash__item--pass .hn-dash__badge  { background: var(--hnd-teal-50);  color: var(--hnd-teal-dark); }
+.hn-dash__item--pass .hn-dash__status { color: var(--hnd-teal-dark); }
+.hn-dash__item--warn .hn-dash__badge  { background: var(--hnd-amber-50); color: var(--hnd-amber-dark); }
+.hn-dash__item--warn .hn-dash__status { color: var(--hnd-amber-dark); }
+.hn-dash__item--fail .hn-dash__badge  { background: var(--hnd-terra-50); color: var(--hnd-terra-dark); }
+.hn-dash__item--fail .hn-dash__status { color: var(--hnd-terra-dark); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hn-dash__body { grid-template-columns: 1fr; }
+  .hn-dash__score { margin-bottom: 8px; }
+  .hn-dash__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .hn-dash { padding: 24px 16px 28px; }
+  .hn-dash__grid { grid-template-columns: 1fr; }
+  .hn-dash__ring { width: 160px; height: 160px; }
+  .hn-dash__score-num { font-size: 3.4rem; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .hn-dash { border: none; background: #fff; }
+  .hn-dash__item { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= COMPONENT START (copy from here) ================= -->
+<section class="hn-dash" id="hn-dash" aria-label="Praxis-Website Sicherheitsbericht">
+
+  <header class="hn-dash__header">
+    <h2 class="hn-dash__title" data-hnd="title">Praxis-Website Sicherheitsbericht</h2>
+    <p class="hn-dash__meta">
+      Geprüft am: <strong data-hnd="timestamp">15.10.2023, 11:45 Uhr</strong>
+      <span data-hnd="host-wrap"> · <strong data-hnd="host">example-praxis.de</strong></span>
+    </p>
+  </header>
+
+  <hr class="hn-dash__divider">
+
+  <div class="hn-dash__body">
+
+    <!-- Score circle -->
+    <div class="hn-dash__score">
+      <div class="hn-dash__ring hn-dash__ring--fail" data-hnd="ring" style="--hnd-score: 42;"
+           role="img" aria-label="Gesamtergebnis: 42 von 100 Punkten">
+        <div class="hn-dash__ring-inner">
+          <span class="hn-dash__score-num" data-hnd="score">42</span>
+        </div>
+      </div>
+      <p class="hn-dash__score-label">von 100 Punkten</p>
+    </div>
+
+    <!-- Check items -->
+    <div class="hn-dash__grid" data-hnd="grid">
+
+      <article class="hn-dash__item hn-dash__item--fail">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">✕</span>
+          <h3 class="hn-dash__item-title">Security Headers</h3>
+        </div>
+        <span class="hn-dash__status">✕ Fehler</span>
+        <p class="hn-dash__item-desc">Notwendige Sicherheits-Header fehlen. Schützen Sie die Verbindung.</p>
+      </article>
+
+      <article class="hn-dash__item hn-dash__item--warn">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">!</span>
+          <h3 class="hn-dash__item-title">WordPress Status</h3>
+        </div>
+        <span class="hn-dash__status">! Warnung</span>
+        <p class="hn-dash__item-desc">Einige WordPress-Komponenten benötigen Aktualisierungen.</p>
+      </article>
+
+      <article class="hn-dash__item hn-dash__item--pass">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">✓</span>
+          <h3 class="hn-dash__item-title">SSL-Verschlüsselung</h3>
+        </div>
+        <span class="hn-dash__status">✓ Erfolgreich</span>
+        <p class="hn-dash__item-desc">Ihre Website ist über HTTPS erreichbar.</p>
+      </article>
+
+      <article class="hn-dash__item hn-dash__item--fail">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">✕</span>
+          <h3 class="hn-dash__item-title">Ladezeit</h3>
+        </div>
+        <span class="hn-dash__status">✕ Fehler</span>
+        <p class="hn-dash__item-desc">Die Website lädt langsam. Optimieren Sie Bilder und Skripte.</p>
+      </article>
+
+      <article class="hn-dash__item hn-dash__item--pass">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">✓</span>
+          <h3 class="hn-dash__item-title">Cookie Consent</h3>
+        </div>
+        <span class="hn-dash__status">✓ Erfolgreich</span>
+        <p class="hn-dash__item-desc">Datenschutzkonformer Cookie-Hinweis ist aktiv.</p>
+      </article>
+
+      <article class="hn-dash__item hn-dash__item--pass">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">✓</span>
+          <h3 class="hn-dash__item-title">Backups</h3>
+        </div>
+        <span class="hn-dash__status">✓ Erfolgreich</span>
+        <p class="hn-dash__item-desc">Automatische Backups werden regelmäßig erstellt.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- ================= COMPONENT END ================= -->
+
+<script>
+/**
+ * OPTIONAL data-driven renderer — the static markup above works without it.
+ * Call renderHnDashboard(data[, rootEl]) e.g. with the /api/check response.
+ *
+ * data = {
+ *   score: 42,
+ *   timestamp: "15.10.2023, 11:45 Uhr",
+ *   host: "example-praxis.de",
+ *   checks: [
+ *     { id: 'security_headers', title: 'Security Headers', status: 'fail', description: '...' },
+ *     ...
+ *   ]
+ * }
+ * status: 'pass' | 'warn' | 'fail'  ('info' renders neutral like pass but labelled "Info")
+ */
+function renderHnDashboard(data, rootEl) {
+  var root = rootEl || document.getElementById('hn-dash');
+  if (!root || !data) return;
+
+  var STATUS = {
+    pass: { cls: 'pass', icon: '✓', label: '✓ Erfolgreich' },
+    warn: { cls: 'warn', icon: '!', label: '! Warnung' },
+    fail: { cls: 'fail', icon: '✕', label: '✕ Fehler' },
+    info: { cls: 'pass', icon: 'i', label: 'Info' }
+  };
+
+  // Score circle: red <50, amber 50–79, green 80+
+  var score = Math.max(0, Math.min(100, Number(data.score) || 0));
+  var tier = score < 50 ? 'fail' : score < 80 ? 'warn' : 'pass';
+  var ring = root.querySelector('[data-hnd="ring"]');
+  ring.className = 'hn-dash__ring hn-dash__ring--' + tier;
+  ring.style.setProperty('--hnd-score', score);
+  ring.setAttribute('aria-label', 'Gesamtergebnis: ' + score + ' von 100 Punkten');
+  root.querySelector('[data-hnd="score"]').textContent = score;
+
+  // Header meta
+  root.querySelector('[data-hnd="timestamp"]').textContent = data.timestamp || '';
+  var hostWrap = root.querySelector('[data-hnd="host-wrap"]');
+  hostWrap.style.display = data.host ? '' : 'none';
+  root.querySelector('[data-hnd="host"]').textContent = data.host || '';
+
+  // Check items
+  var grid = root.querySelector('[data-hnd="grid"]');
+  grid.textContent = '';
+  (data.checks || []).forEach(function (c) {
+    var s = STATUS[c.status] || STATUS.info;
+    var item = document.createElement('article');
+    item.className = 'hn-dash__item hn-dash__item--' + s.cls;
+
+    var head = document.createElement('div');
+    head.className = 'hn-dash__item-head';
+    var badge = document.createElement('span');
+    badge.className = 'hn-dash__badge';
+    badge.setAttribute('aria-hidden', 'true');
+    badge.textContent = s.icon;
+    var title = document.createElement('h3');
+    title.className = 'hn-dash__item-title';
+    title.textContent = c.title || c.id || '';
+    head.appendChild(badge);
+    head.appendChild(title);
+
+    var status = document.createElement('span');
+    status.className = 'hn-dash__status';
+    status.textContent = s.label;
+
+    var desc = document.createElement('p');
+    desc.className = 'hn-dash__item-desc';
+    desc.textContent = c.description || '';
+
+    item.appendChild(head);
+    item.appendChild(status);
+    item.appendChild(desc);
+    grid.appendChild(item);
+  });
+}
+
+/* Demo (uncomment to test):
+renderHnDashboard({
+  score: 87,
+  timestamp: "11.07.2026, 09:30 Uhr",
+  host: "muster-zahnarzt.de",
+  checks: [
+    { id: 'ssl', title: 'SSL-Verschlüsselung', status: 'pass', description: 'Ihre Website ist über HTTPS erreichbar.' },
+    { id: 'security_headers', title: 'Security Headers', status: 'warn', description: 'Einzelne Header fehlen noch.' }
+  ]
+});
+*/
+</script>
+</body>
+</html>

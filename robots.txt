@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /index_OLD.html
+Disallow: /index_v1_ai-brand.html
 
 Sitemap: https://hansaneuron.de/sitemap.xml

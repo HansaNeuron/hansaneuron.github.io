@@ -3,503 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hansa Neuron — KI-Lösungen für den Mittelstand</title>
-  <meta name="description" content="Hansa Neuron entwickelt maßgeschneiderte KI-Lösungen für kleine und mittlere Unternehmen in Hamburg und deutschlandweit. Prozessautomatisierung, KI-Chatbots, Datenanalyse & Beratung." />
+  <title>Hansa Neuron — Website-Sicherheit, Compliance & Wartung für Arzt- und Zahnarztpraxen</title>
+  <meta name="description" content="Hansa Neuron betreut Praxis-Websites von Ärzten und Zahnärzten in Deutschland: Sicherheit, technische Compliance, Hosting auf deutschen Servern, Wartung und Monitoring. Jetzt kostenlosen Website-Check starten." />
   <link rel="alternate" hreflang="de" href="https://hansaneuron.de/" />
   <link rel="alternate" hreflang="en" href="https://hansaneuron.com/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* ── GDPR Consent ────────────────────────────────── */
-    .form-consent { display:flex; align-items:flex-start; gap:.65rem; margin-bottom:1rem; }
-    .form-consent input[type="checkbox"] { flex-shrink:0; margin-top:.2rem; accent-color:var(--teal); width:1rem; height:1rem; cursor:pointer; }
-    .form-consent label { font-size:.8rem; color:var(--text-muted); line-height:1.5; cursor:pointer; }
-    .form-consent a { color:var(--teal); text-decoration:underline; }
-
-    /* ── Brand tokens ──────────────────────────────────── */
-    :root {
-      --teal:        #6B9A8F;
-      --teal-dark:   #4A7A6E;
-      --teal-light:  #8BB8AE;
-      --teal-50:     #EBF2F0;
-      --teal-100:    #D2E6E2;
-      --slate:       #3A4354;
-      --slate-dark:  #252D3A;
-      --slate-light: #5A6577;
-      --slate-50:    #F0F1F4;
-      --terra:       #E07A5F;
-      --terra-dark:  #C45E43;
-      --terra-light: #EDA090;
-      --terra-50:    #FDF1EE;
-      --bg:          #FAFAFA;
-      --white:       #FFFFFF;
-      --border:      #E5E9E8;
-      --text-main:   #2C2C2C;
-      --text-muted:  #6B7280;
-      --ff-display:  'Playfair Display', Georgia, serif;
-      --ff-body:     'Inter', system-ui, sans-serif;
-    }
-
-    /* ── Reset ─────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    /* Per-section scroll offsets — clears the fixed nav (145px) exactly */
-    section[id]  { scroll-margin-top: 145px; }
-    #services    { scroll-margin-top: 189px; } /* nav (145) + marquee (44) */
-    body {
-      background: var(--bg);
-      color: var(--text-main);
-      font-family: var(--ff-body);
-      font-weight: 400;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--teal-light); border-radius: 2px; }
-
-    /* ── Utilities ──────────────────────────────────────── */
-    .teal { color: var(--teal); }
-    .label {
-      display: inline-block;
-      font-size: .68rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      background: var(--teal-50);
-      padding: .3em .8em;
-      border-radius: 3px;
-    }
-
-    /* ── Nav ────────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 5vw;
-      background: rgba(250,250,250,.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-    .nav-logo-img { height: 120px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: .82rem;
-      font-weight: 500;
-      letter-spacing: .02em;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--teal-dark); }
-    .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .lang-switcher {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      background: var(--slate-50);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 2px;
-    }
-    .lang-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: var(--ff-body);
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      padding: .3rem .6rem;
-      border-radius: 3px;
-      color: var(--text-muted);
-      transition: background .15s, color .15s;
-    }
-    .lang-btn.active { background: var(--white); color: var(--teal-dark); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
-    .nav-cta {
-      font-size: .78rem;
-      font-weight: 600;
-      letter-spacing: .04em;
-      text-decoration: none;
-      color: var(--white);
-      background: var(--terra);
-      padding: .55rem 1.3rem;
-      border-radius: 4px;
-      transition: background .2s, transform .15s;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px; height: 2px;
-      background: var(--slate);
-      border-radius: 1px;
-      transition: transform .25s, opacity .25s;
-    }
-
-    /* ── Mobile nav drawer ──────────────────────────────── */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--white);
-      z-index: 99;
-      padding: 185px 8vw 3rem;
-      flex-direction: column;
-      gap: 2.25rem;
-      overflow-y: auto;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      text-decoration: none;
-      color: var(--slate);
-      font-size: 1.6rem;
-      font-weight: 600;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1.25rem;
-    }
-    .mobile-menu a.btn-primary {
-      border-bottom: none;
-      padding-bottom: 0.9rem;
-      display: block;
-      text-align: center;
-    }
-    .mobile-close {
-      position: absolute;
-      top: 1.25rem; right: 5vw;
-      background: none; border: none;
-      font-size: 1.75rem; line-height: 1;
-      color: var(--slate); cursor: pointer;
-      padding: 0.5rem;
-    }
-
-    /* ── Hero ───────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-      padding: 13rem 5vw 5rem;
-      gap: 5rem;
-      background: linear-gradient(160deg, var(--white) 0%, var(--teal-50) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      right: -5%; top: -5%;
-      width: 55%; height: 110%;
-      background: radial-gradient(ellipse at 60% 40%, rgba(107,154,143,.1) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .hero-content { position: relative; z-index: 1; }
-    .hero-eyebrow { margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .7s .1s ease forwards; }
-    .hero-headline {
-      font-family: var(--ff-display);
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -.02em;
-      color: var(--slate);
-      margin-bottom: 1.25rem;
-      opacity: 0;
-      animation: fadeUp .7s .25s ease forwards;
-    }
-    .hero-headline em { font-style: italic; color: var(--teal); }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 460px;
-      line-height: 1.75;
-      margin-bottom: 2.25rem;
-      opacity: 0;
-      animation: fadeUp .7s .4s ease forwards;
-    }
-    .hero-actions {
-      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp .7s .55s ease forwards;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: .55rem;
-      background: var(--terra); color: var(--white); text-decoration: none;
-      font-size: .85rem; font-weight: 600; letter-spacing: .02em;
-      padding: .85rem 1.75rem; border-radius: 4px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-    }
-    .btn-primary:hover { background: var(--terra-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(224,122,95,.3); }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: .5rem;
-      color: var(--teal-dark); text-decoration: none; font-size: .82rem; font-weight: 500;
-      border: 1.5px solid var(--teal-light); padding: .82rem 1.6rem; border-radius: 4px;
-      transition: background .2s, border-color .2s;
-    }
-    .btn-outline:hover { background: var(--teal-50); border-color: var(--teal); }
-
-    /* Hero visual */
-    .hero-visual { position: relative; z-index: 1; opacity: 0; animation: fadeIn 1s .4s ease forwards; }
-    .hero-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .hc {
-      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
-      padding: 1.4rem 1.6rem; box-shadow: 0 2px 12px rgba(58,67,84,.06);
-      transition: transform .3s, box-shadow .3s;
-    }
-    .hc:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(58,67,84,.1); }
-    .hc-icon {
-      width: 38px; height: 38px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
-    }
-    .hc-icon.teal { background: var(--teal-50); color: var(--teal-dark); }
-    .hc-icon.terra { background: var(--terra-50); color: var(--terra-dark); }
-    .hc-icon.slate { background: var(--slate-50); color: var(--slate); }
-    .hc-num { font-family: var(--ff-display); font-size: 1.8rem; font-weight: 700; color: var(--slate); line-height: 1; margin-bottom: .2rem; }
-    .hc-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
-    .hc.wide { grid-column: span 2; display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.6rem; }
-    .hc.wide .hc-icon { margin-bottom: 0; flex-shrink: 0; }
-    .hc-pulse { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); animation: pulse 2.5s ease-in-out infinite; flex-shrink: 0; }
-    .hc-status { font-size: .82rem; color: var(--slate); font-weight: 500; }
-    .hc-status span { color: var(--teal-dark); font-weight: 600; }
-
-    /* ── Marquee ────────────────────────────────────────── */
-    .marquee-wrap { background: var(--slate); overflow: hidden; padding: .8rem 0; }
-    .marquee-track { display: flex; gap: 2.5rem; animation: marquee 32s linear infinite; width: max-content; }
-    .marquee-item {
-      display: flex; align-items: center; gap: .7rem;
-      font-size: .7rem; font-weight: 600; letter-spacing: .12em;
-      text-transform: uppercase; color: rgba(255,255,255,.55); white-space: nowrap;
-    }
-    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--teal-light); flex-shrink: 0; }
-
-    /* ── Section base ───────────────────────────────────── */
-    section { padding: 6rem 5vw; }
-    .section-kicker { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: .75rem; }
-    .section-title { font-family: var(--ff-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--slate); line-height: 1.18; margin-bottom: 1rem; }
-    .section-body { color: var(--text-muted); font-size: .95rem; max-width: 500px; line-height: 1.8; }
-
-    /* ── Services ───────────────────────────────────────── */
-    #services { background: var(--white); }
-    .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
-    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .service-card {
-      background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-      padding: 2rem; position: relative; overflow: hidden;
-      transition: border-color .25s, box-shadow .25s, transform .25s;
-    }
-    .service-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(to right, var(--teal), var(--teal-light));
-      transform: scaleX(0); transform-origin: left; transition: transform .35s ease;
-    }
-    .service-card:hover { border-color: var(--teal-100); box-shadow: 0 4px 20px rgba(107,154,143,.12); transform: translateY(-2px); }
-    .service-card:hover::after { transform: scaleX(1); }
-    .service-icon {
-      width: 42px; height: 42px; background: var(--teal-50); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; color: var(--teal-dark); margin-bottom: 1.2rem;
-    }
-    .service-name { font-size: 1rem; font-weight: 700; color: var(--slate); margin-bottom: .6rem; }
-    .service-desc { font-size: .875rem; color: var(--text-muted); line-height: 1.75; }
-    .service-link {
-      display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.1rem;
-      font-size: .78rem; font-weight: 500; color: var(--teal); text-decoration: none; transition: gap .2s;
-    }
-    .service-link:hover { gap: .7rem; }
-
-    /* ── About ──────────────────────────────────────────── */
-    #about { background: var(--teal-50); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; align-content: start; min-height: 100vh; }
-    .about-manifesto {
-      font-family: var(--ff-display); font-size: 1.4rem; font-style: italic;
-      color: var(--slate); line-height: 1.55; margin-bottom: 1.25rem;
-      border-left: 3px solid var(--teal); padding-left: 1.25rem;
-    }
-    .about-body { color: var(--text-muted); font-size: .95rem; line-height: 1.85; margin-bottom: 2rem; }
-    .pillars { display: flex; flex-direction: column; gap: 1rem; }
-    .pillar {
-      display: flex; gap: 1rem; padding: 1rem 1.25rem;
-      background: var(--white); border-radius: 8px; border: 1px solid var(--border);
-    }
-    .pillar-icon {
-      width: 32px; height: 32px; border-radius: 6px;
-      background: var(--teal-50); color: var(--teal-dark);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .pillar-title { font-size: .82rem; font-weight: 700; color: var(--slate); margin-bottom: .2rem; }
-    .pillar-desc  { font-size: .8rem; color: var(--text-muted); line-height: 1.6; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .stat-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
-      padding: 1.5rem; text-align: center; box-shadow: 0 1px 6px rgba(58,67,84,.04);
-      transition: transform .25s, box-shadow .25s;
-    }
-    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(58,67,84,.08); }
-    .stat-card.accent { grid-column: span 2; background: var(--teal); border-color: var(--teal); color: var(--white); }
-    .stat-num { font-family: var(--ff-display); font-size: 2rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: .3rem; }
-    .stat-card.accent .stat-num { color: var(--white); }
-    .stat-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
-    .stat-card.accent .stat-label { color: rgba(255,255,255,.75); }
-    .stat-card.accent .stat-desc { font-size: .82rem; color: rgba(255,255,255,.9); margin-top: .4rem; }
-
-    /* ── Contact ────────────────────────────────────────── */
-    #contact { background: var(--white); }
-    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-    .contact-headline { font-family: var(--ff-display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--slate); line-height: 1.18; margin-bottom: .9rem; }
-    .contact-sub { color: var(--text-muted); font-size: .93rem; line-height: 1.8; margin-bottom: 2rem; }
-    .contact-rows { display: flex; flex-direction: column; gap: .75rem; }
-    .contact-row {
-      display: flex; align-items: center; gap: .9rem; padding: .85rem 1.1rem;
-      background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-      text-decoration: none; transition: border-color .2s, background .2s;
-    }
-    .contact-row:hover { border-color: var(--teal-light); background: var(--teal-50); }
-    .cr-icon {
-      width: 34px; height: 34px; background: var(--teal-50); border-radius: 6px;
-      display: flex; align-items: center; justify-content: center; color: var(--teal-dark); flex-shrink: 0;
-    }
-    .cr-label { font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .15rem; }
-    .cr-value { font-size: .85rem; font-weight: 500; color: var(--slate); }
-    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: .35rem; }
-    .form-label { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
-    .form-input, .form-textarea {
-      background: var(--bg); border: 1.5px solid var(--border); border-radius: 6px;
-      padding: .78rem 1rem; color: var(--text-main); font-family: var(--ff-body);
-      font-size: .9rem; outline: none; transition: border-color .2s, background .2s; resize: none;
-    }
-    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); opacity: .55; }
-    .form-input:focus, .form-textarea:focus { border-color: var(--teal); background: var(--white); }
-    .form-textarea { min-height: 120px; }
-    .form-submit {
-      display: inline-flex; align-items: center; gap: .6rem;
-      background: var(--terra); color: var(--white); border: none;
-      font-family: var(--ff-body); font-size: .82rem; font-weight: 600; letter-spacing: .04em;
-      padding: .9rem 1.8rem; border-radius: 4px; cursor: pointer;
-      transition: background .2s, transform .15s, box-shadow .2s; align-self: flex-start;
-    }
-    .form-submit:hover { background: var(--terra-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(224,122,95,.3); }
-
-    /* ── Footer ─────────────────────────────────────────── */
-    footer {
-      background: var(--slate-dark); padding: 2.5rem 5vw;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-logo { display: inline-flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-    .footer-logo-img { height: 72px; width: auto; display: block; }
-    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
-    .footer-links a { font-size: .75rem; font-weight: 500; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: var(--teal-light); }
-    .footer-copy { font-size: .65rem; letter-spacing: .06em; color: rgba(255,255,255,.25); }
-
-    /* ── Scroll reveal ──────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: .1s; }
-    .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .3s; }
-    .reveal-delay-4 { transition-delay: .4s; }
-
-    /* ── Keyframes ──────────────────────────────────────── */
-    @keyframes fadeUp  { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes pulse   { 0%, 100% { box-shadow: 0 0 0 0 rgba(107,154,143,.4); } 50% { box-shadow: 0 0 0 6px rgba(107,154,143,0); } }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── Responsive ─────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .hero, #about, .contact-inner, .services-header { grid-template-columns: 1fr; }
-      .hero { padding-top: 7rem; }
-      .hero-visual { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .nav-links, .nav-cta { display: none; }
-      .nav-hamburger { display: flex; }
-      footer { flex-direction: column; text-align: center; }
-      .label { letter-spacing: .05em; font-size: .65rem; }
-    }
-
-    /* ── Cookie consent banner ─────────────────────────── */
-    .cookie-banner {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 200;
-      background: var(--slate-dark);
-      color: rgba(255,255,255,.85);
-      padding: 1rem 5vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      border-top: 2px solid var(--teal);
-      box-shadow: 0 -4px 24px rgba(0,0,0,.18);
-    }
-    .cookie-text { font-size: .82rem; line-height: 1.6; flex: 1; min-width: 200px; }
-    .cookie-actions { display: flex; align-items: center; gap: 1.25rem; flex-shrink: 0; }
-    .cookie-link { font-size: .75rem; color: var(--teal-light); text-decoration: underline; white-space: nowrap; transition: color .2s; }
-    .cookie-link:hover { color: var(--white); }
-    .cookie-btn {
-      background: var(--teal); color: var(--white); border: none;
-      font-family: var(--ff-body); font-size: .8rem; font-weight: 600; letter-spacing: .04em;
-      padding: .55rem 1.3rem; border-radius: 4px; cursor: pointer;
-      transition: background .2s; white-space: nowrap;
-    }
-    .cookie-btn:hover { background: var(--teal-dark); }
-
-    /* ── Desktop section viewport fills (≥901px only) ───── */
-    /* Each section fills exactly one viewport so adjacent sections
-       don't bleed in. Mobile layout is completely unchanged. */
-    @media (min-width: 901px) {
-      /* Hero: shorten by marquee height (~44px) so the blue ticker
-         bar is fully visible at the bottom of the initial view */
-      .hero { min-height: calc(100vh - 44px); }
-
-      /* Services: fill full viewport so About section
-         doesn't appear at the bottom when navigated here */
-      #services { min-height: 100vh; }
-
-      /* About: min-height/alignment already set in base styles above;
-         no desktop override needed. */
-
-      /* Contact: fill remaining viewport so footer sits at bottom.
-         300px = nav (145px) + footer (~155px). This ensures the white
-         contact area fills the page and the dark footer anchors the bottom,
-         balancing any teal gap at the top. */
-      #contact { min-height: calc(100vh - 300px); }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Hansa Neuron",
+    "url": "https://hansaneuron.de/",
+    "email": "info@hansaneuron.de",
+    "address": { "@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE" },
+    "description": "Website-Sicherheit, technische Compliance, Hosting und Wartung für Arzt- und Zahnarztpraxen in Deutschland."
+  }
+  </script>
 </head>
 <body>
 
+  <!-- ── Coming Soon Banner ──────────────────────────── -->
+  <div style="background: linear-gradient(135deg, #E07A5F 0%, #F5A623 100%); color: white; padding: 1rem; text-align: center; font-weight: 600; line-height: 1.6;">
+    <span style="display: inline-block;">🚀 Sichere Praxis-Websites kommen bald. <a href="#kontakt" style="color: white; text-decoration: underline;">Registrieren Sie sich jetzt, um exklusive Angebote zur Verfügung zu erhalten.</a></span>
+  </div>
+
   <!-- ── Navigation ──────────────────────────────────── -->
   <nav>
-    <a href="#home" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <img src="assets/HansaNeuron_Logo_transparent.png" alt="Hansa Neuron Logo" class="nav-logo-img" />
     </a>
     <ul class="nav-links">
-      <li><a href="#services" data-i18n="nav.services">Leistungen</a></li>
-      <li><a href="#about" data-i18n="nav.about">Über uns</a></li>
-      <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+      <li><a href="#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
+      <li><a href="preise.html" data-i18n="nav.preise">Preise</a></li>
+      <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang-switcher">
-        <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
-        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" id="btn-de" onclick="setLang('de', true)">DE</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en', true)">EN</button>
       </div>
-      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Gespräch vereinbaren</a>
+      <a href="website-check.html" class="nav-cta" data-i18n="nav.cta">Kostenloser Website-Check</a>
       <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
       </button>
@@ -509,266 +55,350 @@
   <!-- ── Mobile menu ──────────────────────────────────── -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" onclick="toggleMenu()" aria-label="Menü schließen">✕</button>
-    <a href="#services" onclick="toggleMenu()" data-i18n="nav.services">Leistungen</a>
-    <a href="#about" onclick="toggleMenu()" data-i18n="nav.about">Über uns</a>
-    <a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact">Kontakt</a>
-    <a href="#contact" onclick="toggleMenu()" class="btn-primary" style="margin-top:0.5rem;text-align:center;" data-i18n="nav.cta">Gespräch vereinbaren</a>
+    <a href="#leistungen" onclick="toggleMenu()" data-i18n="nav.leistungen">Leistungen</a>
+    <a href="preise.html" data-i18n="nav.preise">Preise</a>
+    <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+    <a href="#kontakt" onclick="toggleMenu()" data-i18n="nav.kontakt">Kontakt</a>
+    <a href="website-check.html" class="btn-primary" style="margin-top:.5rem;text-align:center;" data-i18n="nav.cta">Kostenloser Website-Check</a>
   </div>
 
   <!-- ── Hero ────────────────────────────────────────── -->
   <section class="hero" id="home">
     <div class="hero-content">
       <div class="hero-eyebrow">
-        <span class="label" data-i18n="hero.badge">KI-Lösungen für KMU</span>
+        <span class="label" data-i18n="hero.badge">Für Arzt- und Zahnarztpraxen</span>
       </div>
       <h1 class="hero-headline" data-i18n="hero.headline">
-        KI, die Ihrem Unternehmen <em>Zeit zurückgibt.</em>
+        Ihre Praxis-Website. <em>Sicher. Aktuell. Betreut.</em>
       </h1>
       <p class="hero-sub" data-i18n="hero.sub">
-        Hansa Neuron entwickelt maßgeschneiderte KI-Lösungen, die kleine und mittlere Unternehmen entlasten – automatisiert, verständlich und DSGVO-konform.
+        Wir sorgen dafür, dass Ihre Praxis-Website sicher, aktuell und professionell betreut wird – damit Sie sich auf Ihre Patienten konzentrieren können. Sicherheit, technische Compliance, Hosting auf deutschen Servern und laufende Wartung aus einer Hand.
       </p>
       <div class="hero-actions">
-        <a href="#services" class="btn-primary">
-          <span data-i18n="hero.cta1">Leistungen entdecken</span>
+        <a href="website-check.html" class="btn-primary">
+          <span data-i18n="hero.cta1">Kostenlosen Website-Check starten</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#about" class="btn-outline" data-i18n="hero.cta2">Unser Ansatz</a>
+        <a href="preise.html" class="btn-outline" data-i18n="hero.cta2">Care Plans ansehen</a>
       </div>
+      <p class="hero-note" data-i18n="hero.note">In 60 Sekunden. Ohne Anmeldung. Ergebnis sofort sichtbar.</p>
     </div>
 
     <div class="hero-visual">
       <div class="hero-card-grid">
         <div class="hc">
           <div class="hc-icon teal">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 14l4-4 3 3 4-6 3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img src="assets/icons/ssl.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
           </div>
-          <div class="hc-num">60%</div>
-          <div class="hc-label" data-i18n="hero.stat1">Aufwand reduziert</div>
-        </div>
-        <div class="hc">
-          <div class="hc-icon terra">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M9 5v4l2.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <div class="hc-num">3×</div>
-          <div class="hc-label" data-i18n="hero.stat2">Schnellere Prozesse</div>
-        </div>
-        <div class="hc">
-          <div class="hc-icon slate">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="10" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="10" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
-          </div>
-          <div class="hc-num">4</div>
-          <div class="hc-label" data-i18n="hero.stat3">Leistungsbereiche</div>
+          <div class="hc-num">SSL</div>
+          <div class="hc-label" data-i18n="hero.stat1">Verschlüsselung aktiv</div>
         </div>
         <div class="hc">
           <div class="hc-icon teal">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L2 5.5v5C2 14 5.5 17 9 17s7-3 7-6.5v-5L9 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <img src="assets/icons/backup.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
           </div>
-          <div class="hc-num">100%</div>
-          <div class="hc-label" data-i18n="hero.stat4">DSGVO-konform</div>
+          <div class="hc-num" data-i18n="hero.stat2num">Täglich</div>
+          <div class="hc-label" data-i18n="hero.stat2">Backups</div>
+        </div>
+        <div class="hc">
+          <div class="hc-icon slate">
+            <img src="assets/icons/monitoring.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
+          </div>
+          <div class="hc-num">24/7</div>
+          <div class="hc-label" data-i18n="hero.stat3">Monitoring</div>
+        </div>
+        <div class="hc">
+          <div class="hc-icon teal">
+            <img src="assets/icons/location.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
+          </div>
+          <div class="hc-num">DE</div>
+          <div class="hc-label" data-i18n="hero.stat4">Server-Standort</div>
         </div>
         <div class="hc wide">
           <div class="hc-pulse"></div>
           <div>
-            <div class="hc-status" data-i18n="hero.statLive">KI-Pipeline <span>aktiv</span></div>
-            <div style="font-size:.72rem;color:var(--text-muted);margin-top:.15rem;" data-i18n="hero.statSub">Hamburg · DSGVO-konform · Maßgeschneidert</div>
+            <div class="hc-status" data-i18n="hero.statLive">Alle Systeme <span>betreut</span></div>
+            <div style="font-size:.72rem;color:var(--text-muted);margin-top:.15rem;" data-i18n="hero.statSub">Hamburg · Deutsche Server · Laufende Wartung</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Marquee ──────────────────────────────────────── -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item"><span class="marquee-dot"></span>Prozessautomatisierung</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>KI-Chatbots</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Datenanalyse</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>KI-Strategie</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>DSGVO-konform</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Process Automation</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>AI Strategy</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Custom AI</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Reporting-Automatisierung</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Hamburg</span>
-      <!-- duplicate for seamless loop -->
-      <span class="marquee-item"><span class="marquee-dot"></span>Prozessautomatisierung</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>KI-Chatbots</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Datenanalyse</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>KI-Strategie</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>DSGVO-konform</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Process Automation</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>AI Strategy</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Custom AI</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Reporting-Automatisierung</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Hamburg</span>
-    </div>
-  </div>
-
-  <!-- ── Services ─────────────────────────────────────── -->
-  <section id="services">
-    <div class="services-header">
-      <div>
-        <div class="section-kicker reveal" data-i18n="services.kicker">Leistungen</div>
-        <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">Was wir<br/><em style="font-style:italic">gemeinsam bauen</em></h2>
-      </div>
-      <p class="section-body reveal" data-i18n="services.body">
-        Von der ersten Idee bis zum laufenden Betrieb. Jede Lösung entsteht aus Ihren Prozessen, Ihren Daten und Ihren Zielen – verständlich für alle, die damit arbeiten.
+  <!-- ── Risiken ──────────────────────────────────────── -->
+  <section id="probleme" style="background:var(--white);">
+    <div class="section-center">
+      <div class="section-kicker reveal" data-i18n="prob.kicker">Wissen Sie es sicher?</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="prob.title">Hat Ihre Praxis-Website<br/><em>eines dieser Probleme?</em></h2>
+      <p class="section-body reveal reveal-delay-2" data-i18n="prob.body">
+        Die meisten Praxis-Websites werden einmal erstellt – und dann jahrelang nicht gewartet. Genau dort entstehen die Risiken, die niemand bemerkt, bis es zu spät ist.
       </p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon"><img src="assets/icons/risk.png" alt="" width="32" height="32" class="icon-img" loading="lazy" /></div>
+        <div>
+          <div class="problem-title" data-i18n="prob1.title">Veraltetes WordPress</div>
+          <div class="problem-desc" data-i18n="prob1.desc">Nicht eingespielte Updates sind das häufigste Einfallstor für Angriffe auf Praxis-Websites.</div>
+        </div>
+      </div>
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon"><img src="assets/icons/seccheck.png" alt="" width="32" height="32" class="icon-img" loading="lazy" /></div>
+        <div>
+          <div class="problem-title" data-i18n="prob2.title">Verwundbare Plugins</div>
+          <div class="problem-desc" data-i18n="prob2.desc">Alte oder verlassene Plugins enthalten bekannte Sicherheitslücken – oft ohne dass es jemand merkt.</div>
+        </div>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon"><img src="assets/icons/gdpr.png" alt="" width="32" height="32" class="icon-img" loading="lazy" /></div>
+        <div>
+          <div class="problem-title" data-i18n="prob3.title">Cookie-Consent-Mängel</div>
+          <div class="problem-desc" data-i18n="prob3.desc">Fehlende oder fehlerhafte Einwilligungslösungen gehören zu den häufigsten technischen Beanstandungen.</div>
+        </div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon"><img src="assets/icons/cyber.png" alt="" width="32" height="32" class="icon-img" loading="lazy" /></div>
+        <div>
+          <div class="problem-title" data-i18n="prob4.title">Fehlende Security-Header</div>
+          <div class="problem-desc" data-i18n="prob4.desc">Ohne moderne Sicherheits-Header ist Ihre Website unnötig angreifbar – ein rein technisches, lösbares Problem.</div>
+        </div>
+      </div>
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon"><img src="assets/icons/backup.png" alt="" width="32" height="32" class="icon-img" loading="lazy" /></div>
+        <div>
+          <div class="problem-title" data-i18n="prob5.title">Keine Backups</div>
+          <div class="problem-desc" data-i18n="prob5.desc">Ohne getestete Backups bedeutet ein Ausfall oder Angriff im schlimmsten Fall: alles weg.</div>
+        </div>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon"><img src="assets/icons/perf.png" alt="" width="32" height="32" class="icon-img" loading="lazy" /></div>
+        <div>
+          <div class="problem-title" data-i18n="prob6.title">Langsame Ladezeiten</div>
+          <div class="problem-desc" data-i18n="prob6.desc">Patienten warten nicht: Langsame Websites kosten Vertrauen, Termine und Sichtbarkeit bei Google.</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-center" style="padding-top:3rem;">
+      <a href="website-check.html" class="btn-primary reveal">
+        <span data-i18n="prob.cta">Jetzt kostenlos prüfen lassen</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Ablauf (Funnel) ─────────────────────────────── -->
+  <section id="ablauf" style="background:var(--teal-50);">
+    <div class="section-center">
+      <div class="section-kicker reveal" data-i18n="ablauf.kicker">So funktioniert's</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="ablauf.title">In drei Schritten zur<br/><em>sorgenfrei betreuten Website</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title" data-i18n="step1.title">Kostenloser Website-Check</div>
+        <p class="step-desc" data-i18n="step1.desc">Geben Sie Ihre Website-Adresse ein und sehen Sie sofort, wo Ihre Website technisch steht – SSL, Sicherheits-Header, WordPress-Status, Cookie-Consent und mehr.</p>
+        <div class="step-tag"><span class="label" data-i18n="step1.tag">Kostenlos · Sofortergebnis</span></div>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">2</div>
+        <div class="step-title" data-i18n="step2.title">Audit &amp; Behebung</div>
+        <p class="step-desc" data-i18n="step2.desc">Unser vollständiges Audit prüft Ihre Website tiefgehend – anschließend beheben wir die gefundenen Probleme direkt. Bis zu 4 Stunden Umsetzung inklusive.</p>
+        <div class="step-tag"><span class="label terra" data-i18n="step2.tag">980 € · 490 € für Care-Plan-Kunden</span></div>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">3</div>
+        <div class="step-title" data-i18n="step3.title">Care Plan</div>
+        <p class="step-desc" data-i18n="step3.desc">Ihre Website bleibt dauerhaft sicher: Hosting auf deutschen Servern, Updates, Monitoring, Backups und persönlicher Support – ab 99 € im Monat.</p>
+        <div class="step-tag"><span class="label" data-i18n="step3.tag">Ab 99 €/Monat</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Leistungen ───────────────────────────────────── -->
+  <section id="leistungen" style="background:var(--white);">
+    <div class="section-center">
+      <div class="section-kicker reveal" data-i18n="serv.kicker">Leistungen</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="serv.title">Alles, was Ihre Praxis-Website braucht.<br/><em>Aus einer Hand.</em></h2>
     </div>
     <div class="services-grid">
-
       <div class="service-card reveal">
-        <div class="service-icon">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M3 5h8M3 15h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="15" cy="15" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M15 13v2l1 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </div>
-        <div class="service-name" data-i18n="s1.name">Prozessautomatisierung</div>
-        <p class="service-desc" data-i18n="s1.desc">Wir automatisieren wiederkehrende Abläufe – von der Dateneingabe bis zur Dokumentenerstellung. Ihre Mitarbeiter gewinnen Zeit für das, was wirklich zählt.</p>
-        <a href="#contact" class="service-link">
-          <span data-i18n="service.link">Gespräch starten</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="service-icon"><img src="assets/icons/securelink.png" alt="" width="38" height="38" class="icon-img" loading="lazy" /></div>
+        <div class="service-name" data-i18n="serv1.name">Website-Sicherheit</div>
+        <p class="service-desc" data-i18n="serv1.desc">Sicherheits-Härtung, Schwachstellen-Behebung, Firewall-Konfiguration und laufende Sicherheits-Überwachung Ihrer Praxis-Website.</p>
       </div>
-
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 4h12a1 1 0 011 1v7a1 1 0 01-1 1H9l-4 3V5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 8h6M7 11h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </div>
-        <div class="service-name" data-i18n="s2.name">KI-Chatbots &amp; Assistenten</div>
-        <p class="service-desc" data-i18n="s2.desc">Maßgeschneiderte KI-Assistenten, die Ihre Sprache sprechen und Ihre Kunden kennen – für Support, Vertrieb oder internes Wissensmanagement.</p>
-        <a href="#contact" class="service-link">
-          <span data-i18n="service.link">Gespräch starten</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="service-icon"><img src="assets/icons/audit.png" alt="" width="38" height="38" class="icon-img" loading="lazy" /></div>
+        <div class="service-name" data-i18n="serv2.name">Technische Compliance-Prüfung</div>
+        <p class="service-desc" data-i18n="serv2.desc">Wir identifizieren technische Compliance-Risiken: Cookie-Consent, SSL, Formulare, Einbindungen von Drittdiensten und fehlende Pflichtangaben-Verlinkungen.</p>
       </div>
-
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-icon">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 16l4-5 3 3 4-7 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
-        </div>
-        <div class="service-name" data-i18n="s3.name">Datenanalyse &amp; Reporting</div>
-        <p class="service-desc" data-i18n="s3.desc">Aus Rohdaten werden klare Insights. Wir bauen automatisierte Analysen und Berichte, die Ihnen helfen, schneller bessere Entscheidungen zu treffen.</p>
-        <a href="#contact" class="service-link">
-          <span data-i18n="service.link">Gespräch starten</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="service-icon"><img src="assets/icons/server.png" alt="" width="38" height="38" class="icon-img" loading="lazy" /></div>
+        <div class="service-name" data-i18n="serv3.name">Hosting auf deutschen Servern</div>
+        <p class="service-desc" data-i18n="serv3.desc">Ihre Website läuft auf Servern in Deutschland – Datensouveränität, kurze Ladezeiten und ein Ansprechpartner für alles.</p>
       </div>
-
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-icon">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L2 6v8l8 4 8-4V6L10 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M2 6l8 4 8-4M10 10v10" stroke="currentColor" stroke-width="1.4"/></svg>
-        </div>
-        <div class="service-name" data-i18n="s4.name">KI-Strategie &amp; Beratung</div>
-        <p class="service-desc" data-i18n="s4.desc">Noch unsicher, wo KI in Ihrem Betrieb ansetzt? Wir analysieren Ihre Prozesse, zeigen konkrete Potenziale auf und entwickeln einen Fahrplan, der zu Ihrem Team passt.</p>
-        <a href="#contact" class="service-link">
-          <span data-i18n="service.link">Gespräch starten</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <div class="service-card reveal">
+        <div class="service-icon"><img src="assets/icons/maintenance.png" alt="" width="38" height="38" class="icon-img" loading="lazy" /></div>
+        <div class="service-name" data-i18n="serv4.name">Wartung &amp; Updates</div>
+        <p class="service-desc" data-i18n="serv4.desc">WordPress-, Theme- und Plugin-Updates werden regelmäßig, getestet und kontrolliert eingespielt – bevor Lücken ausgenutzt werden.</p>
       </div>
-
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon"><img src="assets/icons/analysis.png" alt="" width="38" height="38" class="icon-img" loading="lazy" /></div>
+        <div class="service-name" data-i18n="serv5.name">Monitoring rund um die Uhr</div>
+        <p class="service-desc" data-i18n="serv5.desc">Erreichbarkeit, Sicherheit und Performance Ihrer Website werden laufend überwacht. Bei Auffälligkeiten reagieren wir, bevor Ihre Patienten etwas bemerken.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon"><img src="assets/icons/policydoc.png" alt="" width="38" height="38" class="icon-img" loading="lazy" /></div>
+        <div class="service-name" data-i18n="serv6.name">Backup &amp; Wiederherstellung</div>
+        <p class="service-desc" data-i18n="serv6.desc">Automatische, regelmäßige Backups mit getesteter Wiederherstellung. Falls etwas passiert, ist Ihre Website schnell wieder da.</p>
+      </div>
     </div>
   </section>
 
-  <!-- ── About ─────────────────────────────────────────── -->
-  <section id="about">
-    <div class="about-content">
-      <div class="section-kicker reveal" data-i18n="about.kicker">Über uns</div>
-      <h2 class="section-title reveal reveal-delay-1" data-i18n="about.title">Gemacht für den<br/><em style="font-style:italic;color:var(--teal)">Mittelstand.</em></h2>
-      <blockquote class="about-manifesto reveal reveal-delay-2" data-i18n="about.manifesto">
-        „Wir glauben, dass KI nicht nur Großkonzernen vorbehalten sein sollte."
-      </blockquote>
-      <p class="about-body reveal reveal-delay-2" data-i18n="about.body">
-        Hansa Neuron wurde in Hamburg gegründet mit dem Ziel, kleine und mittlere Unternehmen mit praxistauglicher, bezahlbarer KI auszustatten. Kein Hype, kein Overhead – nur Lösungen, die wirklich funktionieren und zu Ihrem Alltag passen.
+  <!-- ── Coming Soon Note (Pricing) ──────────────── -->
+  <div style="background: #FBF4E4; border-left: 4px solid #D9A441; padding: 1rem 1.5rem; margin-bottom: 2rem; border-radius: 4px;">
+    <p style="font-size: 0.9rem; color: #6B7280; margin: 0;"><strong style="color: #D9A441;">Verfügbar ab:</strong> Unsere Care Plans und erweiterten Dienste werden in Kürze verfügbar sein. Nutzen Sie den kostenlosen Website-Check jetzt, um sich auf den Start vorzubereiten.</p>
+  </div>
+
+  <!-- ── Care Plans Teaser ────────────────────────────── -->
+  <section id="plaene">
+    <div class="section-center">
+      <div class="section-kicker reveal" data-i18n="plans.kicker">Care Plans</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="plans.title">Ein fester Partner.<br/><em>Ein fester monatlicher Preis.</em></h2>
+      <p class="section-body reveal reveal-delay-2" data-i18n="plans.body">
+        Jeder Care Plan enthält Hosting auf deutschen Servern, Updates, Sicherheits-Monitoring und Backup-Management. Sie wählen nur, wie viel Betreuung Ihre Praxis braucht.
       </p>
-      <div class="pillars reveal reveal-delay-3">
-        <div class="pillar">
-          <div class="pillar-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 4h4.2l-3.4 2.5 1.3 4L8 9.3l-3.9 2.2 1.3-4L2 5h4.2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          </div>
-          <div>
-            <div class="pillar-title" data-i18n="p1.title">Verständlich statt komplex</div>
-            <div class="pillar-desc" data-i18n="p1.desc">Wir erklären jede Lösung in klarer Sprache – damit Ihr Team sie versteht, akzeptiert und täglich nutzt.</div>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8a6 6 0 1112 0A6 6 0 012 8z" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3l2 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          </div>
-          <div>
-            <div class="pillar-title" data-i18n="p2.title">Maßgeschneidert, nicht von der Stange</div>
-            <div class="pillar-desc" data-i18n="p2.desc">Keine Einheitslösung. Wir entwickeln ausgehend von Ihren Daten, Ihren Abläufen und Ihren Zielen.</div>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 3 6-3M2 8l6 3 6-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div>
-            <div class="pillar-title" data-i18n="p3.title">Partnerschaft statt Projektarbeit</div>
-            <div class="pillar-desc" data-i18n="p3.desc">Wir begleiten Sie über die Implementierung hinaus – damit KI bei Ihnen wirklich wirkt und wächst.</div>
-          </div>
-        </div>
+    </div>
+    <div class="plan-grid">
+      <div class="plan-card reveal">
+        <div class="plan-name">Bronze Care</div>
+        <div class="plan-price">99<span class="cur">€</span><small data-i18n="plans.perMonth">/Monat</small></div>
+        <div class="plan-for" data-i18n="plan1.for">Für Einzelpraxen</div>
+        <div class="plan-allowance"><strong data-i18n="plan1.allowance">30 Min.</strong><span data-i18n="plan.allowanceLabel">Website-Änderungen/Monat</span></div>
+        <ul class="plan-features">
+          <li data-i18n="plan1.f1">Hosting auf deutschen Servern</li>
+          <li data-i18n="plan1.f2">WordPress- &amp; Plugin-Updates</li>
+          <li data-i18n="plan1.f3">Sicherheits- &amp; Website-Monitoring</li>
+          <li data-i18n="plan1.f4">Backup-Management</li>
+        </ul>
+        <a href="preise.html" class="btn-outline" data-i18n="plans.details">Details ansehen</a>
+      </div>
+      <div class="plan-card featured reveal reveal-delay-1">
+        <div class="plan-flag" data-i18n="plans.popular">Beliebteste Wahl</div>
+        <div class="plan-name">Silber Care</div>
+        <div class="plan-price">159<span class="cur">€</span><small data-i18n="plans.perMonth">/Monat</small></div>
+        <div class="plan-for" data-i18n="plan2.for">Für wachsende &amp; Gemeinschaftspraxen</div>
+        <div class="plan-allowance"><strong data-i18n="plan2.allowance">1 Std.</strong><span data-i18n="plan.allowanceLabel">Website-Änderungen/Monat</span></div>
+        <ul class="plan-features">
+          <li class="plus" data-i18n="plan2.f1">Alles aus Bronze, plus:</li>
+          <li data-i18n="plan2.f2">Vierteljährlicher Compliance-Review</li>
+          <li data-i18n="plan2.f3">Uptime-Monitoring &amp; Sicherheitsberichte</li>
+          <li data-i18n="plan2.f4">Vierteljährlicher Website-Gesundheitsbericht</li>
+          <li data-i18n="plan2.f5">Bevorzugte Bearbeitung</li>
+        </ul>
+        <a href="preise.html" class="btn-primary" data-i18n="plans.details">Details ansehen</a>
+      </div>
+      <div class="plan-card reveal reveal-delay-2">
+        <div class="plan-name">Gold Care</div>
+        <div class="plan-price">229<span class="cur">€</span><small data-i18n="plans.perMonth">/Monat</small></div>
+        <div class="plan-for" data-i18n="plan3.for">Für große Praxen &amp; Kliniken</div>
+        <div class="plan-allowance"><strong data-i18n="plan3.allowance">1,5 Std.</strong><span data-i18n="plan.allowanceLabel">Website-Änderungen/Monat</span></div>
+        <ul class="plan-features">
+          <li class="plus" data-i18n="plan3.f1">Alles aus Silber, plus:</li>
+          <li data-i18n="plan3.f2">Prioritäts-Support &amp; schnellere Reaktionszeiten</li>
+          <li data-i18n="plan3.f4">Jährlicher Website-Review mit Empfehlungen</li>
+          <li data-i18n="plan3.f5">Erweitertes Sicherheits-Monitoring</li>
+        </ul>
+        <a href="preise.html" class="btn-outline" data-i18n="plans.details">Details ansehen</a>
       </div>
     </div>
 
-    <div class="about-stats reveal reveal-delay-2">
-      <div class="stat-card">
-        <div class="stat-num">KMU</div>
-        <div class="stat-label" data-i18n="stat1.label">Fokus</div>
+    <!-- Audit banner -->
+    <div class="audit-banner reveal" id="audit">
+      <div>
+        <h3 data-i18n="audit.title">Website Audit &amp; Behebung – der gründliche Einstieg</h3>
+        <p data-i18n="audit.body">Vollständiges Sicherheits- und Compliance-Audit Ihrer Praxis-Website: WordPress, Plugins, SSL, Cookie-Consent, Sicherheits-Härtung – inklusive Behebung der gefundenen Probleme (bis zu 4 Stunden Umsetzung) und verständlichem Bericht. Als Care-Plan-Kunde sparen Sie 50 %.</p>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">100%</div>
-        <div class="stat-label" data-i18n="stat2.label">DSGVO-konform</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">4</div>
-        <div class="stat-label" data-i18n="stat3.label">Leistungsbereiche</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">HH</div>
-        <div class="stat-label" data-i18n="stat4.label">Hamburg</div>
-      </div>
-      <div class="stat-card accent">
-        <div class="stat-num" data-i18n="statAccent.num">Maßgeschneidert</div>
-        <div class="stat-label" data-i18n="statAccent.label">Für Ihr Unternehmen</div>
-        <div class="stat-desc" data-i18n="statAccent.desc">Jede Lösung entsteht aus Ihren Prozessen – keine Vorlage, kein Einheitsbrei.</div>
+      <div class="audit-price-box">
+        <div class="audit-price-old">980 €</div>
+        <div class="audit-price-new">490<span class="cur">€</span></div>
+        <div class="audit-price-note" data-i18n="audit.note">Auch einzeln buchbar: 980 € ohne Vertragsbindung · mit Care Plan 490 € (12 Monate Mindestlaufzeit) · weitere Arbeiten 120 €/Std.</div>
+        <a href="preise.html" class="btn-primary" data-i18n="audit.cta">Zum Angebot</a>
       </div>
     </div>
   </section>
 
-  <!-- ── Contact ───────────────────────────────────────── -->
-  <section id="contact">
+  <!-- ── Vertrauen ────────────────────────────────────── -->
+  <section id="vertrauen" style="background:var(--white);">
+    <div class="section-center">
+      <div class="section-kicker reveal" data-i18n="trust.kicker">Vertrauen &amp; Verantwortung</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="trust.title">Ihre Website in Händen,<br/><em>die dafür geradestehen.</em></h2>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges-container reveal">
+      <img src="assets/Trust_Badges.png" alt="Deutsche Server, Transparent" class="trust-badges-img" loading="lazy" />
+    </div>
+
+    <div class="trust-grid">
+      
+      <div class="trust-card reveal reveal-delay-1">
+        <div class="trust-icon"><img src="assets/icons/partnership.png" alt="" width="46" height="46" class="icon-img" loading="lazy" /></div>
+        <div class="trust-title" data-i18n="trust3.title">Aus Hamburg. Für Deutschland.</div>
+        <p class="trust-desc" data-i18n="trust3.desc">Hanseatische Verlässlichkeit, deutsche Server-Standorte und ein persönlicher Ansprechpartner – kein anonymes Ticketsystem im Ausland.</p>
+      </div>
+      <div class="trust-card reveal reveal-delay-2">
+        <div class="trust-icon"><img src="assets/icons/transparency.png" alt="" width="46" height="46" class="icon-img" loading="lazy" /></div>
+        <div class="trust-title" data-i18n="trust2.title">Transparent</div>
+        <p class="trust-desc" data-i18n="trust2.desc">Feste Preise, klare Leistungen, verständliche Berichte. Sie wissen jederzeit, was mit Ihrer Website passiert – ohne Fachchinesisch.</p>
+      </div>
+    </div>
+    <div class="disclaimer-box reveal" data-i18n="trust.disclaimer">
+      Hinweis: Wir identifizieren technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten.
+    </div>
+  </section>
+
+  <!-- ── KI (secondary) ───────────────────────────────── -->
+  <section id="ki" style="background:var(--teal-50);padding:4rem 5vw;">
+    <div class="section-center">
+      <div class="section-kicker reveal" data-i18n="ki.kicker">Und wenn die Basis steht</div>
+      <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(1.4rem,2.5vw,1.9rem);" data-i18n="ki.title">KI-Beratung für Ihre Praxisabläufe</h2>
+      <p class="section-body reveal reveal-delay-2" data-i18n="ki.body">
+        Als erfahrene KI-Berater unterstützen wir Praxen, die weiter denken: von automatisierter Dokumentenverarbeitung bis zu intelligenten Assistenten. Für unsere Care-Plan-Kunden – wenn die sichere Website-Basis steht.
+      </p>
+      <div style="margin-top:1.5rem;">
+        <a href="#kontakt" class="btn-outline reveal" data-i18n="ki.cta">Unverbindlich anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Kontakt ──────────────────────────────────────── -->
+  <section id="kontakt" style="background:var(--white);">
     <div class="contact-inner">
       <div>
         <div class="section-kicker reveal" data-i18n="contact.kicker">Kontakt</div>
         <h2 class="contact-headline reveal reveal-delay-1" data-i18n="contact.headline">
-          Lassen Sie uns<br/><em style="font-style:italic;color:var(--teal)">sprechen.</em>
+          Sprechen wir über<br/><em>Ihre Praxis-Website.</em>
         </h2>
         <p class="contact-sub reveal reveal-delay-2" data-i18n="contact.sub">
-          Ob konkretes Projekt oder erste Idee – wir hören zu. Die meisten Engagements starten mit einem kostenlosen 45-Minuten-Gespräch, ohne Verkaufsdruck.
+          Ob konkrete Frage oder erst einmal ein unverbindliches Gespräch – wir melden uns innerhalb von 24 Stunden. Oder starten Sie direkt mit dem kostenlosen Website-Check.
         </p>
         <div class="contact-rows reveal reveal-delay-3">
           <a href="mailto:info@hansaneuron.de" class="contact-row" id="contact-email-link">
-            <div class="cr-icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M1 4.5l7 4.5 7-4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </div>
+            <div class="cr-icon"><img src="assets/icons/email.png" alt="" width="28" height="28" class="icon-img" loading="lazy" /></div>
             <div>
               <div class="cr-label">E-Mail</div>
               <div class="cr-value" id="contact-email-value">info@hansaneuron.de</div>
             </div>
           </a>
           <div class="contact-row">
-            <div class="cr-icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 14c0-3.038 2.462-5.5 5.5-5.5s5.5 2.462 5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </div>
+            <div class="cr-icon"><img src="assets/icons/alerts.png" alt="" width="28" height="28" class="icon-img" loading="lazy" /></div>
             <div>
               <div class="cr-label" data-i18n="contact.responseLabel">Antwortzeit</div>
               <div class="cr-value" data-i18n="contact.responseValue">Innerhalb von 24 Stunden</div>
             </div>
           </div>
           <div class="contact-row">
-            <div class="cr-icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.239 1 3 3.239 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.761-2.239-5-5-5z" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
-            </div>
+            <div class="cr-icon"><img src="assets/icons/location.png" alt="" width="28" height="28" class="icon-img" loading="lazy" /></div>
             <div>
               <div class="cr-label" data-i18n="contact.locationLabel">Standort</div>
               <div class="cr-value">Hamburg, Deutschland</div>
@@ -793,19 +423,25 @@
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.email">E-Mail-Adresse</label>
-          <input class="form-input" type="email" name="email" data-i18n-placeholder="form.email.ph" placeholder="anna@unternehmen.de" required />
+          <input class="form-input" type="email" name="email" data-i18n-placeholder="form.email.ph" placeholder="praxis@beispiel.de" required />
         </div>
-        <div class="form-group">
-          <label class="form-label" data-i18n="form.company">Unternehmen</label>
-          <input class="form-input" type="text" name="company" data-i18n-placeholder="form.company.ph" placeholder="Muster GmbH" />
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.praxis">Praxisname</label>
+            <input class="form-input" type="text" name="practice" data-i18n-placeholder="form.praxis.ph" placeholder="Zahnarztpraxis Dr. Schmidt" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.website">Website (optional)</label>
+            <input class="form-input" type="text" name="website" placeholder="www.ihre-praxis.de" />
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.message">Wie können wir helfen?</label>
-          <textarea class="form-textarea" name="message" data-i18n-placeholder="form.message.ph" placeholder="Beschreiben Sie Ihren Bedarf oder die Herausforderung, bei der KI helfen könnte…" required></textarea>
+          <textarea class="form-textarea" name="message" data-i18n-placeholder="form.message.ph" placeholder="Beschreiben Sie Ihr Anliegen – z. B. Fragen zur Sicherheit, zum Hosting oder zu den Care Plans…" required></textarea>
         </div>
         <div class="form-consent">
           <input type="checkbox" id="consent" name="consent" required />
-          <label for="consent" data-i18n="form.consent">Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Weitere Informationen finden Sie in unserer <a href="/datenschutz.html">Datenschutzerklärung</a>. *</label>
+          <label for="consent" data-i18n="form.consent">Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Weitere Informationen finden Sie in unserer <a href="datenschutz.html" data-privacy-link>Datenschutzerklärung</a>. *</label>
         </div>
         <button type="submit" class="form-submit" id="submitBtn">
           <span data-i18n="form.submit">Nachricht senden</span>
@@ -817,250 +453,289 @@
 
   <!-- ── Footer ───────────────────────────────────────── -->
   <footer>
-    <a href="#home" class="footer-logo">
-      <img src="assets/HansaNeuron_Icon_transparent.png" alt="Hansa Neuron" class="footer-logo-img" />
-    </a>
-    <ul class="footer-links">
-      <li><a href="#home" data-i18n="footer.home">Startseite</a></li>
-      <li><a href="#services" data-i18n="footer.services">Leistungen</a></li>
-      <li><a href="#about" data-i18n="footer.about">Über uns</a></li>
-      <li><a href="#contact" data-i18n="footer.contact">Kontakt</a></li>
-      <li><a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a></li>
-    </ul>
-    <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/HansaNeuron_Icon_transparent.png" alt="Hansa Neuron" class="footer-logo-img" />
+      </a>
+      <ul class="footer-links">
+        <li><a href="index.html" data-i18n="footer.home">Startseite</a></li>
+        <li><a href="index.html#leistungen" data-i18n="footer.leistungen">Leistungen</a></li>
+        <li><a href="preise.html" data-i18n="footer.preise">Preise</a></li>
+        <li><a href="website-check.html" data-i18n="footer.check">Website-Check</a></li>
+        <li><a href="faq.html" data-i18n="footer.faq">FAQ</a></li>
+        <li><a href="index.html#kontakt" data-i18n="footer.kontakt">Kontakt</a></li>
+        <li><a href="datenschutz.html" data-privacy-link data-i18n="footer.privacy">Datenschutz</a></li>
+        <li><a href="impressum.html" data-i18n="footer.impressum">Impressum</a></li>
+      </ul>
+      <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
+    </div>
+    <div class="footer-disclaimer" data-i18n="footer.disclaimer">
+      Hansa Neuron identifiziert technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Wir sind keine Rechtsanwaltskanzlei und erbringen keine Rechtsberatung. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten. 
+    </div>
   </footer>
 
-  <!-- ── Cookie consent banner ────────────────────────── -->
+  <!-- ── Cookie banner ────────────────────────────────── -->
   <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie notice" style="display:none">
     <p class="cookie-text" data-i18n="cookie.text">Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.</p>
     <div class="cookie-actions">
-      <a href="/datenschutz.html" class="cookie-link" id="cookiePolicyLink" data-i18n="cookie.policy">Datenschutzerklärung</a>
-      <button class="cookie-btn" onclick="acceptCookies()">
-        <span data-i18n="cookie.accept">Verstanden</span>
-      </button>
+      <a href="datenschutz.html" class="cookie-link" data-privacy-link data-i18n="cookie.policy">Datenschutzerklärung</a>
+      <button class="cookie-btn" onclick="acceptCookies()"><span data-i18n="cookie.accept">Verstanden</span></button>
     </div>
   </div>
 
   <script>
-    // ── Translations ─────────────────────────────────────
-    const translations = {
+    window.pageMeta = {
       de: {
-        'nav.services':        'Leistungen',
-        'nav.about':           'Über uns',
-        'nav.contact':         'Kontakt',
-        'nav.cta':             'Gespräch vereinbaren',
-        'hero.badge':          'KI-Lösungen für KMU',
-        'hero.headline':       'KI, die Ihrem Unternehmen <em>Zeit zurückgibt.</em>',
-        'hero.sub':            'Hansa Neuron entwickelt maßgeschneiderte KI-Lösungen, die Ihr Unternehmen entlasten – automatisiert, verständlich und DSGVO-konform.',
-        'hero.cta1':           'Leistungen entdecken',
-        'hero.cta2':           'Unser Ansatz',
-        'hero.stat1':          'Aufwand reduziert',
-        'hero.stat2':          'Schnellere Prozesse',
-        'hero.stat3':          'Leistungsbereiche',
-        'hero.stat4':          'DSGVO-konform',
-        'hero.statLive':       'KI-Pipeline <span>aktiv</span>',
-        'hero.statSub':        'Hamburg · DSGVO-konform · Maßgeschneidert',
-        'services.kicker':     'Leistungen',
-        'services.title':      'Was wir<br/><em style="font-style:italic">gemeinsam bauen</em>',
-        'services.body':       'Von der ersten Idee bis zum laufenden Betrieb. Wir entwickeln Lösungen, die exakt auf Ihre Prozesse, Ihre Daten und Ihre Ziele abgestimmt sind. Das Ergebnis? Technologie, die begeistert – und die von allen Beteiligten von Anfang an verstanden und mitgetragen wird.',
-        's1.name':             'Prozessautomatisierung',
-        's1.desc':             'Wir automatisieren wiederkehrende Abläufe – von der Dateneingabe bis zur Dokumentenerstellung. Ihre Mitarbeiter gewinnen Zeit für das, was wirklich zählt.',
-        's2.name':             'KI-Chatbots &amp; Assistenten',
-        's2.desc':             'Maßgeschneiderte KI-Assistenten, die Ihre Sprache sprechen und Ihre Kunden kennen – für Support, Vertrieb oder internes Wissensmanagement.',
-        's3.name':             'Datenanalyse &amp; Reporting',
-        's3.desc':             'Aus Rohdaten werden klare Insights. Wir bauen automatisierte Analysen und Berichte, die Ihnen helfen, schneller bessere Entscheidungen zu treffen.',
-        's4.name':             'KI-Strategie &amp; Beratung',
-        's4.desc':             'Noch unsicher, wo KI in Ihrem Betrieb ansetzt? Wir analysieren Ihre Prozesse, zeigen konkrete Potenziale auf und entwickeln einen Fahrplan, der zu Ihrem Team passt.',
-        'service.link':        'Gespräch starten',
-        'about.kicker':        'Über uns',
-        'about.title':         'Gemacht für den<br/><em style="font-style:italic;color:var(--teal)">Mittelstand.</em>',
-        'about.manifesto':     '„Wir glauben, dass KI nicht nur Großkonzernen vorbehalten sein sollte."',
-        'about.body':          'Hansa Neuron wurde in Hamburg gegründet mit dem Ziel, kleine und mittlere Unternehmen mit praxistauglicher, bezahlbarer KI auszustatten. Kein Hype, kein Overhead – nur Lösungen, die wirklich funktionieren und zu Ihrem Alltag passen.',
-        'p1.title':            'Verständlich statt komplex',
-        'p1.desc':             'Wir erklären jede Lösung in klarer Sprache – damit Ihr Team sie versteht, akzeptiert und täglich nutzt.',
-        'p2.title':            'Maßgeschneidert, nicht von der Stange',
-        'p2.desc':             'Keine Einheitslösung. Wir entwickeln ausgehend von Ihren Daten, Ihren Abläufen und Ihren Zielen.',
-        'p3.title':            'Partnerschaft statt Projektarbeit',
-        'p3.desc':             'Wir begleiten Sie über die Implementierung hinaus – damit KI bei Ihnen wirklich wirkt und wächst.',
-        'stat1.label':         'Fokus',
-        'stat2.label':         'DSGVO-konform',
-        'stat3.label':         'Leistungsbereiche',
-        'stat4.label':         'Hamburg',
-        'statAccent.num':      'Maßgeschneidert',
-        'statAccent.label':    'Für Ihr Unternehmen',
-        'statAccent.desc':     'Jede Lösung entsteht aus Ihren Prozessen – keine Vorlage, kein Einheitsbrei.',
-        'contact.kicker':      'Kontakt',
-        'contact.headline':    'Lassen Sie uns<br/><em style="font-style:italic;color:var(--teal)">sprechen.</em>',
-        'contact.sub':         'Ob konkretes Projekt oder erste Idee – wir hören zu. Die meisten Engagements starten mit einem kostenlosen 45-Minuten-Gespräch, ohne Verkaufsdruck.',
-        'contact.responseLabel': 'Antwortzeit',
-        'contact.responseValue': 'Innerhalb von 24 Stunden',
-        'contact.locationLabel': 'Standort',
-        'form.firstName':      'Vorname',
-        'form.firstName.ph':   'Anna',
-        'form.lastName':       'Nachname',
-        'form.lastName.ph':    'Schmidt',
-        'form.email':          'E-Mail-Adresse',
-        'form.email.ph':       'anna@unternehmen.de',
-        'form.company':        'Unternehmen',
-        'form.company.ph':     'Muster GmbH',
-        'form.message':        'Wie können wir helfen?',
-        'form.message.ph':     'Beschreiben Sie Ihren Bedarf oder die Herausforderung, bei der KI helfen könnte…',
-        'form.consent':        'Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Weitere Informationen finden Sie in unserer <a href="/datenschutz.html">Datenschutzerklärung</a>. *',
-        'form.submit':         'Nachricht senden',
-        'form.sent':           'Nachricht gesendet ✓',
-        'footer.home':         'Startseite',
-        'footer.services':     'Leistungen',
-        'footer.about':        'Über uns',
-        'footer.contact':      'Kontakt',
-        'footer.privacy':      'Datenschutz',
-        'footer.copy':         '© 2026 Hansa Neuron. Alle Rechte vorbehalten.',
-        'cookie.text':         'Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.',
-        'cookie.policy':       'Datenschutzerklärung',
-        'cookie.accept':       'Verstanden',
+        title: 'Hansa Neuron — Website-Sicherheit, Compliance & Wartung für Arzt- und Zahnarztpraxen',
+        desc:  'Hansa Neuron betreut Praxis-Websites von Ärzten und Zahnärzten in Deutschland: Sicherheit, technische Compliance, Hosting auf deutschen Servern, Wartung und Monitoring. Jetzt kostenlosen Website-Check starten.'
       },
       en: {
-        'nav.services':        'Services',
-        'nav.about':           'About',
-        'nav.contact':         'Contact',
-        'nav.cta':             'Book a Call',
-        'hero.badge':          'AI Solutions for SMBs',
-        'hero.headline':       'AI that gives your business <em>time back.</em>',
-        'hero.sub':            'Hansa Neuron builds custom AI solutions that free up your business – automated, transparent, and GDPR-compliant.',
-        'hero.cta1':           'Explore Services',
-        'hero.cta2':           'Our Approach',
-        'hero.stat1':          'Effort reduced',
-        'hero.stat2':          'Faster processes',
-        'hero.stat3':          'Service areas',
-        'hero.stat4':          'GDPR-compliant',
-        'hero.statLive':       'AI pipeline <span>active</span>',
-        'hero.statSub':        'Hamburg · GDPR-compliant · Custom-built',
-        'services.kicker':     'Services',
-        'services.title':      'What we<br/><em style="font-style:italic">build together</em>',
-        'services.body':       'From first idea to ongoing operations. We develop solutions that align precisely with your processes, your data, and your goals. The result? Technology that inspires – and that is understood and embraced by all stakeholders from the very beginning.',
-        's1.name':             'Process Automation',
-        's1.desc':             'We automate recurring workflows – from data entry to document generation. Your team gains time for what truly matters.',
-        's2.name':             'AI Chatbots &amp; Assistants',
-        's2.desc':             'Custom AI assistants that speak your language and know your customers – for support, sales, or internal knowledge management.',
-        's3.name':             'Data Analysis &amp; Reporting',
-        's3.desc':             'Raw data becomes clear insights. We build automated analyses and reports that help you make better decisions, faster.',
-        's4.name':             'AI Strategy &amp; Consulting',
-        's4.desc':             'Not sure where AI fits your business? We analyse your processes, identify real opportunities, and build a roadmap that works for your team.',
-        'service.link':        'Start a conversation',
-        'about.kicker':        'About Us',
-        'about.title':         'Built for<br/><em style="font-style:italic;color:var(--teal)">small business.</em>',
-        'about.manifesto':     '"We believe AI shouldn\'t be reserved only for large corporations."',
-        'about.body':          'Hansa Neuron was founded in Hamburg with the goal of equipping small and medium-sized businesses with practical, affordable AI. No hype, no overhead – just solutions that genuinely work and fit your day-to-day.',
-        'p1.title':            'Simple, not complex',
-        'p1.desc':             'We explain every solution in plain language – so your team understands, adopts, and uses it daily.',
-        'p2.title':            'Tailored, not templated',
-        'p2.desc':             'No one-size-fits-all. We build from your data, your processes, and your goals.',
-        'p3.title':            'Partnership, not just a project',
-        'p3.desc':             'We stay with you beyond implementation – ensuring AI genuinely delivers and grows with your business.',
-        'stat1.label':         'Focus',
-        'stat2.label':         'GDPR-compliant',
-        'stat3.label':         'Service areas',
-        'stat4.label':         'Hamburg',
-        'statAccent.num':      'Tailored',
-        'statAccent.label':    'For Your Business',
-        'statAccent.desc':     'Every solution is built from your processes – no templates, no off-the-shelf.',
-        'contact.kicker':      'Get in Touch',
-        'contact.headline':    'Let\'s have<br/><em style="font-style:italic;color:var(--teal)">a conversation.</em>',
-        'contact.sub':         'Whether it\'s a defined project or an early idea – we listen. Most engagements begin with a free 45-minute discovery call, no sales pitch.',
-        'contact.responseLabel': 'Response time',
-        'contact.responseValue': 'Within 24 hours',
-        'contact.locationLabel': 'Location',
-        'form.firstName':      'First Name',
-        'form.firstName.ph':   'Anna',
-        'form.lastName':       'Last Name',
-        'form.lastName.ph':    'Schmidt',
-        'form.email':          'Email Address',
-        'form.email.ph':       'anna@company.com',
-        'form.company':        'Company',
-        'form.company.ph':     'Example Ltd.',
-        'form.message':        'How can we help?',
-        'form.message.ph':     'Describe your challenge or the AI capability you\'re exploring…',
-        'form.consent':        'I agree that my details will be stored to process my enquiry. For more information, see our <a href="/privacy.html">Privacy Policy</a>. *',
-        'form.submit':         'Send Message',
-        'form.sent':           'Message sent ✓',
-        'footer.home':         'Home',
-        'footer.services':     'Services',
-        'footer.about':        'About',
-        'footer.contact':      'Contact',
-        'footer.privacy':      'Privacy Policy',
-        'footer.copy':         '© 2026 Hansa Neuron. All rights reserved.',
-        'cookie.text':         'This website uses only technically necessary cookies. No tracking or analytics cookies are used.',
-        'cookie.policy':       'Privacy Policy',
-        'cookie.accept':       'Got it',
+        title: 'Hansa Neuron — Website Security, Compliance & Maintenance for Medical & Dental Practices',
+        desc:  'Hansa Neuron manages practice websites for doctors and dentists in Germany: security, technical compliance, German-based hosting, maintenance and monitoring. Start your free website check now.'
       }
     };
 
-    // Auto-detect default language from domain
-    const defaultLang = window.location.hostname.endsWith('.com') ? 'en' : 'de';
-    let currentLang = defaultLang;
-
-    function setLang(lang) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
-
-      // Update text nodes
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang][key] !== undefined) {
-          el.innerHTML = translations[lang][key];
-        }
-      });
-
-      // Update placeholders
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-i18n-placeholder');
-        if (translations[lang][key] !== undefined) {
-          el.placeholder = translations[lang][key];
-        }
-      });
-
-      // Update page title & meta
-      document.title = lang === 'de'
-        ? 'Hansa Neuron — KI-Lösungen für den Mittelstand'
-        : 'Hansa Neuron — AI Solutions for SMBs';
-
-      // Update contact email
-      const email = lang === 'en' ? 'info@hansaneuron.com' : 'info@hansaneuron.de';
-      document.getElementById('contact-email-link').href = 'mailto:' + email;
-      document.getElementById('contact-email-value').textContent = email;
-
-      // Update toggle buttons
-      document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      const pl = document.querySelector('a[data-i18n="footer.privacy"]'); if (pl) pl.href = lang === 'en' ? '/privacy.html' : '/datenschutz.html';
-      const cl = document.getElementById('cookiePolicyLink'); if (cl) cl.href = lang === 'en' ? '/privacy.html' : '/datenschutz.html';
-    }
-
-    // ── Mobile menu ──────────────────────────────────────
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-    }
-
-    // ── Scroll reveal ────────────────────────────────────
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-      }),
-      { threshold: 0.12 }
-    );
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // ── Active nav highlight ─────────────────────────────
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks  = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal-dark)' : '';
-      });
-    }, { passive: true });
-
-    // ── Contact form ─────────────────────────────────────
+    window.pageTranslations = {
+      de: {
+        'hero.badge':    'Für Arzt- und Zahnarztpraxen',
+        'hero.headline': 'Ihre Praxis-Website. <em>Sicher. Aktuell. Betreut.</em>',
+        'hero.sub':      'Wir sorgen dafür, dass Ihre Praxis-Website sicher, aktuell und professionell betreut wird – damit Sie sich auf Ihre Patienten konzentrieren können. Sicherheit, technische Compliance, Hosting auf deutschen Servern und laufende Wartung aus einer Hand.',
+        'hero.cta1':     'Kostenlosen Website-Check starten',
+        'hero.cta2':     'Care Plans ansehen',
+        'hero.note':     'In 60 Sekunden. Ohne Anmeldung. Ergebnis sofort sichtbar.',
+        'hero.stat1':    'Verschlüsselung aktiv',
+        'hero.stat2num': 'Täglich',
+        'hero.stat2':    'Backups',
+        'hero.stat3':    'Monitoring',
+        'hero.stat4':    'Server-Standort',
+        'hero.statLive': 'Alle Systeme <span>betreut</span>',
+        'hero.statSub':  'Hamburg · Deutsche Server · Laufende Wartung',
+        'prob.kicker':   'Wissen Sie es sicher?',
+        'prob.title':    'Hat Ihre Praxis-Website<br/><em>eines dieser Probleme?</em>',
+        'prob.body':     'Die meisten Praxis-Websites werden einmal erstellt – und dann jahrelang nicht gewartet. Genau dort entstehen die Risiken, die niemand bemerkt, bis es zu spät ist.',
+        'prob1.title':   'Veraltetes WordPress',
+        'prob1.desc':    'Nicht eingespielte Updates sind das häufigste Einfallstor für Angriffe auf Praxis-Websites.',
+        'prob2.title':   'Verwundbare Plugins',
+        'prob2.desc':    'Alte oder verlassene Plugins enthalten bekannte Sicherheitslücken – oft ohne dass es jemand merkt.',
+        'prob3.title':   'Cookie-Consent-Mängel',
+        'prob3.desc':    'Fehlende oder fehlerhafte Einwilligungslösungen gehören zu den häufigsten technischen Beanstandungen.',
+        'prob4.title':   'Fehlende Security-Header',
+        'prob4.desc':    'Ohne moderne Sicherheits-Header ist Ihre Website unnötig angreifbar – ein rein technisches, lösbares Problem.',
+        'prob5.title':   'Keine Backups',
+        'prob5.desc':    'Ohne getestete Backups bedeutet ein Ausfall oder Angriff im schlimmsten Fall: alles weg.',
+        'prob6.title':   'Langsame Ladezeiten',
+        'prob6.desc':    'Patienten warten nicht: Langsame Websites kosten Vertrauen, Termine und Sichtbarkeit bei Google.',
+        'prob.cta':      'Jetzt kostenlos prüfen lassen',
+        'ablauf.kicker': 'So funktioniert’s',
+        'ablauf.title':  'In drei Schritten zur<br/><em>sorgenfrei betreuten Website</em>',
+        'step1.title':   'Kostenloser Website-Check',
+        'step1.desc':    'Geben Sie Ihre Website-Adresse ein und sehen Sie sofort, wo Ihre Website technisch steht – SSL, Sicherheits-Header, WordPress-Status, Cookie-Consent und mehr.',
+        'step1.tag':     'Kostenlos · Sofortergebnis',
+        'step2.title':   'Audit &amp; Behebung',
+        'step2.desc':    'Unser vollständiges Audit prüft Ihre Website tiefgehend – anschließend beheben wir die gefundenen Probleme direkt. Bis zu 4 Stunden Umsetzung inklusive.',
+        'step2.tag':     '980 € · 490 € für Care-Plan-Kunden',
+        'step3.title':   'Care Plan',
+        'step3.desc':    'Ihre Website bleibt dauerhaft sicher: Hosting auf deutschen Servern, Updates, Monitoring, Backups und persönlicher Support – ab 99 € im Monat.',
+        'step3.tag':     'Ab 99 €/Monat',
+        'serv.kicker':   'Leistungen',
+        'serv.title':    'Alles, was Ihre Praxis-Website braucht.<br/><em>Aus einer Hand.</em>',
+        'serv1.name':    'Website-Sicherheit',
+        'serv1.desc':    'Sicherheits-Härtung, Schwachstellen-Behebung, Firewall-Konfiguration und laufende Sicherheits-Überwachung Ihrer Praxis-Website.',
+        'serv2.name':    'Technische Compliance-Prüfung',
+        'serv2.desc':    'Wir identifizieren technische Compliance-Risiken: Cookie-Consent, SSL, Formulare, Einbindungen von Drittdiensten und fehlende Pflichtangaben-Verlinkungen.',
+        'serv3.name':    'Hosting auf deutschen Servern',
+        'serv3.desc':    'Ihre Website läuft auf Servern in Deutschland – Datensouveränität, kurze Ladezeiten und ein Ansprechpartner für alles.',
+        'serv4.name':    'Wartung &amp; Updates',
+        'serv4.desc':    'WordPress-, Theme- und Plugin-Updates werden regelmäßig, getestet und kontrolliert eingespielt – bevor Lücken ausgenutzt werden.',
+        'serv5.name':    'Monitoring rund um die Uhr',
+        'serv5.desc':    'Erreichbarkeit, Sicherheit und Performance Ihrer Website werden laufend überwacht. Bei Auffälligkeiten reagieren wir, bevor Ihre Patienten etwas bemerken.',
+        'serv6.name':    'Backup &amp; Wiederherstellung',
+        'serv6.desc':    'Automatische, regelmäßige Backups mit getesteter Wiederherstellung. Falls etwas passiert, ist Ihre Website schnell wieder da.',
+        'plans.kicker':  'Care Plans',
+        'plans.title':   'Ein fester Partner.<br/><em>Ein fester monatlicher Preis.</em>',
+        'plans.body':    'Jeder Care Plan enthält Hosting auf deutschen Servern, Updates, Sicherheits-Monitoring und Backup-Management. Sie wählen nur, wie viel Betreuung Ihre Praxis braucht.',
+        'plans.perMonth':'/Monat',
+        'plans.popular': 'Beliebteste Wahl',
+        'plans.details': 'Details ansehen',
+        'plan.allowanceLabel':'Website-Änderungen/Monat',
+        'plan1.for':     'Für Einzelpraxen',
+        'plan1.allowance':'30 Min.',
+        'plan1.f1':      'Hosting auf deutschen Servern',
+        'plan1.f2':      'WordPress- &amp; Plugin-Updates',
+        'plan1.f3':      'Sicherheits- &amp; Website-Monitoring',
+        'plan1.f4':      'Backup-Management',
+        'plan2.for':     'Für wachsende &amp; Gemeinschaftspraxen',
+        'plan2.allowance':'1 Std.',
+        'plan2.f1':      'Alles aus Bronze, plus:',
+        'plan2.f2':      'Vierteljährlicher Compliance-Review',
+        'plan2.f3':      'Uptime-Monitoring &amp; Sicherheitsberichte',
+        'plan2.f4':      'Vierteljährlicher Website-Gesundheitsbericht',
+        'plan2.f5':      'Bevorzugte Bearbeitung',
+        'plan3.for':     'Für große Praxen &amp; Kliniken',
+        'plan3.allowance':'1,5 Std.',
+        'plan3.f1':      'Alles aus Silber, plus:',
+        'plan3.f2':      'Prioritäts-Support &amp; schnellere Reaktionszeiten',
+        'plan3.f4':      'Jährlicher Website-Review mit Empfehlungen',
+        'plan3.f5':      'Erweitertes Sicherheits-Monitoring',
+        'audit.title':   'Website Audit &amp; Behebung – der gründliche Einstieg',
+        'audit.body':    'Vollständiges Sicherheits- und Compliance-Audit Ihrer Praxis-Website: WordPress, Plugins, SSL, Cookie-Consent, Sicherheits-Härtung – inklusive Behebung der gefundenen Probleme (bis zu 4 Stunden Umsetzung) und verständlichem Bericht. Als Care-Plan-Kunde sparen Sie 50 %.',
+        'audit.note':    'Auch einzeln buchbar: 980 € ohne Vertragsbindung · mit Care Plan 490 € (12 Monate Mindestlaufzeit) · weitere Arbeiten 120 €/Std.',
+        'audit.cta':     'Zum Angebot',
+        'trust.kicker':  'Vertrauen &amp; Verantwortung',
+        'trust.title':   'Ihre Website in Händen,<br/><em>die dafür geradestehen.</em>',
+        'trust2.title':  'Transparent',
+        'trust2.desc':   'Feste Preise, klare Leistungen, verständliche Berichte. Sie wissen jederzeit, was mit Ihrer Website passiert – ohne Fachchinesisch.',
+        'trust3.title':  'Aus Hamburg. Für Deutschland.',
+        'trust3.desc':   'Hanseatische Verlässlichkeit, deutsche Server-Standorte und ein persönlicher Ansprechpartner – kein anonymes Ticketsystem im Ausland.',
+        'trust.disclaimer': 'Hinweis: Wir identifizieren technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten.',
+        'ki.kicker':     'Und wenn die Basis steht',
+        'ki.title':      'KI-Beratung für Ihre Praxisabläufe',
+        'ki.body':       'Als erfahrene KI-Berater unterstützen wir Praxen, die weiter denken: von automatisierter Dokumentenverarbeitung bis zu intelligenten Assistenten. Für unsere Care-Plan-Kunden – wenn die sichere Website-Basis steht.',
+        'ki.cta':        'Unverbindlich anfragen',
+        'contact.kicker':   'Kontakt',
+        'contact.headline': 'Sprechen wir über<br/><em>Ihre Praxis-Website.</em>',
+        'contact.sub':      'Ob konkrete Frage oder erst einmal ein unverbindliches Gespräch – wir melden uns innerhalb von 24 Stunden. Oder starten Sie direkt mit dem kostenlosen Website-Check.',
+        'contact.responseLabel': 'Antwortzeit',
+        'contact.responseValue': 'Innerhalb von 24 Stunden',
+        'contact.locationLabel': 'Standort',
+        'form.firstName':   'Vorname',
+        'form.firstName.ph':'Anna',
+        'form.lastName':    'Nachname',
+        'form.lastName.ph': 'Schmidt',
+        'form.email':       'E-Mail-Adresse',
+        'form.email.ph':    'praxis@beispiel.de',
+        'form.praxis':      'Praxisname',
+        'form.praxis.ph':   'Zahnarztpraxis Dr. Schmidt',
+        'form.website':     'Website (optional)',
+        'form.message':     'Wie können wir helfen?',
+        'form.message.ph':  'Beschreiben Sie Ihr Anliegen – z. B. Fragen zur Sicherheit, zum Hosting oder zu den Care Plans…',
+        'form.consent':     'Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Weitere Informationen finden Sie in unserer <a href="datenschutz.html" data-privacy-link>Datenschutzerklärung</a>. *',
+        'form.submit':      'Nachricht senden',
+        'form.sent':        'Nachricht gesendet ✓',
+      },
+      en: {
+        'hero.badge':    'For medical & dental practices',
+        'hero.headline': 'Your practice website. <em>Secure. Current. Managed.</em>',
+        'hero.sub':      'We make sure your practice website stays secure, up to date and professionally managed – so you can focus on your patients. Security, technical compliance, German-based hosting and ongoing maintenance from a single partner.',
+        'hero.cta1':     'Start your free website check',
+        'hero.cta2':     'View Care Plans',
+        'hero.note':     'Takes 60 seconds. No sign-up. Instant results.',
+        'hero.stat1':    'Encryption active',
+        'hero.stat2num': 'Daily',
+        'hero.stat2':    'Backups',
+        'hero.stat3':    'Monitoring',
+        'hero.stat4':    'Server location',
+        'hero.statLive': 'All systems <span>managed</span>',
+        'hero.statSub':  'Hamburg · German servers · Ongoing maintenance',
+        'prob.kicker':   'Do you know for sure?',
+        'prob.title':    'Does your practice website<br/><em>have any of these problems?</em>',
+        'prob.body':     'Most practice websites are built once – and then left unmaintained for years. That is exactly where the risks build up that nobody notices until it is too late.',
+        'prob1.title':   'Outdated WordPress',
+        'prob1.desc':    'Missed updates are the most common entry point for attacks on practice websites.',
+        'prob2.title':   'Vulnerable plugins',
+        'prob2.desc':    'Old or abandoned plugins contain known security holes – often without anyone noticing.',
+        'prob3.title':   'Cookie consent issues',
+        'prob3.desc':    'Missing or faulty consent solutions are among the most common technical findings.',
+        'prob4.title':   'Missing security headers',
+        'prob4.desc':    'Without modern security headers, your website is needlessly exposed – a purely technical, fixable problem.',
+        'prob5.title':   'No backups',
+        'prob5.desc':    'Without tested backups, an outage or attack can mean, in the worst case: everything gone.',
+        'prob6.title':   'Slow load times',
+        'prob6.desc':    'Patients don’t wait: slow websites cost trust, appointments and Google visibility.',
+        'prob.cta':      'Check my website for free',
+        'ablauf.kicker': 'How it works',
+        'ablauf.title':  'Three steps to a<br/><em>worry-free managed website</em>',
+        'step1.title':   'Free website check',
+        'step1.desc':    'Enter your website address and instantly see where your site stands technically – SSL, security headers, WordPress status, cookie consent and more.',
+        'step1.tag':     'Free · Instant results',
+        'step2.title':   'Audit &amp; remediation',
+        'step2.desc':    'Our full audit examines your website in depth – then we fix the issues we find, directly. Up to 4 hours of implementation included.',
+        'step2.tag':     '€980 · €490 for Care Plan clients',
+        'step3.title':   'Care Plan',
+        'step3.desc':    'Your website stays permanently secure: German-based hosting, updates, monitoring, backups and personal support – from €99 per month.',
+        'step3.tag':     'From €99/month',
+        'serv.kicker':   'Services',
+        'serv.title':    'Everything your practice website needs.<br/><em>From one partner.</em>',
+        'serv1.name':    'Website security',
+        'serv1.desc':    'Security hardening, vulnerability remediation, firewall configuration and continuous security monitoring for your practice website.',
+        'serv2.name':    'Technical compliance review',
+        'serv2.desc':    'We identify technical compliance risks: cookie consent, SSL, forms, third-party embeds and missing links to mandatory legal pages.',
+        'serv3.name':    'Hosting on German servers',
+        'serv3.desc':    'Your website runs on servers located in Germany – data sovereignty, fast load times and one point of contact for everything.',
+        'serv4.name':    'Maintenance &amp; updates',
+        'serv4.desc':    'WordPress, theme and plugin updates are applied regularly, tested and controlled – before vulnerabilities can be exploited.',
+        'serv5.name':    'Round-the-clock monitoring',
+        'serv5.desc':    'Availability, security and performance are monitored continuously. If anything looks off, we act before your patients notice.',
+        'serv6.name':    'Backup &amp; recovery',
+        'serv6.desc':    'Automatic, regular backups with tested recovery. If something happens, your website is back quickly.',
+        'plans.kicker':  'Care Plans',
+        'plans.title':   'One reliable partner.<br/><em>One fixed monthly price.</em>',
+        'plans.body':    'Every Care Plan includes German-based hosting, updates, security monitoring and backup management. You only choose how much support your practice needs.',
+        'plans.perMonth':'/month',
+        'plans.popular': 'Most popular',
+        'plans.details': 'View details',
+        'plan.allowanceLabel':'website changes/month',
+        'plan1.for':     'For independent practices',
+        'plan1.allowance':'30 min.',
+        'plan1.f1':      'Hosting on German servers',
+        'plan1.f2':      'WordPress &amp; plugin updates',
+        'plan1.f3':      'Security &amp; website monitoring',
+        'plan1.f4':      'Backup management',
+        'plan2.for':     'For growing &amp; group practices',
+        'plan2.allowance':'1 hr',
+        'plan2.f1':      'Everything in Bronze, plus:',
+        'plan2.f2':      'Quarterly compliance review',
+        'plan2.f3':      'Uptime monitoring &amp; security reporting',
+        'plan2.f4':      'Quarterly website health report',
+        'plan2.f5':      'Priority handling',
+        'plan3.for':     'For large practices &amp; clinics',
+        'plan3.allowance':'1.5 hrs',
+        'plan3.f1':      'Everything in Silver, plus:',
+        'plan3.f2':      'Priority support &amp; faster response times',
+        'plan3.f4':      'Annual website review with recommendations',
+        'plan3.f5':      'Advanced security monitoring',
+        'audit.title':   'Website Audit &amp; Remediation – the thorough start',
+        'audit.body':    'A complete security and compliance audit of your practice website: WordPress, plugins, SSL, cookie consent, security hardening – including remediation of the issues found (up to 4 hours of implementation) and a clear, readable report. Care Plan clients save 50%.',
+        'audit.note':    'Also available standalone: €980 with no ongoing commitment · €490 with a Care Plan (12-month minimum term) · additional work €120/hr',
+        'audit.cta':     'See the offer',
+        'trust.kicker':  'Trust &amp; accountability',
+        'trust.title':   'Your website in hands<br/><em>that stand behind their work.</em>',
+        'trust1.title':  'Insured',
+        'trust2.title':  'Transparent',
+        'trust2.desc':   'Fixed prices, clear deliverables, readable reports. You always know what is happening with your website – no jargon.',
+        'trust3.title':  'From Hamburg. For Germany.',
+        'trust3.desc':   'Hanseatic reliability, German server locations and a personal point of contact – no anonymous offshore ticket system.',
+        'trust.disclaimer': 'Note: We identify technical security, maintenance and compliance risks on practice websites. Legal assessments remain the responsibility of the practice and its legal advisers.',
+        'ki.kicker':     'And once the foundation is solid',
+        'ki.title':      'AI consulting for your practice workflows',
+        'ki.body':       'As experienced AI consultants, we support practices that want to go further: from automated document processing to intelligent assistants. Available to our Care Plan clients – once the secure website foundation is in place.',
+        'ki.cta':        'Ask us, no obligation',
+        'contact.kicker':   'Contact',
+        'contact.headline': 'Let’s talk about<br/><em>your practice website.</em>',
+        'contact.sub':      'Whether you have a specific question or just want an informal chat – we reply within 24 hours. Or start right away with the free website check.',
+        'contact.responseLabel': 'Response time',
+        'contact.responseValue': 'Within 24 hours',
+        'contact.locationLabel': 'Location',
+        'form.firstName':   'First name',
+        'form.firstName.ph':'Anna',
+        'form.lastName':    'Last name',
+        'form.lastName.ph': 'Schmidt',
+        'form.email':       'Email address',
+        'form.email.ph':    'practice@example.com',
+        'form.praxis':      'Practice name',
+        'form.praxis.ph':   'Dental Practice Dr. Schmidt',
+        'form.website':     'Website (optional)',
+        'form.message':     'How can we help?',
+        'form.message.ph':  'Describe your situation – e.g. questions about security, hosting or the Care Plans…',
+        'form.consent':     'I agree that my details will be stored to process my enquiry. For more information see our <a href="privacy.html" data-privacy-link>Privacy Policy</a>. *',
+        'form.submit':      'Send message',
+        'form.sent':        'Message sent ✓',
+      }
+    };
+  </script>
+  <script src="assets/site.js"></script>
+  <script>
+    // ── Contact form (Web3Forms) ─────────────────────────
     async function handleSubmit(e) {
       e.preventDefault();
       const btn  = document.getElementById('submitBtn');
@@ -1070,7 +745,6 @@
       btn.disabled = true;
       if (span) span.textContent = currentLang === 'de' ? 'Senden…' : 'Sending…';
 
-      // Build JSON payload from form fields
       const formData = new FormData(form);
       const data = Object.fromEntries(formData);
       data.name    = [data.first_name, data.last_name].filter(Boolean).join(' ');
@@ -1079,18 +753,17 @@
         : 'New Contact Request – Hansa Neuron';
 
       try {
-        const res    = await fetch('https://api.web3forms.com/submit', {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body:    JSON.stringify(data)
         });
         const result = await res.json();
-
         if (result.success) {
-          if (span) span.textContent = translations[currentLang]['form.sent'];
+          if (span) span.textContent = t(currentLang, 'form.sent');
           btn.style.background = 'var(--teal-dark)';
           setTimeout(() => {
-            if (span) span.textContent = translations[currentLang]['form.submit'];
+            if (span) span.textContent = t(currentLang, 'form.submit');
             btn.style.background = '';
             btn.disabled = false;
             form.reset();
@@ -1102,27 +775,12 @@
         if (span) span.textContent = currentLang === 'de' ? 'Fehler – bitte erneut versuchen' : 'Error – please try again';
         btn.style.background = '#c0392b';
         setTimeout(() => {
-          if (span) span.textContent = translations[currentLang]['form.submit'];
+          if (span) span.textContent = t(currentLang, 'form.submit');
           btn.style.background = '';
           btn.disabled = false;
         }, 3500);
       }
     }
-
-    // ── Cookie banner ────────────────────────────────────
-    function initCookieBanner() {
-      if (!localStorage.getItem('hn_cookie_consent')) {
-        document.getElementById('cookieBanner').style.display = 'flex';
-      }
-    }
-    function acceptCookies() {
-      localStorage.setItem('hn_cookie_consent', 'accepted');
-      document.getElementById('cookieBanner').style.display = 'none';
-    }
-
-    // Apply default language on load
-    setLang(defaultLang);
-    initCookieBanner();
   </script>
 </body>
 </html>
