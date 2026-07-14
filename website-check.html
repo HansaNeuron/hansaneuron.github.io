@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kostenloser Praxis-Website-Check | Hansa Neuron</title>
-  <meta name="description" content="Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: SSL, Sicherheits-Header, WordPress-Status, Cookie-Consent, Impressum-Verlinkung und Ladezeit. Sofortergebnis, ohne Anmeldung." />
+  <meta name="description" content="Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: Sicherheit (SSL, Header, WordPress) und Compliance-Indikatoren (Impressum, Datenschutz, Cookie-Consent, Drittdienste, Barrierefreiheit). Sofortergebnis, ohne Anmeldung." />
   <link rel="alternate" hreflang="de" href="https://hansaneuron.de/website-check.html" />
   <link rel="alternate" hreflang="en" href="https://hansaneuron.com/website-check.html" />
   <link rel="preconnect" href="https://fonts.bunny.net" />
@@ -49,7 +49,7 @@
     <span class="label" data-i18n="ch.badge">Kostenlos · Ohne Anmeldung · Sofortergebnis</span>
     <h1 class="section-title" data-i18n="ch.title">Wie sicher ist<br/><em>Ihre Praxis-Website?</em></h1>
     <p class="section-body" data-i18n="ch.sub">
-      Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – von SSL über Sicherheits-Header bis Cookie-Consent.
+      Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – Sicherheit und Compliance-Indikatoren in einem Bericht.
     </p>
 
     <div class="check-form-wrap">
@@ -61,7 +61,7 @@
         </button>
       </form>
       <p class="check-note" data-i18n="ch.note">
-        Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Informationen Ihrer Website geprüft. Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.
+        Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Seiten Ihrer Website geprüft (Startseite sowie verlinktes Impressum und Datenschutzerklärung). Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.
       </p>
       <div class="check-error" id="checkError"></div>
     </div>
@@ -77,14 +77,25 @@
         </header>
         <hr class="hn-dash__divider" />
         <div class="hn-dash__body">
-          <div class="hn-dash__score">
-            <div class="hn-dash__ring hn-dash__ring--fail" id="scoreRing" style="--hnd-score:0" role="img">
-              <div class="hn-dash__ring-inner"><span class="hn-dash__score-num" id="scoreNum">–</span></div>
+          <div class="hn-dash__scores">
+            <div class="hn-dash__score">
+              <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--fail" id="ringSecurity" style="--hnd-score:0" role="img">
+                <div class="hn-dash__ring-inner"><span class="hn-dash__score-num" id="scoreSecurity">–</span></div>
+              </div>
+              <p class="hn-dash__score-title" data-i18n="ch.groupSecurity">Sicherheit</p>
+              <p class="hn-dash__score-label" data-i18n="ch.scoreLabel">von 100 Punkten</p>
             </div>
-            <p class="hn-dash__score-label" data-i18n="ch.scoreLabel">von 100 Punkten im technischen Schnell-Check</p>
+            <div class="hn-dash__score">
+              <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--fail" id="ringCompliance" style="--hnd-score:0" role="img">
+                <div class="hn-dash__ring-inner"><span class="hn-dash__score-num" id="scoreCompliance">–</span></div>
+              </div>
+              <p class="hn-dash__score-title" data-i18n="ch.groupCompliance">Compliance</p>
+              <p class="hn-dash__score-label" data-i18n="ch.scoreLabel">von 100 Punkten</p>
+            </div>
           </div>
           <div class="hn-dash__grid" id="checkItems"></div>
         </div>
+        <p class="hn-dash__footnote" data-i18n="ch.footnote">Compliance-Prüfpunkte sind technische Indikatoren auf Basis öffentlich abrufbarer Seiteninhalte – keine Rechtsberatung, keine rechtliche Bewertung. Die Prüfung analysiert nur statisch eingebundene Inhalte; per JavaScript nachgeladene Dienste werden nicht erfasst.</p>
       </div>
 
       <div class="check-cta">
@@ -99,9 +110,9 @@
   <section style="background:var(--white);">
     <div class="section-center">
       <div class="section-kicker reveal" data-i18n="how.kicker">Was wird geprüft?</div>
-      <h2 class="section-title reveal reveal-delay-1" data-i18n="how.title">Zehn technische Prüfpunkte.<br/><em>Sofort verständlich erklärt.</em></h2>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="how.title">Sicherheit und Compliance.<br/><em>Sofort verständlich erklärt.</em></h2>
       <p class="section-body reveal reveal-delay-2" data-i18n="how.body">
-        SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, Cookie-Consent-Lösung, Verlinkung von Impressum und Datenschutzerklärung, unsichere Einbindungen und die Antwortzeit Ihrer Website. Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch.
+        Sicherheit: SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, unsichere Einbindungen und die Antwortzeit Ihrer Website. Compliance-Indikatoren: Erreichbarkeit und Inhalte von Impressum (§ 5 DDG) und Datenschutzerklärung (Art. 13 DSGVO), veraltete Gesetzesangaben, vor Einwilligung geladene Drittdienste (§ 25 TDDDG), Cookie-Consent-Lösung und Barrierefreiheits-Basics (BFSG). Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch und ohne rechtliche Bewertung.
       </p>
     </div>
   </section>
@@ -141,47 +152,53 @@
     window.pageMeta = {
       de: {
         title: 'Kostenloser Praxis-Website-Check | Hansa Neuron',
-        desc:  'Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: SSL, Sicherheits-Header, WordPress-Status, Cookie-Consent, Impressum-Verlinkung und Ladezeit. Sofortergebnis, ohne Anmeldung.'
+        desc:  'Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: Sicherheit (SSL, Header, WordPress) und Compliance-Indikatoren (Impressum, Datenschutz, Cookie-Consent, Drittdienste, Barrierefreiheit). Sofortergebnis, ohne Anmeldung.'
       },
       en: {
         title: 'Free Practice Website Check | Hansa Neuron',
-        desc:  'Check your practice website free of charge in 60 seconds: SSL, security headers, WordPress status, cookie consent, legal page links and load time. Instant results, no sign-up.'
+        desc:  'Check your practice website free of charge in 60 seconds: security (SSL, headers, WordPress) and compliance indicators (legal pages, cookie consent, third-party services, accessibility). Instant results, no sign-up.'
       }
     };
     window.pageTranslations = {
       de: {
         'ch.badge':     'Kostenlos · Ohne Anmeldung · Sofortergebnis',
         'ch.title':     'Wie sicher ist<br/><em>Ihre Praxis-Website?</em>',
-        'ch.sub':       'Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – von SSL über Sicherheits-Header bis Cookie-Consent.',
+        'ch.sub':       'Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – Sicherheit und Compliance-Indikatoren in einem Bericht.',
         'ch.placeholder':'www.ihre-praxis.de',
         'ch.btn':       'Jetzt prüfen',
-        'ch.note':      'Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Informationen Ihrer Website geprüft. Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.',
-        'ch.scoreLabel':'von 100 Punkten im technischen Schnell-Check',
-        'ch.reportTitle':'Praxis-Website Sicherheitsbericht',
+        'ch.note':      'Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Seiten Ihrer Website geprüft (Startseite sowie verlinktes Impressum und Datenschutzerklärung). Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.',
+        'ch.scoreLabel':'von 100 Punkten',
+        'ch.groupSecurity': 'Sicherheit',
+        'ch.groupCompliance': 'Compliance',
+        'ch.footnote':  'Compliance-Prüfpunkte sind technische Indikatoren auf Basis öffentlich abrufbarer Seiteninhalte – keine Rechtsberatung, keine rechtliche Bewertung. Die Prüfung analysiert nur statisch eingebundene Inhalte; per JavaScript nachgeladene Dienste werden nicht erfasst.',
+        'ch.reportTitle':'Praxis-Website Sicherheits- & Compliance-Bericht',
         'ch.checkedAt': 'Geprüft am:',
         'ch.ctaTitle':  'Das war der Schnell-Check. Das vollständige Audit geht tiefer.',
         'ch.ctaBody':   'Unser Website-Audit prüft über 50 technische Punkte – WordPress, Plugins, Formulare, Backups, Performance – und behebt die gefundenen Probleme direkt (bis zu 4 Stunden Umsetzung inklusive). Für Care-Plan-Kunden: 490 € statt 980 €.',
         'ch.ctaBtn':    'Zum Audit-Angebot',
         'how.kicker':   'Was wird geprüft?',
-        'how.title':    'Zehn technische Prüfpunkte.<br/><em>Sofort verständlich erklärt.</em>',
-        'how.body':     'SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, Cookie-Consent-Lösung, Verlinkung von Impressum und Datenschutzerklärung, unsichere Einbindungen und die Antwortzeit Ihrer Website. Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch.',
+        'how.title':    'Sicherheit und Compliance.<br/><em>Sofort verständlich erklärt.</em>',
+        'how.body':     'Sicherheit: SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, unsichere Einbindungen und die Antwortzeit Ihrer Website. Compliance-Indikatoren: Erreichbarkeit und Inhalte von Impressum (§ 5 DDG) und Datenschutzerklärung (Art. 13 DSGVO), veraltete Gesetzesangaben, vor Einwilligung geladene Drittdienste (§ 25 TDDDG), Cookie-Consent-Lösung und Barrierefreiheits-Basics (BFSG). Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch und ohne rechtliche Bewertung.',
       },
       en: {
         'ch.badge':     'Free · No sign-up · Instant results',
         'ch.title':     'How secure is<br/><em>your practice website?</em>',
-        'ch.sub':       'Enter your website address. In about 60 seconds you will see where your website stands technically – from SSL and security headers to cookie consent.',
+        'ch.sub':       'Enter your website address. In about 60 seconds you will see where your website stands technically – security and compliance indicators in one report.',
         'ch.placeholder':'www.your-practice.com',
         'ch.btn':       'Check now',
-        'ch.note':      'Automated technical quick check. Only publicly accessible information about your website is examined. Not legal advice. The address you enter is processed to run the check and is not stored.',
-        'ch.scoreLabel':'out of 100 points in the technical quick check',
-        'ch.reportTitle':'Practice Website Security Report',
+        'ch.note':      'Automated technical quick check. Only publicly accessible pages of your website are examined (homepage plus the linked imprint and privacy policy pages). Not legal advice. The address you enter is processed to run the check and is not stored.',
+        'ch.scoreLabel':'out of 100 points',
+        'ch.groupSecurity': 'Security',
+        'ch.groupCompliance': 'Compliance',
+        'ch.footnote':  'Compliance checkpoints are technical indicators based on publicly accessible page content – not legal advice, not a legal assessment. The check analyses statically embedded content only; services loaded via JavaScript are not detected.',
+        'ch.reportTitle':'Practice Website Security & Compliance Report',
         'ch.checkedAt': 'Checked on:',
         'ch.ctaTitle':  'That was the quick check. The full audit goes deeper.',
         'ch.ctaBody':   'Our website audit examines over 50 technical points – WordPress, plugins, forms, backups, performance – and fixes the issues found directly (up to 4 hours of implementation included). For Care Plan clients: €490 instead of €980.',
         'ch.ctaBtn':    'See the audit offer',
         'how.kicker':   'What is checked?',
-        'how.title':    'Ten technical checkpoints.<br/><em>Explained in plain language.</em>',
-        'how.body':     'SSL encryption and HTTPS redirection, modern security headers, exposed WordPress versions, cookie consent tooling, links to mandatory legal pages, insecure embeds and your website’s response time. Every result comes with a clear explanation – no jargon.',
+        'how.title':    'Security and compliance.<br/><em>Explained in plain language.</em>',
+        'how.body':     'Security: SSL encryption and HTTPS redirection, modern security headers, exposed WordPress versions, insecure embeds and your website’s response time. Compliance indicators: reachability and content of the imprint (§ 5 DDG) and privacy policy (Art. 13 GDPR), outdated legal citations, third-party services loaded before consent (§ 25 TDDDG), cookie consent tooling and accessibility basics (BFSG). Every result comes with a clear explanation – no jargon and no legal assessment.',
       }
     };
 
@@ -193,11 +210,19 @@
         hsts:           { title: 'HSTS (erzwungene Verschlüsselung)', pass: 'HSTS ist aktiv – Browser verbinden sich nur noch verschlüsselt.', warn: 'HSTS ist nur teilweise konfiguriert.', fail: 'HSTS fehlt – Browser könnten unverschlüsselte Verbindungen aufbauen.' },
         sec_headers:    { title: 'Sicherheits-Header', pass: '{count} von {total} modernen Sicherheits-Headern sind gesetzt.', warn: 'Nur {count} von {total} Sicherheits-Headern gesetzt. Es fehlen: {missing}.', fail: 'Keiner der {total} geprüften Sicherheits-Header ist gesetzt ({missing}).' },
         wp_version:     { title: 'WordPress-Version', pass: 'WordPress erkannt – die Versionsnummer ist nicht öffentlich sichtbar. Gut.', warn: 'WordPress-Status unklar.', fail: 'Ihre WordPress-Version ({version}) ist öffentlich sichtbar – das erleichtert gezielte Angriffe.', info: 'Kein WordPress erkannt – einige Prüfpunkte entfallen.' },
-        cookie_consent: { title: 'Cookie-Consent-Lösung', pass: 'Eine Cookie-Consent-Lösung wurde erkannt ({tool}).', warn: 'Keine bekannte Cookie-Consent-Lösung erkannt. Falls Ihre Website Cookies oder Drittdienste nutzt, ist eine Einwilligungslösung erforderlich.', fail: 'Keine Cookie-Consent-Lösung erkannt.' },
-        impressum:      { title: 'Impressum-Verlinkung', pass: 'Ein Impressum-Link wurde auf der Startseite gefunden.', warn: 'Kein Impressum-Link auf der Startseite gefunden – für deutsche Praxis-Websites ein wichtiger Punkt.', fail: 'Kein Impressum-Link gefunden.' },
-        datenschutz:    { title: 'Datenschutz-Verlinkung', pass: 'Ein Link zur Datenschutzerklärung wurde gefunden.', warn: 'Kein Link zur Datenschutzerklärung auf der Startseite gefunden.', fail: 'Kein Datenschutz-Link gefunden.' },
         mixed_content:  { title: 'Unsichere Einbindungen', pass: 'Keine unsicheren (HTTP-)Einbindungen auf der Startseite gefunden.', warn: 'Einzelne unsichere Einbindungen gefunden.', fail: '{count} unsichere Einbindungen gefunden – Browser blockieren oder bemängeln diese Inhalte.' },
-        response_time:  { title: 'Antwortzeit', pass: 'Ihre Website antwortet schnell ({ms} ms).', warn: 'Ihre Website antwortet spürbar langsam ({ms} ms).', fail: 'Ihre Website antwortet sehr langsam ({ms} ms) – das kostet Patienten und Google-Sichtbarkeit.' }
+        response_time:  { title: 'Antwortzeit', pass: 'Ihre Website antwortet schnell ({ms} ms).', warn: 'Ihre Website antwortet spürbar langsam ({ms} ms).', fail: 'Ihre Website antwortet sehr langsam ({ms} ms) – das kostet Patienten und Google-Sichtbarkeit.' },
+        // Compliance (technical indicators, § references are factual citations)
+        imp_page:       { title: 'Impressum erreichbar (§ 5 DDG)', pass: 'Ein Impressum ist verlinkt und erreichbar.', warn: 'Impressum-Status unklar.', fail: 'Kein erreichbares Impressum gefunden – § 5 DDG verlangt eine leicht erreichbare Anbieterkennzeichnung. Ein häufiges Abmahn-Thema.', info: 'Impressum-Prüfung nicht möglich.' },
+        imp_content:    { title: 'Impressum-Inhalte (§ 5 DDG)', pass: 'E-Mail, Telefon und Kammer-/Aufsichtsangaben wurden im Impressum gefunden.', warn: 'Im Impressum fehlen möglicherweise Angaben: {missing}. § 5 DDG verlangt u. a. eine erreichbare E-Mail-Adresse – ein Kontaktformular allein genügt nicht.', fail: 'Wesentliche Impressum-Angaben fehlen.', info: 'Impressum-Seite nicht abrufbar – Inhaltsprüfung übersprungen.' },
+        imp_repealed:   { title: 'Veraltete Gesetzesangaben', pass: 'Keine Verweise auf aufgehobene Gesetze (§ 5 TMG, § 55 RStV) im Impressum gefunden.', warn: 'Gesetzesangaben im Impressum sollten geprüft werden.', fail: 'Ihr Impressum zitiert aufgehobene Gesetze: {cited}. Seit Mai 2024 gelten § 5 DDG bzw. § 18 MStV – ein klassisches Abmahn-Thema.', info: 'Impressum-Seite nicht abrufbar – Prüfung übersprungen.' },
+        ds_page:        { title: 'Datenschutzerklärung erreichbar (Art. 13 DSGVO)', pass: 'Eine Datenschutzerklärung ist verlinkt und erreichbar.', warn: 'Datenschutz-Status unklar.', fail: 'Keine erreichbare Datenschutzerklärung gefunden – Art. 13 DSGVO verlangt Datenschutzinformationen auf jeder Website, die personenbezogene Daten verarbeitet.', info: 'Datenschutz-Prüfung nicht möglich.' },
+        ds_content:     { title: 'Datenschutz-Inhalte (Art. 13 DSGVO)', pass: 'Die Datenschutzerklärung enthält die erwarteten Kernangaben (Verantwortlicher, Rechtsgrundlagen, Betroffenenrechte, Aufsichtsbehörde).', warn: 'Die Datenschutzerklärung enthält nur {signals} von {total} erwarteten Kernangaben – eine inhaltliche Prüfung wird empfohlen.', fail: 'Wesentliche Angaben fehlen in der Datenschutzerklärung.', info: 'Datenschutz-Seite nicht abrufbar – Inhaltsprüfung übersprungen.' },
+        ds_outdated:    { title: 'Aktualität der Gesetzesangaben (TDDDG)', pass: 'Keine veralteten TTDSG-Verweise gefunden.', warn: 'Ihre Datenschutzerklärung verweist auf das TTDSG – das Gesetz heißt seit Mai 2024 TDDDG. Ein Hinweis, dass die Erklärung länger nicht aktualisiert wurde.', fail: 'Veraltete Gesetzesverweise gefunden.', info: 'Datenschutz-Seite nicht abrufbar – Prüfung übersprungen.' },
+        cookie_consent: { title: 'Cookie-Consent-Lösung (§ 25 TDDDG)', pass: 'Eine Cookie-Consent-Lösung wurde erkannt ({tool}).', warn: 'Keine bekannte Cookie-Consent-Lösung erkannt. Falls Ihre Website nicht notwendige Cookies oder Drittdienste nutzt, verlangt § 25 TDDDG eine vorherige Einwilligung.', fail: 'Keine Cookie-Consent-Lösung erkannt.' },
+        third_parties:  { title: 'Drittdienste vor Einwilligung (§ 25 TDDDG)', pass: 'Keine statisch eingebundenen Drittdienste auf der Startseite gefunden.', warn: 'Drittdienste gefunden – Einwilligungspflicht prüfen.', fail: 'Drittdienste ohne erkennbare Consent-Lösung eingebunden: {found}. Insbesondere Google Fonts vom Google-Server war bereits Gegenstand von Abmahnwellen (LG München I, 2022).', info: 'Drittdienste gefunden ({found}), eine Consent-Lösung ist vorhanden ({tool}). Ob die Dienste tatsächlich erst nach Einwilligung laden, kann dieser statische Check nicht prüfen.' },
+        bfsg_basics:    { title: 'Barrierefreiheits-Basics (BFSG)', pass: 'Basis-Indikatoren erfüllt: Sprachattribut {lang}, Alt-Texte {alt}, mobile Darstellung {viewport}.', warn: 'Basis-Indikatoren unvollständig: Sprachattribut {lang}, Alt-Texte {alt}, mobile Darstellung {viewport}. Seit Juni 2025 stellt das BFSG erhöhte Anforderungen an viele Websites – eine vollständige Bewertung erfordert eine manuelle Prüfung.', fail: 'Barrierefreiheits-Basics fehlen.', info: 'Barrierefreiheits-Prüfung nicht möglich.' },
+        form_health:    { title: 'Kontaktformular & Gesundheitsdaten (Art. 9 DSGVO)', pass: 'Kein Formular mit Freitextfeldern gefunden.', warn: 'Formular mit Freitextfeld gefunden.', fail: 'Formular-Hinweis.', info: 'Ihre Startseite enthält ein Formular mit Freitextfeld. Wenn Patienten dort gesundheitsbezogene Angaben machen können, sind das besondere Kategorien personenbezogener Daten (Art. 9 DSGVO) – die Einwilligungs- und Informationspflichten sollten geprüft werden.' }
       },
       en: {
         ssl:            { title: 'SSL encryption', pass: 'Your website is reachable via HTTPS.', warn: 'Your website responds over HTTPS with an error – worth investigating.', fail: 'Your website is not securely reachable via HTTPS.' },
@@ -205,11 +230,19 @@
         hsts:           { title: 'HSTS (enforced encryption)', pass: 'HSTS is active – browsers will only connect over encryption.', warn: 'HSTS is only partially configured.', fail: 'HSTS is missing – browsers may establish unencrypted connections.' },
         sec_headers:    { title: 'Security headers', pass: '{count} of {total} modern security headers are set.', warn: 'Only {count} of {total} security headers set. Missing: {missing}.', fail: 'None of the {total} checked security headers are set ({missing}).' },
         wp_version:     { title: 'WordPress version', pass: 'WordPress detected – the version number is not publicly visible. Good.', warn: 'WordPress status unclear.', fail: 'Your WordPress version ({version}) is publicly visible – this makes targeted attacks easier.', info: 'No WordPress detected – some checkpoints do not apply.' },
-        cookie_consent: { title: 'Cookie consent tooling', pass: 'A cookie consent solution was detected ({tool}).', warn: 'No known cookie consent solution detected. If your website uses cookies or third-party services, a consent solution is required.', fail: 'No cookie consent solution detected.' },
-        impressum:      { title: 'Imprint (Impressum) link', pass: 'An Impressum link was found on the homepage.', warn: 'No Impressum link found on the homepage – an important point for German practice websites.', fail: 'No Impressum link found.' },
-        datenschutz:    { title: 'Privacy policy link', pass: 'A privacy policy link was found.', warn: 'No privacy policy link found on the homepage.', fail: 'No privacy policy link found.' },
         mixed_content:  { title: 'Insecure embeds', pass: 'No insecure (HTTP) embeds found on the homepage.', warn: 'Some insecure embeds found.', fail: '{count} insecure embeds found – browsers block or flag this content.' },
-        response_time:  { title: 'Response time', pass: 'Your website responds quickly ({ms} ms).', warn: 'Your website responds noticeably slowly ({ms} ms).', fail: 'Your website responds very slowly ({ms} ms) – costing patients and Google visibility.' }
+        response_time:  { title: 'Response time', pass: 'Your website responds quickly ({ms} ms).', warn: 'Your website responds noticeably slowly ({ms} ms).', fail: 'Your website responds very slowly ({ms} ms) – costing patients and Google visibility.' },
+        // Compliance (technical indicators, § references are factual citations)
+        imp_page:       { title: 'Imprint reachable (§ 5 DDG)', pass: 'An imprint (Impressum) is linked and reachable.', warn: 'Imprint status unclear.', fail: 'No reachable imprint found – § 5 DDG requires an easily reachable provider identification. A common trigger for formal warnings (Abmahnungen).', info: 'Imprint check not possible.' },
+        imp_content:    { title: 'Imprint content (§ 5 DDG)', pass: 'E-mail, phone and chamber/supervisory details were found in the imprint.', warn: 'The imprint may be missing details: {missing}. § 5 DDG requires a reachable e-mail address, among other things – a contact form alone is not sufficient.', fail: 'Essential imprint details are missing.', info: 'Imprint page not retrievable – content check skipped.' },
+        imp_repealed:   { title: 'Outdated legal citations', pass: 'No references to repealed laws (§ 5 TMG, § 55 RStV) found in the imprint.', warn: 'Legal citations in the imprint should be reviewed.', fail: 'Your imprint cites repealed laws: {cited}. Since May 2024, § 5 DDG and § 18 MStV apply – a classic trigger for formal warnings.', info: 'Imprint page not retrievable – check skipped.' },
+        ds_page:        { title: 'Privacy policy reachable (Art. 13 GDPR)', pass: 'A privacy policy is linked and reachable.', warn: 'Privacy policy status unclear.', fail: 'No reachable privacy policy found – Art. 13 GDPR requires privacy information on every website that processes personal data.', info: 'Privacy check not possible.' },
+        ds_content:     { title: 'Privacy policy content (Art. 13 GDPR)', pass: 'The privacy policy contains the expected core elements (controller, legal bases, data subject rights, supervisory authority).', warn: 'The privacy policy contains only {signals} of {total} expected core elements – a content review is recommended.', fail: 'Essential elements are missing from the privacy policy.', info: 'Privacy page not retrievable – content check skipped.' },
+        ds_outdated:    { title: 'Currency of legal citations (TDDDG)', pass: 'No outdated TTDSG references found.', warn: 'Your privacy policy references the TTDSG – the law has been named TDDDG since May 2024. An indicator that the policy has not been updated for a while.', fail: 'Outdated legal references found.', info: 'Privacy page not retrievable – check skipped.' },
+        cookie_consent: { title: 'Cookie consent tooling (§ 25 TDDDG)', pass: 'A cookie consent solution was detected ({tool}).', warn: 'No known cookie consent solution detected. If your website uses non-essential cookies or third-party services, § 25 TDDDG requires prior consent.', fail: 'No cookie consent solution detected.' },
+        third_parties:  { title: 'Third parties before consent (§ 25 TDDDG)', pass: 'No statically embedded third-party services found on the homepage.', warn: 'Third-party services found – consent requirements should be reviewed.', fail: 'Third-party services embedded without a detectable consent solution: {found}. Google Fonts loaded from Google servers in particular has been the subject of warning-letter waves (Munich Regional Court, 2022).', info: 'Third-party services found ({found}) and a consent solution is present ({tool}). Whether the services actually load only after consent cannot be verified by this static check.' },
+        bfsg_basics:    { title: 'Accessibility basics (BFSG)', pass: 'Basic indicators met: language attribute {lang}, alt texts {alt}, mobile rendering {viewport}.', warn: 'Basic indicators incomplete: language attribute {lang}, alt texts {alt}, mobile rendering {viewport}. Since June 2025 the BFSG raises accessibility requirements for many websites – a full assessment requires manual review.', fail: 'Accessibility basics missing.', info: 'Accessibility check not possible.' },
+        form_health:    { title: 'Contact form & health data (Art. 9 GDPR)', pass: 'No form with free-text fields found.', warn: 'Form with free-text field found.', fail: 'Form notice.', info: 'Your homepage contains a form with a free-text field. If patients can enter health-related details there, that is special-category personal data (Art. 9 GDPR) – consent and information duties should be reviewed.' }
       }
     };
     // Status badges + localized status labels for the dashboard items
@@ -228,11 +261,37 @@
       return lang === 'de' ? date + ', ' + time + ' Uhr' : date + ', ' + time;
     }
 
-    function fmt(tpl, detail) {
+    // Localized labels for machine-readable detail codes (imp_content.missing)
+    const DETAIL_LABELS = {
+      de: { email: 'E-Mail-Adresse', phone: 'Telefonnummer', chamber: 'Kammer-/Aufsichtsangaben' },
+      en: { email: 'e-mail address', phone: 'phone number', chamber: 'chamber/supervisory details' }
+    };
+    const GROUP_LABELS = {
+      de: { security: 'Sicherheit', compliance: 'Compliance' },
+      en: { security: 'Security', compliance: 'Compliance' }
+    };
+
+    function fmt(tpl, detail, lang) {
       return tpl.replace(/\{(\w+)\}/g, (_, k) => {
-        const v = detail ? detail[k] : undefined;
-        return Array.isArray(v) ? v.join(', ') : (v !== undefined ? v : '');
+        let v = detail ? detail[k] : undefined;
+        if (Array.isArray(v)) {
+          const labels = DETAIL_LABELS[lang] || {};
+          return v.map(x => labels[x] || x).join(', ');
+        }
+        return v !== undefined ? v : '';
       });
+    }
+
+    function setRing(ringId, numId, score, lang, label) {
+      const s = Math.max(0, Math.min(100, Number(score) || 0));
+      const tier = s < 50 ? 'fail' : s < 80 ? 'warn' : 'pass';
+      const ring = document.getElementById(ringId);
+      ring.className = 'hn-dash__ring hn-dash__ring--sm hn-dash__ring--' + tier;
+      ring.style.setProperty('--hnd-score', s);
+      ring.setAttribute('aria-label', lang === 'de'
+        ? label + ': ' + s + ' von 100 Punkten'
+        : label + ': ' + s + ' out of 100 points');
+      document.getElementById(numId).textContent = s;
     }
 
     function renderResult(data) {
@@ -240,38 +299,40 @@
       const lang = currentLang;
       const texts = CHECK_TEXTS[lang];
       const meta = STATUS_META[lang];
+      const groups = GROUP_LABELS[lang];
       const sc = document.getElementById('scorecard');
 
-      // Score ring: red <50, amber 50–79, green 80+
-      const score = Math.max(0, Math.min(100, Number(data.score) || 0));
-      const tier = score < 50 ? 'fail' : score < 80 ? 'warn' : 'pass';
-      const ring = document.getElementById('scoreRing');
-      ring.className = 'hn-dash__ring hn-dash__ring--' + tier;
-      ring.style.setProperty('--hnd-score', score);
-      ring.setAttribute('aria-label', lang === 'de'
-        ? 'Gesamtergebnis: ' + score + ' von 100 Punkten'
-        : 'Overall result: ' + score + ' out of 100 points');
-      document.getElementById('scoreNum').textContent = score;
+      // Dual score rings (fallback to legacy single score for old responses)
+      const scores = data.scores || { security: data.score, compliance: data.score };
+      setRing('ringSecurity', 'scoreSecurity', scores.security, lang, groups.security);
+      setRing('ringCompliance', 'scoreCompliance', scores.compliance, lang, groups.compliance);
       document.getElementById('scoreHost').textContent = data.host;
       document.getElementById('reportTime').textContent = fmtCheckedAt(data.checkedAt, lang);
 
       const wrap = document.getElementById('checkItems');
       wrap.innerHTML = '';
-      data.checks.forEach(c => {
-        const tx = texts[c.id];
-        if (!tx) return;
-        const s = meta[c.status] || meta.info;
-        const desc = fmt(tx[c.status] || '', c.detail);
-        const item = document.createElement('article');
-        item.className = 'hn-dash__item hn-dash__item--' + (STATUS_META.de[c.status] ? c.status : 'info');
-        item.innerHTML =
-          '<div class="hn-dash__item-head"><span class="hn-dash__badge" aria-hidden="true"></span><h3 class="hn-dash__item-title"></h3></div>' +
-          '<span class="hn-dash__status"></span><p class="hn-dash__item-desc"></p>';
-        item.querySelector('.hn-dash__badge').textContent = s.icon;
-        item.querySelector('.hn-dash__item-title').textContent = tx.title;
-        item.querySelector('.hn-dash__status').textContent = s.label;
-        item.querySelector('.hn-dash__item-desc').textContent = desc;
-        wrap.appendChild(item);
+      ['security', 'compliance'].forEach(cat => {
+        const items = data.checks.filter(c => (c.category || 'security') === cat && texts[c.id]);
+        if (!items.length) return;
+        const head = document.createElement('h3');
+        head.className = 'hn-dash__group-head';
+        head.textContent = groups[cat];
+        wrap.appendChild(head);
+        items.forEach(c => {
+          const tx = texts[c.id];
+          const s = meta[c.status] || meta.info;
+          const desc = fmt(tx[c.status] || '', c.detail, lang);
+          const item = document.createElement('article');
+          item.className = 'hn-dash__item hn-dash__item--' + (STATUS_META.de[c.status] ? c.status : 'info');
+          item.innerHTML =
+            '<div class="hn-dash__item-head"><span class="hn-dash__badge" aria-hidden="true"></span><h3 class="hn-dash__item-title"></h3></div>' +
+            '<span class="hn-dash__status"></span><p class="hn-dash__item-desc"></p>';
+          item.querySelector('.hn-dash__badge').textContent = s.icon;
+          item.querySelector('.hn-dash__item-title').textContent = tx.title;
+          item.querySelector('.hn-dash__status').textContent = s.label;
+          item.querySelector('.hn-dash__item-desc').textContent = desc;
+          wrap.appendChild(item);
+        });
       });
       sc.classList.add('visible');
       sc.scrollIntoView({ behavior: 'smooth', block: 'start' });
