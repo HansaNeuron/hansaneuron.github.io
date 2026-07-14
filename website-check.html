@@ -76,24 +76,29 @@
           </p>
         </header>
         <hr class="hn-dash__divider" />
-        <div class="hn-dash__body">
-          <div class="hn-dash__scores">
+        <div class="hn-dash__section" id="sectionSecurity">
+          <h3 class="hn-dash__group-head" data-i18n="ch.groupSecurity">Sicherheit</h3>
+          <div class="hn-dash__body">
             <div class="hn-dash__score">
               <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--fail" id="ringSecurity" style="--hnd-score:0" role="img">
                 <div class="hn-dash__ring-inner"><span class="hn-dash__score-num" id="scoreSecurity">–</span></div>
               </div>
-              <p class="hn-dash__score-title" data-i18n="ch.groupSecurity">Sicherheit</p>
               <p class="hn-dash__score-label" data-i18n="ch.scoreLabel">von 100 Punkten</p>
             </div>
+            <div class="hn-dash__grid" id="itemsSecurity"></div>
+          </div>
+        </div>
+        <div class="hn-dash__section" id="sectionCompliance">
+          <h3 class="hn-dash__group-head" data-i18n="ch.groupCompliance">Compliance</h3>
+          <div class="hn-dash__body">
             <div class="hn-dash__score">
               <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--fail" id="ringCompliance" style="--hnd-score:0" role="img">
                 <div class="hn-dash__ring-inner"><span class="hn-dash__score-num" id="scoreCompliance">–</span></div>
               </div>
-              <p class="hn-dash__score-title" data-i18n="ch.groupCompliance">Compliance</p>
               <p class="hn-dash__score-label" data-i18n="ch.scoreLabel">von 100 Punkten</p>
             </div>
+            <div class="hn-dash__grid" id="itemsCompliance"></div>
           </div>
-          <div class="hn-dash__grid" id="checkItems"></div>
         </div>
         <p class="hn-dash__footnote" data-i18n="ch.footnote">Compliance-Prüfpunkte sind technische Indikatoren auf Basis öffentlich abrufbarer Seiteninhalte – keine Rechtsberatung, keine rechtliche Bewertung. Die Prüfung analysiert nur statisch eingebundene Inhalte; per JavaScript nachgeladene Dienste werden nicht erfasst.</p>
       </div>
@@ -309,15 +314,13 @@
       document.getElementById('scoreHost').textContent = data.host;
       document.getElementById('reportTime').textContent = fmtCheckedAt(data.checkedAt, lang);
 
-      const wrap = document.getElementById('checkItems');
-      wrap.innerHTML = '';
+      const wraps = { security: document.getElementById('itemsSecurity'), compliance: document.getElementById('itemsCompliance') };
+      const sections = { security: document.getElementById('sectionSecurity'), compliance: document.getElementById('sectionCompliance') };
       ['security', 'compliance'].forEach(cat => {
+        const wrap = wraps[cat];
+        wrap.innerHTML = '';
         const items = data.checks.filter(c => (c.category || 'security') === cat && texts[c.id]);
-        if (!items.length) return;
-        const head = document.createElement('h3');
-        head.className = 'hn-dash__group-head';
-        head.textContent = groups[cat];
-        wrap.appendChild(head);
+        sections[cat].style.display = items.length ? '' : 'none';
         items.forEach(c => {
           const tx = texts[c.id];
           const s = meta[c.status] || meta.info;
