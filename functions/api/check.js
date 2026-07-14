@@ -205,15 +205,19 @@ export async function onRequestPost({ request }) {
   if (impPage.ok) {
     const imp = impPage.html;
     const impLower = imp.toLowerCase();
-    const hasEmail = /mailto:|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(imp);
+    // Cloudflare Email Obfuscation rewrites mailto: links to /cdn-cgi/l/email-protection —
+    // treat that as "e-mail present" to avoid false negatives on proxied sites.
+    const hasEmail = /mailto:|cdn-cgi\/l\/email-protection|data-cfemail|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(imp);
     const hasPhone = /href=["']tel:|telefon|\+49[\s\d/().-]{6,}|\b0\d{2,4}[\s/-]?\d{3,}/i.test(imp);
     const hasChamber = /kammer|aufsichtsbeh/i.test(impLower);
     const missingParts = [];
     if (!hasEmail)   missingParts.push('email');
     if (!hasPhone)   missingParts.push('phone');
-    if (!hasChamber) missingParts.push('chamber');
     com('imp_content', missingParts.length === 0 ? 'pass' : 'warn',
         missingParts.length ? { missing: missingParts } : undefined);
+    // Chamber/supervisory details: mandatory for chambered professions (doctors,
+    // dentists) but not for every business — informational card only when absent.
+    if (!hasChamber) com('imp_chamber', 'info');
 
     // Repealed-law citations — classic Abmahnung target
     const repealed = [];
@@ -282,7 +286,9 @@ export async function onRequestPost({ request }) {
   // ── 10. Accessibility basics (BFSG) — indicators only ──────
   const hasLang = /<html[^>]+lang=/i.test(html);
   const imgTags = html.match(/<img\b[^>]*>/gi) || [];
-  const imgsWithAlt = imgTags.filter(t => /alt=["'][^"']+["']/i.test(t)).length;
+  // An alt attribute counts even when empty (alt="") — that is correct WCAG
+  // practice for decorative images. Only images with NO alt attribute are flagged.
+  const imgsWithAlt = imgTags.filter(t => /\balt=["']/i.test(t)).length;
   const hasViewport = /<meta[^>]+name=["']viewport["']/i.test(html);
   const altOk = imgTags.length === 0 || imgsWithAlt / imgTags.length >= 0.8;
   const bfsgOk = hasLang && altOk && hasViewport;
