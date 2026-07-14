@@ -125,6 +125,23 @@
 .hn-dash__ring--warn { --hnd-ring-color: var(--hnd-amber); }
 .hn-dash__ring--pass { --hnd-ring-color: var(--hnd-teal-dark); }
 
+/* Dual-score variant (Sicherheit + Compliance) */
+.hn-dash__scores { display: flex; flex-direction: column; gap: 28px; align-items: center; }
+.hn-dash__scores .hn-dash__score { gap: 10px; }
+.hn-dash__ring--sm { width: 150px; height: 150px; }
+.hn-dash__ring--sm .hn-dash__score-num { font-size: 3.2rem; }
+.hn-dash__score-title {
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--hnd-slate); margin: 0;
+}
+.hn-dash__group-head {
+  grid-column: 1 / -1; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--hnd-slate); margin: 6px 0 -4px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--hnd-border);
+}
+.hn-dash__group-head:first-child { margin-top: 0; }
+.hn-dash__footnote { font-size: 0.78rem; color: var(--hnd-muted); line-height: 1.6; margin: 24px 0 0; }
+
 /* ---------- Check grid ---------- */
 .hn-dash__grid {
   display: grid;
@@ -190,12 +207,16 @@
   .hn-dash__body { grid-template-columns: 1fr; }
   .hn-dash__score { margin-bottom: 8px; }
   .hn-dash__grid { grid-template-columns: repeat(2, 1fr); }
+  .hn-dash__scores { flex-direction: row; justify-content: center; gap: 40px; }
 }
 @media (max-width: 560px) {
   .hn-dash { padding: 24px 16px 28px; }
   .hn-dash__grid { grid-template-columns: 1fr; }
   .hn-dash__ring { width: 160px; height: 160px; }
   .hn-dash__score-num { font-size: 3.4rem; }
+  .hn-dash__ring--sm { width: 126px; height: 126px; }
+  .hn-dash__ring--sm .hn-dash__score-num { font-size: 2.6rem; }
+  .hn-dash__scores { gap: 24px; }
 }
 
 /* ---------- Print ---------- */
@@ -211,7 +232,7 @@
 <section class="hn-dash" id="hn-dash" aria-label="Praxis-Website Sicherheitsbericht">
 
   <header class="hn-dash__header">
-    <h2 class="hn-dash__title" data-hnd="title">Praxis-Website Sicherheitsbericht</h2>
+    <h2 class="hn-dash__title" data-hnd="title">Praxis-Website Sicherheits- &amp; Compliance-Bericht</h2>
     <p class="hn-dash__meta">
       Geprüft am: <strong data-hnd="timestamp">15.10.2023, 11:45 Uhr</strong>
       <span data-hnd="host-wrap"> · <strong data-hnd="host">example-praxis.de</strong></span>
@@ -222,19 +243,34 @@
 
   <div class="hn-dash__body">
 
-    <!-- Score circle -->
-    <div class="hn-dash__score">
-      <div class="hn-dash__ring hn-dash__ring--fail" data-hnd="ring" style="--hnd-score: 42;"
-           role="img" aria-label="Gesamtergebnis: 42 von 100 Punkten">
-        <div class="hn-dash__ring-inner">
-          <span class="hn-dash__score-num" data-hnd="score">42</span>
+    <!-- Score circles: Sicherheit + Compliance -->
+    <div class="hn-dash__scores">
+      <div class="hn-dash__score">
+        <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--warn" data-hnd="ring-security" style="--hnd-score: 64;"
+             role="img" aria-label="Sicherheit: 64 von 100 Punkten">
+          <div class="hn-dash__ring-inner">
+            <span class="hn-dash__score-num" data-hnd="score-security">64</span>
+          </div>
         </div>
+        <p class="hn-dash__score-title">Sicherheit</p>
+        <p class="hn-dash__score-label">von 100 Punkten</p>
       </div>
-      <p class="hn-dash__score-label">von 100 Punkten</p>
+      <div class="hn-dash__score">
+        <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--fail" data-hnd="ring-compliance" style="--hnd-score: 38;"
+             role="img" aria-label="Compliance: 38 von 100 Punkten">
+          <div class="hn-dash__ring-inner">
+            <span class="hn-dash__score-num" data-hnd="score-compliance">38</span>
+          </div>
+        </div>
+        <p class="hn-dash__score-title">Compliance</p>
+        <p class="hn-dash__score-label">von 100 Punkten</p>
+      </div>
     </div>
 
     <!-- Check items -->
     <div class="hn-dash__grid" data-hnd="grid">
+
+      <h3 class="hn-dash__group-head">Sicherheit</h3>
 
       <article class="hn-dash__item hn-dash__item--fail">
         <div class="hn-dash__item-head">
@@ -275,23 +311,45 @@
       <article class="hn-dash__item hn-dash__item--pass">
         <div class="hn-dash__item-head">
           <span class="hn-dash__badge" aria-hidden="true">✓</span>
-          <h3 class="hn-dash__item-title">Cookie Consent</h3>
-        </div>
-        <span class="hn-dash__status">✓ Erfolgreich</span>
-        <p class="hn-dash__item-desc">Datenschutzkonformer Cookie-Hinweis ist aktiv.</p>
-      </article>
-
-      <article class="hn-dash__item hn-dash__item--pass">
-        <div class="hn-dash__item-head">
-          <span class="hn-dash__badge" aria-hidden="true">✓</span>
           <h3 class="hn-dash__item-title">Backups</h3>
         </div>
         <span class="hn-dash__status">✓ Erfolgreich</span>
         <p class="hn-dash__item-desc">Automatische Backups werden regelmäßig erstellt.</p>
       </article>
 
+      <h3 class="hn-dash__group-head">Compliance</h3>
+
+      <article class="hn-dash__item hn-dash__item--pass">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">✓</span>
+          <h3 class="hn-dash__item-title">Cookie-Consent-Lösung (§ 25 TDDDG)</h3>
+        </div>
+        <span class="hn-dash__status">✓ Erfolgreich</span>
+        <p class="hn-dash__item-desc">Eine Cookie-Consent-Lösung wurde erkannt.</p>
+      </article>
+
+      <article class="hn-dash__item hn-dash__item--fail">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">✕</span>
+          <h3 class="hn-dash__item-title">Veraltete Gesetzesangaben</h3>
+        </div>
+        <span class="hn-dash__status">✕ Fehler</span>
+        <p class="hn-dash__item-desc">Das Impressum zitiert aufgehobene Gesetze (§ 5 TMG). Seit Mai 2024 gilt § 5 DDG.</p>
+      </article>
+
+      <article class="hn-dash__item hn-dash__item--warn">
+        <div class="hn-dash__item-head">
+          <span class="hn-dash__badge" aria-hidden="true">!</span>
+          <h3 class="hn-dash__item-title">Barrierefreiheits-Basics (BFSG)</h3>
+        </div>
+        <span class="hn-dash__status">! Warnung</span>
+        <p class="hn-dash__item-desc">Basis-Indikatoren unvollständig – vollständige Bewertung erfordert manuelle Prüfung.</p>
+      </article>
+
     </div>
   </div>
+
+  <p class="hn-dash__footnote">Compliance-Prüfpunkte sind technische Indikatoren – keine Rechtsberatung, keine rechtliche Bewertung.</p>
 </section>
 <!-- ================= COMPONENT END ================= -->
 
@@ -301,15 +359,17 @@
  * Call renderHnDashboard(data[, rootEl]) e.g. with the /api/check response.
  *
  * data = {
- *   score: 42,
+ *   scores: { security: 64, compliance: 38 },   // preferred; falls back to data.score for both
  *   timestamp: "15.10.2023, 11:45 Uhr",
  *   host: "example-praxis.de",
  *   checks: [
- *     { id: 'security_headers', title: 'Security Headers', status: 'fail', description: '...' },
+ *     { id: 'sec_headers', category: 'security', title: 'Security Headers', status: 'fail', description: '...' },
+ *     { id: 'imp_repealed', category: 'compliance', title: 'Veraltete Gesetzesangaben', status: 'fail', description: '...' },
  *     ...
  *   ]
  * }
  * status: 'pass' | 'warn' | 'fail'  ('info' renders neutral like pass but labelled "Info")
+ * category: 'security' | 'compliance'  (missing category defaults to 'security')
  */
 function renderHnDashboard(data, rootEl) {
   var root = rootEl || document.getElementById('hn-dash');
@@ -321,15 +381,20 @@ function renderHnDashboard(data, rootEl) {
     fail: { cls: 'fail', icon: '✕', label: '✕ Fehler' },
     info: { cls: 'pass', icon: 'i', label: 'Info' }
   };
+  var GROUPS = { security: 'Sicherheit', compliance: 'Compliance' };
 
-  // Score circle: red <50, amber 50–79, green 80+
-  var score = Math.max(0, Math.min(100, Number(data.score) || 0));
-  var tier = score < 50 ? 'fail' : score < 80 ? 'warn' : 'pass';
-  var ring = root.querySelector('[data-hnd="ring"]');
-  ring.className = 'hn-dash__ring hn-dash__ring--' + tier;
-  ring.style.setProperty('--hnd-score', score);
-  ring.setAttribute('aria-label', 'Gesamtergebnis: ' + score + ' von 100 Punkten');
-  root.querySelector('[data-hnd="score"]').textContent = score;
+  // Score circles: red <50, amber 50–79, green 80+
+  var scores = data.scores || { security: data.score, compliance: data.score };
+  ['security', 'compliance'].forEach(function (cat) {
+    var score = Math.max(0, Math.min(100, Number(scores[cat]) || 0));
+    var tier = score < 50 ? 'fail' : score < 80 ? 'warn' : 'pass';
+    var ring = root.querySelector('[data-hnd="ring-' + cat + '"]');
+    if (!ring) return;
+    ring.className = 'hn-dash__ring hn-dash__ring--sm hn-dash__ring--' + tier;
+    ring.style.setProperty('--hnd-score', score);
+    ring.setAttribute('aria-label', GROUPS[cat] + ': ' + score + ' von 100 Punkten');
+    root.querySelector('[data-hnd="score-' + cat + '"]').textContent = score;
+  });
 
   // Header meta
   root.querySelector('[data-hnd="timestamp"]').textContent = data.timestamp || '';
@@ -337,49 +402,61 @@ function renderHnDashboard(data, rootEl) {
   hostWrap.style.display = data.host ? '' : 'none';
   root.querySelector('[data-hnd="host"]').textContent = data.host || '';
 
-  // Check items
+  // Check items, grouped by category
   var grid = root.querySelector('[data-hnd="grid"]');
   grid.textContent = '';
-  (data.checks || []).forEach(function (c) {
-    var s = STATUS[c.status] || STATUS.info;
-    var item = document.createElement('article');
-    item.className = 'hn-dash__item hn-dash__item--' + s.cls;
+  ['security', 'compliance'].forEach(function (cat) {
+    var items = (data.checks || []).filter(function (c) {
+      return (c.category || 'security') === cat;
+    });
+    if (!items.length) return;
 
-    var head = document.createElement('div');
-    head.className = 'hn-dash__item-head';
-    var badge = document.createElement('span');
-    badge.className = 'hn-dash__badge';
-    badge.setAttribute('aria-hidden', 'true');
-    badge.textContent = s.icon;
-    var title = document.createElement('h3');
-    title.className = 'hn-dash__item-title';
-    title.textContent = c.title || c.id || '';
-    head.appendChild(badge);
-    head.appendChild(title);
+    var head = document.createElement('h3');
+    head.className = 'hn-dash__group-head';
+    head.textContent = GROUPS[cat];
+    grid.appendChild(head);
 
-    var status = document.createElement('span');
-    status.className = 'hn-dash__status';
-    status.textContent = s.label;
+    items.forEach(function (c) {
+      var s = STATUS[c.status] || STATUS.info;
+      var item = document.createElement('article');
+      item.className = 'hn-dash__item hn-dash__item--' + s.cls;
 
-    var desc = document.createElement('p');
-    desc.className = 'hn-dash__item-desc';
-    desc.textContent = c.description || '';
+      var headEl = document.createElement('div');
+      headEl.className = 'hn-dash__item-head';
+      var badge = document.createElement('span');
+      badge.className = 'hn-dash__badge';
+      badge.setAttribute('aria-hidden', 'true');
+      badge.textContent = s.icon;
+      var title = document.createElement('h3');
+      title.className = 'hn-dash__item-title';
+      title.textContent = c.title || c.id || '';
+      headEl.appendChild(badge);
+      headEl.appendChild(title);
 
-    item.appendChild(head);
-    item.appendChild(status);
-    item.appendChild(desc);
-    grid.appendChild(item);
+      var status = document.createElement('span');
+      status.className = 'hn-dash__status';
+      status.textContent = s.label;
+
+      var desc = document.createElement('p');
+      desc.className = 'hn-dash__item-desc';
+      desc.textContent = c.description || '';
+
+      item.appendChild(headEl);
+      item.appendChild(status);
+      item.appendChild(desc);
+      grid.appendChild(item);
+    });
   });
 }
 
 /* Demo (uncomment to test):
 renderHnDashboard({
-  score: 87,
-  timestamp: "11.07.2026, 09:30 Uhr",
+  scores: { security: 87, compliance: 52 },
+  timestamp: "14.07.2026, 09:30 Uhr",
   host: "muster-zahnarzt.de",
   checks: [
-    { id: 'ssl', title: 'SSL-Verschlüsselung', status: 'pass', description: 'Ihre Website ist über HTTPS erreichbar.' },
-    { id: 'security_headers', title: 'Security Headers', status: 'warn', description: 'Einzelne Header fehlen noch.' }
+    { id: 'ssl', category: 'security', title: 'SSL-Verschlüsselung', status: 'pass', description: 'Ihre Website ist über HTTPS erreichbar.' },
+    { id: 'imp_repealed', category: 'compliance', title: 'Veraltete Gesetzesangaben', status: 'fail', description: 'Das Impressum zitiert § 5 TMG.' }
   ]
 });
 */
