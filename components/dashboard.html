@@ -125,9 +125,9 @@
 .hn-dash__ring--warn { --hnd-ring-color: var(--hnd-amber); }
 .hn-dash__ring--pass { --hnd-ring-color: var(--hnd-teal-dark); }
 
-/* Dual-score variant (Sicherheit + Compliance) */
-.hn-dash__scores { display: flex; flex-direction: column; gap: 28px; align-items: center; }
-.hn-dash__scores .hn-dash__score { gap: 10px; }
+/* Dual-score variant: one section per category (ring + its checks) */
+.hn-dash__section + .hn-dash__section { margin-top: 36px; }
+.hn-dash__section .hn-dash__group-head { margin: 0 0 18px; }
 .hn-dash__ring--sm { width: 150px; height: 150px; }
 .hn-dash__ring--sm .hn-dash__score-num { font-size: 3.2rem; }
 .hn-dash__score-title {
@@ -207,7 +207,6 @@
   .hn-dash__body { grid-template-columns: 1fr; }
   .hn-dash__score { margin-bottom: 8px; }
   .hn-dash__grid { grid-template-columns: repeat(2, 1fr); }
-  .hn-dash__scores { flex-direction: row; justify-content: center; gap: 40px; }
 }
 @media (max-width: 560px) {
   .hn-dash { padding: 24px 16px 28px; }
@@ -216,7 +215,6 @@
   .hn-dash__score-num { font-size: 3.4rem; }
   .hn-dash__ring--sm { width: 126px; height: 126px; }
   .hn-dash__ring--sm .hn-dash__score-num { font-size: 2.6rem; }
-  .hn-dash__scores { gap: 24px; }
 }
 
 /* ---------- Print ---------- */
@@ -241,10 +239,10 @@
 
   <hr class="hn-dash__divider">
 
-  <div class="hn-dash__body">
-
-    <!-- Score circles: Sicherheit + Compliance -->
-    <div class="hn-dash__scores">
+  <!-- Section: Sicherheit (ring + its checks) -->
+  <div class="hn-dash__section" data-hnd="section-security">
+    <h3 class="hn-dash__group-head">Sicherheit</h3>
+    <div class="hn-dash__body">
       <div class="hn-dash__score">
         <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--warn" data-hnd="ring-security" style="--hnd-score: 64;"
              role="img" aria-label="Sicherheit: 64 von 100 Punkten">
@@ -252,25 +250,10 @@
             <span class="hn-dash__score-num" data-hnd="score-security">64</span>
           </div>
         </div>
-        <p class="hn-dash__score-title">Sicherheit</p>
         <p class="hn-dash__score-label">von 100 Punkten</p>
       </div>
-      <div class="hn-dash__score">
-        <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--fail" data-hnd="ring-compliance" style="--hnd-score: 38;"
-             role="img" aria-label="Compliance: 38 von 100 Punkten">
-          <div class="hn-dash__ring-inner">
-            <span class="hn-dash__score-num" data-hnd="score-compliance">38</span>
-          </div>
-        </div>
-        <p class="hn-dash__score-title">Compliance</p>
-        <p class="hn-dash__score-label">von 100 Punkten</p>
-      </div>
-    </div>
 
-    <!-- Check items -->
-    <div class="hn-dash__grid" data-hnd="grid">
-
-      <h3 class="hn-dash__group-head">Sicherheit</h3>
+      <div class="hn-dash__grid" data-hnd="grid-security">
 
       <article class="hn-dash__item hn-dash__item--fail">
         <div class="hn-dash__item-head">
@@ -317,7 +300,25 @@
         <p class="hn-dash__item-desc">Automatische Backups werden regelmäßig erstellt.</p>
       </article>
 
-      <h3 class="hn-dash__group-head">Compliance</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Compliance (ring + its checks) -->
+  <div class="hn-dash__section" data-hnd="section-compliance">
+    <h3 class="hn-dash__group-head">Compliance</h3>
+    <div class="hn-dash__body">
+      <div class="hn-dash__score">
+        <div class="hn-dash__ring hn-dash__ring--sm hn-dash__ring--fail" data-hnd="ring-compliance" style="--hnd-score: 38;"
+             role="img" aria-label="Compliance: 38 von 100 Punkten">
+          <div class="hn-dash__ring-inner">
+            <span class="hn-dash__score-num" data-hnd="score-compliance">38</span>
+          </div>
+        </div>
+        <p class="hn-dash__score-label">von 100 Punkten</p>
+      </div>
+
+      <div class="hn-dash__grid" data-hnd="grid-compliance">
 
       <article class="hn-dash__item hn-dash__item--pass">
         <div class="hn-dash__item-head">
@@ -346,6 +347,7 @@
         <p class="hn-dash__item-desc">Basis-Indikatoren unvollständig – vollständige Bewertung erfordert manuelle Prüfung.</p>
       </article>
 
+      </div>
     </div>
   </div>
 
@@ -402,19 +404,16 @@ function renderHnDashboard(data, rootEl) {
   hostWrap.style.display = data.host ? '' : 'none';
   root.querySelector('[data-hnd="host"]').textContent = data.host || '';
 
-  // Check items, grouped by category
-  var grid = root.querySelector('[data-hnd="grid"]');
-  grid.textContent = '';
+  // Check items: one section (ring + grid) per category
   ['security', 'compliance'].forEach(function (cat) {
+    var grid = root.querySelector('[data-hnd="grid-' + cat + '"]');
+    var section = root.querySelector('[data-hnd="section-' + cat + '"]');
+    if (!grid) return;
+    grid.textContent = '';
     var items = (data.checks || []).filter(function (c) {
       return (c.category || 'security') === cat;
     });
-    if (!items.length) return;
-
-    var head = document.createElement('h3');
-    head.className = 'hn-dash__group-head';
-    head.textContent = GROUPS[cat];
-    grid.appendChild(head);
+    if (section) section.style.display = items.length ? '' : 'none';
 
     items.forEach(function (c) {
       var s = STATUS[c.status] || STATUS.info;
