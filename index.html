@@ -26,11 +26,6 @@
 </head>
 <body>
 
-  <!-- ── Coming Soon Banner ──────────────────────────── -->
-  <div style="background: linear-gradient(135deg, #E07A5F 0%, #F5A623 100%); color: white; padding: 1.5rem; text-align: center; font-weight: 600; line-height: 1.8; margin-top: 80px;">
-    <span data-i18n="banner.title">Sichere Praxis-Websites kommen bald.</span> <a href="#kontakt" style="color: white; text-decoration: underline;" data-i18n="banner.cta">Registrieren Sie sich jetzt, um exklusive Angebote zur Verfügung zu erhalten.</a>
-  </div>
-
   <!-- ── Navigation ──────────────────────────────────── -->
   <nav>
     <a href="index.html" class="nav-logo">
@@ -66,6 +61,8 @@
 
   <!-- ── Hero ────────────────────────────────────────── -->
   <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">
         <span class="label" data-i18n="hero.badge">Für Arzt- und Zahnarztpraxen</span>
@@ -84,44 +81,30 @@
         <a href="preise.html" class="btn-outline" data-i18n="hero.cta2">Care Plans ansehen</a>
       </div>
       <p class="hero-note" data-i18n="hero.note">In 60 Sekunden. Ohne Anmeldung. Ergebnis sofort sichtbar.</p>
-    </div>
 
-    <div class="hero-visual">
-      <div class="hero-card-grid">
-        <div class="hc">
-          <div class="hc-icon teal">
-            <img src="assets/icons/ssl.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
-          </div>
-          <div class="hc-num">SSL</div>
-          <div class="hc-label" data-i18n="hero.stat1">Verschlüsselung aktiv</div>
-        </div>
-        <div class="hc">
-          <div class="hc-icon teal">
-            <img src="assets/icons/backup.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
-          </div>
-          <div class="hc-num" data-i18n="hero.stat2num">Täglich</div>
-          <div class="hc-label" data-i18n="hero.stat2">Backups</div>
-        </div>
-        <div class="hc">
-          <div class="hc-icon slate">
-            <img src="assets/icons/monitoring.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
-          </div>
-          <div class="hc-num">24/7</div>
-          <div class="hc-label" data-i18n="hero.stat3">Monitoring</div>
-        </div>
-        <div class="hc">
-          <div class="hc-icon teal">
-            <img src="assets/icons/location.png" alt="" width="30" height="30" class="icon-img" loading="lazy" />
-          </div>
-          <div class="hc-num">DE</div>
-          <div class="hc-label" data-i18n="hero.stat4">Server-Standort</div>
-        </div>
-        <div class="hc wide">
-          <div class="hc-pulse"></div>
+      <div class="hero-trust-row">
+        <div class="htp htp-live">
+          <span class="hc-pulse"></span>
           <div>
-            <div class="hc-status" data-i18n="hero.statLive">Alle Systeme <span>betreut</span></div>
-            <div style="font-size:.72rem;color:var(--text-muted);margin-top:.15rem;" data-i18n="hero.statSub">Hamburg · Deutsche Server · Laufende Wartung</div>
+            <div class="htp-title" data-i18n="hero.statLive">Alle Systeme <span>betreut</span></div>
+            <div class="htp-sub" data-i18n="hero.statSub">Hamburg · Deutsche Server · Laufende Wartung</div>
           </div>
+        </div>
+        <div class="htp">
+          <img src="assets/icons/ssl.png" alt="" width="24" height="24" class="icon-img" loading="lazy" />
+          <span><strong>SSL</strong><span data-i18n="hero.stat1">Verschlüsselung aktiv</span></span>
+        </div>
+        <div class="htp">
+          <img src="assets/icons/backup.png" alt="" width="24" height="24" class="icon-img" loading="lazy" />
+          <span><strong data-i18n="hero.stat2num">Täglich</strong><span data-i18n="hero.stat2">Backups</span></span>
+        </div>
+        <div class="htp">
+          <img src="assets/icons/monitoring.png" alt="" width="24" height="24" class="icon-img" loading="lazy" />
+          <span><strong>24/7</strong><span data-i18n="hero.stat3">Monitoring</span></span>
+        </div>
+        <div class="htp">
+          <img src="assets/icons/location.png" alt="" width="24" height="24" class="icon-img" loading="lazy" />
+          <span><strong>DE</strong><span data-i18n="hero.stat4">Server-Standort</span></span>
         </div>
       </div>
     </div>
@@ -256,11 +239,6 @@
     </div>
   </section>
 
-  <!-- ── Coming Soon Note (Pricing) ──────────────── -->
-  <div style="background: #FBF4E4; border-left: 4px solid #D9A441; padding: 1rem 1.5rem; margin-bottom: 2rem; border-radius: 4px;">
-    <p style="font-size: 0.9rem; color: #6B7280; margin: 0;"><strong style="color: #D9A441;">Verfügbar ab:</strong> Unsere Care Plans und erweiterten Dienste werden in Kürze verfügbar sein. Nutzen Sie den kostenlosen Website-Check jetzt, um sich auf den Start vorzubereiten.</p>
-  </div>
-
   <!-- ── Care Plans Teaser ────────────────────────────── -->
   <section id="plaene">
     <div class="section-center">
@@ -341,8 +319,7 @@
       <img src="assets/Trust_Badges.png" alt="Deutsche Server, Transparent" class="trust-badges-img" loading="lazy" />
     </div>
 
-    <div class="trust-grid">
-      
+    <div class="trust-grid trust-grid-2">
       <div class="trust-card reveal reveal-delay-1">
         <div class="trust-icon"><img src="assets/icons/partnership.png" alt="" width="46" height="46" class="icon-img" loading="lazy" /></div>
         <div class="trust-title" data-i18n="trust3.title">Aus Hamburg. Für Deutschland.</div>
@@ -472,7 +449,7 @@
       <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
     </div>
     <div class="footer-disclaimer" data-i18n="footer.disclaimer">
-      Hansa Neuron identifiziert technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Wir sind keine Rechtsanwaltskanzlei und erbringen keine Rechtsberatung. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten. 
+      Hansa Neuron identifiziert technische Sicherheits-, Wartungs- und Compliance-Risiken auf Praxis-Websites. Wir sind keine Rechtsanwaltskanzlei und erbringen keine Rechtsberatung. Rechtliche Bewertungen bleiben der Verantwortung der Praxis und ihrer rechtlichen Berater vorbehalten.
     </div>
   </footer>
 
@@ -702,7 +679,6 @@
         'audit.cta':     'See the offer',
         'trust.kicker':  'Trust &amp; accountability',
         'trust.title':   'Your website in hands<br/><em>that stand behind their work.</em>',
-        'trust1.title':  'Insured',
         'trust2.title':  'Transparent',
         'trust2.desc':   'Fixed prices, clear deliverables, readable reports. You always know what is happening with your website – no jargon.',
         'trust3.title':  'From Hamburg. For Germany.',
