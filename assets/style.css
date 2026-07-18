@@ -32,7 +32,7 @@
 
 /* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 section[id] { scroll-margin-top: 145px; }
 body {
   background: var(--bg);
@@ -663,6 +663,16 @@ footer {
 @keyframes spin   { to { transform: rotate(360deg); } }
 
 /* ── Responsive ────────────────────────────────────── */
+/* Plan grid collapses earlier to avoid narrow 3-col layout on large phones
+   in landscape (e.g. iPhone 14 Plus/Pro Max: ~926–932px) which triggers
+   iOS Safari text-size-adjust on long feature strings. The FAQ summary
+   re-declare below was originally scoped to ≤900px only, which left this
+   same 901–1020px landscape band unprotected — widened to match. */
+@media (max-width: 1020px) {
+  .plan-grid { grid-template-columns: 1fr; }
+  .faq-item summary { font-size: .95rem; }
+}
+
 @media (max-width: 900px) {
   .hero, .contact-inner { grid-template-columns: 1fr; }
   .hero { padding-top: 2rem; min-height: auto; }
@@ -678,6 +688,12 @@ footer {
   .footer-disclaimer { text-align: center; }
   .label { letter-spacing: .05em; font-size: .65rem; }
   .trust-badges-img { max-height: 160px; }
+  /* Re-declare to prevent Chrome/Safari text autosizing from inflating long
+     flex-item text (display:flex bypasses the root text-size-adjust in some
+     engine versions — items that wrap to 2+ lines get a larger boost than
+     1-line items, creating visible inconsistency at landscape-mobile widths).
+     .faq-item summary is handled above (≤1020px) since it needs the wider band. */
+  .plan-features li { font-size: .83rem; }
 }
 @media (max-width: 560px) {
   .trust-badges-img { max-height: 120px; }
