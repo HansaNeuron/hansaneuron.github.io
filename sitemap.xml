@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://hansaneuron.de/</loc></url>
-  <url><loc>https://hansaneuron.de/preise.html</loc></url>
-  <url><loc>https://hansaneuron.de/website-check.html</loc></url>
-  <url><loc>https://hansaneuron.de/faq.html</loc></url>
-  <url><loc>https://hansaneuron.de/impressum.html</loc></url>
-  <url><loc>https://hansaneuron.de/datenschutz.html</loc></url>
-  <url><loc>https://hansaneuron.com/imprint.html</loc></url>
-  <url><loc>https://hansaneuron.com/privacy.html</loc></url>
+  <url>
+    <loc>https://hansaneuron.de/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/" />
+  </url>
+  <url>
+    <loc>https://hansaneuron.de/preise.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/preise.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/preise.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/preise.html" />
+  </url>
+  <url>
+    <loc>https://hansaneuron.de/website-check.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/website-check.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/website-check.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/website-check.html" />
+  </url>
+  <url>
+    <loc>https://hansaneuron.de/faq.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/faq.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/faq.html" />
+  </url>
+  <url>
+    <loc>https://hansaneuron.de/impressum.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/impressum.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/imprint.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/impressum.html" />
+  </url>
+  <url>
+    <loc>https://hansaneuron.de/datenschutz.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/datenschutz.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/datenschutz.html" />
+  </url>
+  <url>
+    <loc>https://hansaneuron.com/imprint.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/impressum.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/imprint.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/impressum.html" />
+  </url>
+  <url>
+    <loc>https://hansaneuron.com/privacy.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/datenschutz.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/datenschutz.html" />
+  </url>
 </urlset>
