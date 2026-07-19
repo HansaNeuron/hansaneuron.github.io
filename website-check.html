@@ -136,7 +136,7 @@
         <li><a href="faq.html" data-i18n="footer.faq">FAQ</a></li>
         <li><a href="index.html#kontakt" data-i18n="footer.kontakt">Kontakt</a></li>
         <li><a href="datenschutz.html" data-privacy-link data-i18n="footer.privacy">Datenschutz</a></li>
-        <li><a href="impressum.html" data-i18n="footer.impressum">Impressum</a></li>
+        <li><a href="impressum.html" data-imprint-link data-i18n="footer.impressum">Impressum</a></li>
       </ul>
       <div class="footer-copy" data-i18n="footer.copy">© 2026 Hansa Neuron. Alle Rechte vorbehalten.</div>
     </div>
@@ -153,59 +153,65 @@
     </div>
   </div>
 
+    <script type="application/json" id="i18n-meta">
+{
+  "de": {
+    "title": "Kostenloser Praxis-Website-Check | Hansa Neuron",
+    "desc": "Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: Sicherheit (SSL, Header, WordPress) und Compliance-Indikatoren (Impressum, Datenschutz, Cookie-Consent, Drittdienste, Barrierefreiheit). Sofortergebnis, ohne Anmeldung."
+  },
+  "en": {
+    "title": "Free Practice Website Check | Hansa Neuron",
+    "desc": "Check your practice website free of charge in 60 seconds: security (SSL, headers, WordPress) and compliance indicators (legal pages, cookie consent, third-party services, accessibility). Instant results, no sign-up."
+  }
+}
+  </script>
+  <script type="application/json" id="i18n-translations">
+{
+  "de": {
+    "ch.badge": "Kostenlos · Ohne Anmeldung · Sofortergebnis",
+    "ch.title": "Wie sicher ist<br/><em>Ihre Praxis-Website?</em>",
+    "ch.sub": "Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – Sicherheit und Compliance-Indikatoren in einem Bericht.",
+    "ch.placeholder": "www.ihre-praxis.de",
+    "ch.btn": "Jetzt prüfen",
+    "ch.note": "Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Seiten Ihrer Website geprüft (Startseite sowie verlinktes Impressum und Datenschutzerklärung). Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.",
+    "ch.scoreLabel": "von 100 Punkten",
+    "ch.groupSecurity": "Sicherheit",
+    "ch.groupCompliance": "Compliance",
+    "ch.footnote": "Compliance-Prüfpunkte sind technische Indikatoren auf Basis öffentlich abrufbarer Seiteninhalte – keine Rechtsberatung, keine rechtliche Bewertung. Die Prüfung analysiert nur statisch eingebundene Inhalte; per JavaScript nachgeladene Dienste werden nicht erfasst.",
+    "ch.reportTitle": "Praxis-Website Sicherheits- & Compliance-Bericht",
+    "ch.checkedAt": "Geprüft am:",
+    "ch.ctaTitle": "Das war der Schnell-Check. Das vollständige Audit geht tiefer.",
+    "ch.ctaBody": "Unser Website-Audit prüft über 50 technische Punkte – WordPress, Plugins, Formulare, Backups, Performance – und behebt die gefundenen Probleme direkt (bis zu 4 Stunden Umsetzung inklusive). Für Care-Plan-Kunden: 490 € statt 980 €.",
+    "ch.ctaBtn": "Zum Audit-Angebot",
+    "how.kicker": "Was wird geprüft?",
+    "how.title": "Sicherheit und Compliance.<br/><em>Sofort verständlich erklärt.</em>",
+    "how.body": "Sicherheit: SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, unsichere Einbindungen und die Antwortzeit Ihrer Website. Compliance-Indikatoren: Erreichbarkeit und Inhalte von Impressum (§ 5 DDG) und Datenschutzerklärung (Art. 13 DSGVO), veraltete Gesetzesangaben, vor Einwilligung geladene Drittdienste (§ 25 TDDDG), Cookie-Consent-Lösung und Barrierefreiheits-Basics (BFSG). Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch und ohne rechtliche Bewertung."
+  },
+  "en": {
+    "ch.badge": "Free · No sign-up · Instant results",
+    "ch.title": "How secure is<br/><em>your practice website?</em>",
+    "ch.sub": "Enter your website address. In about 60 seconds you will see where your website stands technically – security and compliance indicators in one report.",
+    "ch.placeholder": "www.your-practice.com",
+    "ch.btn": "Check now",
+    "ch.note": "Automated technical quick check. Only publicly accessible pages of your website are examined (homepage plus the linked imprint and privacy policy pages). Not legal advice. The address you enter is processed to run the check and is not stored.",
+    "ch.scoreLabel": "out of 100 points",
+    "ch.groupSecurity": "Security",
+    "ch.groupCompliance": "Compliance",
+    "ch.footnote": "Compliance checkpoints are technical indicators based on publicly accessible page content – not legal advice, not a legal assessment. The check analyses statically embedded content only; services loaded via JavaScript are not detected.",
+    "ch.reportTitle": "Practice Website Security & Compliance Report",
+    "ch.checkedAt": "Checked on:",
+    "ch.ctaTitle": "That was the quick check. The full audit goes deeper.",
+    "ch.ctaBody": "Our website audit examines over 50 technical points – WordPress, plugins, forms, backups, performance – and fixes the issues found directly (up to 4 hours of implementation included). For Care Plan clients: €490 instead of €980.",
+    "ch.ctaBtn": "See the audit offer",
+    "how.kicker": "What is checked?",
+    "how.title": "Security and compliance.<br/><em>Explained in plain language.</em>",
+    "how.body": "Security: SSL encryption and HTTPS redirection, modern security headers, exposed WordPress versions, insecure embeds and your website’s response time. Compliance indicators: reachability and content of the imprint (§ 5 DDG) and privacy policy (Art. 13 GDPR), outdated legal citations, third-party services loaded before consent (§ 25 TDDDG), cookie consent tooling and accessibility basics (BFSG). Every result comes with a clear explanation – no jargon and no legal assessment."
+  }
+}
+  </script>
   <script>
-    window.pageMeta = {
-      de: {
-        title: 'Kostenloser Praxis-Website-Check | Hansa Neuron',
-        desc:  'Prüfen Sie Ihre Praxis-Website kostenlos in 60 Sekunden: Sicherheit (SSL, Header, WordPress) und Compliance-Indikatoren (Impressum, Datenschutz, Cookie-Consent, Drittdienste, Barrierefreiheit). Sofortergebnis, ohne Anmeldung.'
-      },
-      en: {
-        title: 'Free Practice Website Check | Hansa Neuron',
-        desc:  'Check your practice website free of charge in 60 seconds: security (SSL, headers, WordPress) and compliance indicators (legal pages, cookie consent, third-party services, accessibility). Instant results, no sign-up.'
-      }
-    };
-    window.pageTranslations = {
-      de: {
-        'ch.badge':     'Kostenlos · Ohne Anmeldung · Sofortergebnis',
-        'ch.title':     'Wie sicher ist<br/><em>Ihre Praxis-Website?</em>',
-        'ch.sub':       'Geben Sie Ihre Website-Adresse ein. In etwa 60 Sekunden sehen Sie, wo Ihre Website technisch steht – Sicherheit und Compliance-Indikatoren in einem Bericht.',
-        'ch.placeholder':'www.ihre-praxis.de',
-        'ch.btn':       'Jetzt prüfen',
-        'ch.note':      'Automatisierter technischer Schnell-Check. Es werden nur öffentlich abrufbare Seiten Ihrer Website geprüft (Startseite sowie verlinktes Impressum und Datenschutzerklärung). Keine Rechtsberatung. Die eingegebene Adresse wird zur Durchführung der Prüfung verarbeitet und nicht gespeichert.',
-        'ch.scoreLabel':'von 100 Punkten',
-        'ch.groupSecurity': 'Sicherheit',
-        'ch.groupCompliance': 'Compliance',
-        'ch.footnote':  'Compliance-Prüfpunkte sind technische Indikatoren auf Basis öffentlich abrufbarer Seiteninhalte – keine Rechtsberatung, keine rechtliche Bewertung. Die Prüfung analysiert nur statisch eingebundene Inhalte; per JavaScript nachgeladene Dienste werden nicht erfasst.',
-        'ch.reportTitle':'Praxis-Website Sicherheits- & Compliance-Bericht',
-        'ch.checkedAt': 'Geprüft am:',
-        'ch.ctaTitle':  'Das war der Schnell-Check. Das vollständige Audit geht tiefer.',
-        'ch.ctaBody':   'Unser Website-Audit prüft über 50 technische Punkte – WordPress, Plugins, Formulare, Backups, Performance – und behebt die gefundenen Probleme direkt (bis zu 4 Stunden Umsetzung inklusive). Für Care-Plan-Kunden: 490 € statt 980 €.',
-        'ch.ctaBtn':    'Zum Audit-Angebot',
-        'how.kicker':   'Was wird geprüft?',
-        'how.title':    'Sicherheit und Compliance.<br/><em>Sofort verständlich erklärt.</em>',
-        'how.body':     'Sicherheit: SSL-Verschlüsselung und HTTPS-Weiterleitung, moderne Sicherheits-Header, sichtbare WordPress-Versionen, unsichere Einbindungen und die Antwortzeit Ihrer Website. Compliance-Indikatoren: Erreichbarkeit und Inhalte von Impressum (§ 5 DDG) und Datenschutzerklärung (Art. 13 DSGVO), veraltete Gesetzesangaben, vor Einwilligung geladene Drittdienste (§ 25 TDDDG), Cookie-Consent-Lösung und Barrierefreiheits-Basics (BFSG). Jedes Ergebnis mit einer klaren Erklärung – ohne Fachchinesisch und ohne rechtliche Bewertung.',
-      },
-      en: {
-        'ch.badge':     'Free · No sign-up · Instant results',
-        'ch.title':     'How secure is<br/><em>your practice website?</em>',
-        'ch.sub':       'Enter your website address. In about 60 seconds you will see where your website stands technically – security and compliance indicators in one report.',
-        'ch.placeholder':'www.your-practice.com',
-        'ch.btn':       'Check now',
-        'ch.note':      'Automated technical quick check. Only publicly accessible pages of your website are examined (homepage plus the linked imprint and privacy policy pages). Not legal advice. The address you enter is processed to run the check and is not stored.',
-        'ch.scoreLabel':'out of 100 points',
-        'ch.groupSecurity': 'Security',
-        'ch.groupCompliance': 'Compliance',
-        'ch.footnote':  'Compliance checkpoints are technical indicators based on publicly accessible page content – not legal advice, not a legal assessment. The check analyses statically embedded content only; services loaded via JavaScript are not detected.',
-        'ch.reportTitle':'Practice Website Security & Compliance Report',
-        'ch.checkedAt': 'Checked on:',
-        'ch.ctaTitle':  'That was the quick check. The full audit goes deeper.',
-        'ch.ctaBody':   'Our website audit examines over 50 technical points – WordPress, plugins, forms, backups, performance – and fixes the issues found directly (up to 4 hours of implementation included). For Care Plan clients: €490 instead of €980.',
-        'ch.ctaBtn':    'See the audit offer',
-        'how.kicker':   'What is checked?',
-        'how.title':    'Security and compliance.<br/><em>Explained in plain language.</em>',
-        'how.body':     'Security: SSL encryption and HTTPS redirection, modern security headers, exposed WordPress versions, insecure embeds and your website’s response time. Compliance indicators: reachability and content of the imprint (§ 5 DDG) and privacy policy (Art. 13 GDPR), outdated legal citations, third-party services loaded before consent (§ 25 TDDDG), cookie consent tooling and accessibility basics (BFSG). Every result comes with a clear explanation – no jargon and no legal assessment.',
-      }
-    };
+    window.pageMeta = JSON.parse(document.getElementById('i18n-meta').textContent);
+    window.pageTranslations = JSON.parse(document.getElementById('i18n-translations').textContent);
 
     // ── Localized check texts ──────────────────────────
     const CHECK_TEXTS = {
