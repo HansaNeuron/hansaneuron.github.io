@@ -23,6 +23,12 @@
  * counterparts on the English hosts, so those paths never serve German under
  * hansaneuron.com.
  *
+ * Also handles two smaller cross-host fixes on the English hosts:
+ *  - `<link rel="canonical">` is rewritten from the .de URL to the matching
+ *    .com URL, so each language version self-references correctly.
+ *  - `/robots.txt`'s `Sitemap:` line is rewritten to point at hansaneuron.com
+ *    instead of hansaneuron.de (same underlying sitemap.xml file).
+ *
  * TEMP SITE NOTE: this copy's COMMON_EN.footer.disclaimer intentionally omits
  * the professional-indemnity-insurance sentence that the root site's version
  * includes — this Temp site had its insurance-related content (trust card,
@@ -87,6 +93,15 @@ export async function onRequest(context) {
 
   const response = await context.next();
 
+  // robots.txt: point its Sitemap: line at this host's own sitemap rather than
+  // the German host's (same underlying sitemap.xml file, just requested via
+  // the matching host).
+  if (url.pathname === '/robots.txt') {
+    const text = await response.text();
+    const rewritten = text.replace('https://hansaneuron.de/sitemap.xml', 'https://hansaneuron.com/sitemap.xml');
+    return new Response(rewritten, response);
+  }
+
   const contentType = response.headers.get('content-type') || '';
   if (!contentType.includes('text/html')) return response;
 
@@ -143,6 +158,14 @@ export async function onRequest(context) {
       }
     }
   }
+  class CanonicalLink {
+    element(el) {
+      const href = el.getAttribute('href');
+      if (href && href.startsWith('https://hansaneuron.de/')) {
+        el.setAttribute('href', href.replace('https://hansaneuron.de/', 'https://hansaneuron.com/'));
+      }
+    }
+  }
   class PrivacyLink {
     element(el) {
       el.setAttribute('href', 'privacy.html');
@@ -168,6 +191,7 @@ export async function onRequest(context) {
     .on('html', new HtmlLang())
     .on('title', new Title())
     .on('meta[name="description"]', new MetaDescription())
+    .on('link[rel="canonical"]', new CanonicalLink())
     .on('[data-i18n]', new I18nText())
     .on('[data-i18n-placeholder]', new I18nPlaceholder())
     .on('a[data-privacy-link]', new PrivacyLink())
