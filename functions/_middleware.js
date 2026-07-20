@@ -23,11 +23,16 @@
  * counterparts on the English hosts, so those paths never serve German under
  * hansaneuron.com.
  *
- * Also handles two smaller cross-host fixes on the English hosts:
+ * Also handles smaller cross-host fixes on the English hosts:
  *  - `<link rel="canonical">` is rewritten from the .de URL to the matching
  *    .com URL, so each language version self-references correctly.
  *  - `/robots.txt`'s `Sitemap:` line is rewritten to point at hansaneuron.com
  *    instead of hansaneuron.de (same underlying sitemap.xml file).
+ *  - Open Graph / Twitter Card tags (og:title, og:description, og:url,
+ *    og:locale, twitter:title, twitter:description) are swapped to their
+ *    English values from the same i18n-meta JSON used for <title>/<meta
+ *    description>. og:image/twitter:image are language-agnostic (same share
+ *    image for both hosts) and are left untouched.
  *
  * TEMP SITE NOTE: this copy's COMMON_EN.footer.disclaimer intentionally omits
  * the professional-indemnity-insurance sentence that the root site's version
@@ -166,6 +171,29 @@ export async function onRequest(context) {
       }
     }
   }
+  class OgTitle {
+    element(el) {
+      if (meta?.title) el.setAttribute('content', meta.title);
+    }
+  }
+  class OgDescription {
+    element(el) {
+      if (meta?.desc) el.setAttribute('content', meta.desc);
+    }
+  }
+  class OgUrl {
+    element(el) {
+      const content = el.getAttribute('content');
+      if (content && content.startsWith('https://hansaneuron.de/')) {
+        el.setAttribute('content', content.replace('https://hansaneuron.de/', 'https://hansaneuron.com/'));
+      }
+    }
+  }
+  class OgLocale {
+    element(el) {
+      el.setAttribute('content', 'en_US');
+    }
+  }
   class PrivacyLink {
     element(el) {
       el.setAttribute('href', 'privacy.html');
@@ -192,6 +220,12 @@ export async function onRequest(context) {
     .on('title', new Title())
     .on('meta[name="description"]', new MetaDescription())
     .on('link[rel="canonical"]', new CanonicalLink())
+    .on('meta[property="og:title"]', new OgTitle())
+    .on('meta[property="og:description"]', new OgDescription())
+    .on('meta[property="og:url"]', new OgUrl())
+    .on('meta[property="og:locale"]', new OgLocale())
+    .on('meta[name="twitter:title"]', new OgTitle())
+    .on('meta[name="twitter:description"]', new OgDescription())
     .on('[data-i18n]', new I18nText())
     .on('[data-i18n-placeholder]', new I18nPlaceholder())
     .on('a[data-privacy-link]', new PrivacyLink())
