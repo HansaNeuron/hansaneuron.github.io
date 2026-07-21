@@ -186,7 +186,7 @@ export async function onRequestPost({ request }) {
 
   // ── 5. Locate & fetch Impressum / Datenschutz pages ────────
   const baseUrl = main.url || ('https://' + host + '/');
-  const impHrefM = html.match(/href=["']([^"']*impressum[^"']*)["']/i);
+  const impHrefM = html.match(/href=["']([^"']*(?:impressum|imprint)[^"']*)["']/i);
   const dsHrefM  = html.match(/href=["']([^"']*(?:datenschutz|privacy)[^"']*)["']/i);
   const impUrl = impHrefM ? resolveSameHost(impHrefM[1], baseUrl) : null;
   const dsUrl  = dsHrefM  ? resolveSameHost(dsHrefM[1], baseUrl)  : null;
@@ -209,7 +209,7 @@ export async function onRequestPost({ request }) {
     // treat that as "e-mail present" to avoid false negatives on proxied sites.
     const hasEmail = /mailto:|cdn-cgi\/l\/email-protection|data-cfemail|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(imp);
     const hasPhone = /href=["']tel:|telefon|\+49[\s\d/().-]{6,}|\b0\d{2,4}[\s/-]?\d{3,}/i.test(imp);
-    const hasChamber = /kammer|aufsichtsbeh/i.test(impLower);
+    const hasChamber = /kammer|aufsichtsbeh|chamber|supervisory/i.test(impLower);
     const missingParts = [];
     if (!hasEmail)   missingParts.push('email');
     if (!hasPhone)   missingParts.push('phone');
@@ -241,11 +241,14 @@ export async function onRequestPost({ request }) {
 
   if (dsPage.ok) {
     const dsLower = dsPage.html.toLowerCase();
+    // Each signal accepts either its German or English phrasing, since
+    // hansaneuron.com (and any bilingual practice site) may serve an English
+    // privacy policy that is just as compliant, only translated.
     const signals = [
-      /verantwortlich/.test(dsLower),
-      /dsgvo|datenschutz-grundverordnung|gdpr/.test(dsLower),
-      /aufsichtsbeh/.test(dsLower),
-      /betroffenenrecht|auskunft|widerspruch|löschung|loeschung/.test(dsLower)
+      /verantwortlich|controller|data controller/.test(dsLower),
+      /dsgvo|datenschutz-grundverordnung|gdpr|general data protection regulation/.test(dsLower),
+      /aufsichtsbeh|supervisory authority/.test(dsLower),
+      /betroffenenrecht|auskunft|widerspruch|löschung|loeschung|rectification|erasure|data portability|right to object|withdraw consent|your rights/.test(dsLower)
     ].filter(Boolean).length;
     com('ds_content', signals >= 3 ? 'pass' : 'warn', { signals, total: 4 });
 
