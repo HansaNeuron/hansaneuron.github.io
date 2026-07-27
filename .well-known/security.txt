@@ -2,3 +2,4 @@ Contact: mailto:info@hansaneuron.de
 Expires: 2027-06-21T00:00:00.000Z
 Preferred-Languages: de, en
 Canonical: https://hansaneuron.de/.well-known/security.txt
+Canonical: https://hansaneuron.com/.well-known/security.txt
