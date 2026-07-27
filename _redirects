@@ -1,0 +1,4 @@
+# Legacy security.txt location — RFC 9116 puts the file under /.well-known/.
+# Kept as a 301 so old scanners that only probe the root still resolve, without
+# maintaining a second copy of the content.
+/security.txt  /.well-known/security.txt  301
