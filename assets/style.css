@@ -294,6 +294,62 @@ section { padding: 6rem 5vw; }
 .step-desc { font-size: .85rem; color: var(--text-muted); line-height: 1.75; }
 .step-tag { margin-top: 1rem; }
 
+/* ── Explainer video (2026-08-04) ──────────────────────
+   Click-to-play facade: nothing is requested from YouTube
+   until the user explicitly clicks. Keeps the section
+   consistent with "keine Tracking-Cookies" / TDDDG §25 —
+   the same pre-consent-third-party check this site's own
+   Website-Check flags on OTHER sites. ──────────────────── */
+.video-frame-wrap { max-width: 320px; margin: 3rem auto 0; }
+.video-frame {
+  position: relative; width: 100%; aspect-ratio: 9 / 16;
+  border-radius: 16px; overflow: hidden; background: var(--slate-dark);
+  box-shadow: 0 8px 28px rgba(58,67,84,.16);
+}
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; margin: 0;
+  border: 0; cursor: pointer; background: var(--slate-dark);
+}
+.video-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-poster::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(37,45,58,.05) 0%, rgba(37,45,58,.35) 100%);
+}
+.video-play-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--white); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,.28); transition: transform .2s ease, background .2s ease;
+}
+.video-poster:hover .video-play-btn, .video-poster:focus-visible .video-play-btn {
+  transform: translate(-50%, -50%) scale(1.08); background: var(--teal-50);
+}
+.video-play-btn svg { width: 22px; height: 22px; fill: var(--teal-dark); margin-left: 2px; }
+.video-consent-note {
+  font-size: .74rem; color: var(--text-muted); text-align: center;
+  max-width: 320px; margin: .85rem auto 0; line-height: 1.6;
+}
+.video-consent-note a { color: var(--teal-dark); text-decoration: underline; }
+.video-transcript {
+  max-width: 640px; margin: 1.75rem auto 0; border: 1px solid var(--border);
+  border-radius: 10px; padding: 0; background: var(--white);
+}
+.video-transcript summary {
+  cursor: pointer; list-style: none; font-size: .85rem; font-weight: 700;
+  color: var(--teal-dark); padding: .9rem 1.25rem; user-select: none;
+}
+.video-transcript summary::-webkit-details-marker { display: none; }
+.video-transcript summary::before { content: "▸ "; font-size: .7rem; }
+.video-transcript[open] summary::before { content: "▾ "; }
+.video-transcript-body { padding: 0 1.25rem 1.25rem; font-size: .82rem; color: var(--text-muted); line-height: 1.9; }
+.video-transcript-body .tc-time { color: var(--teal); font-weight: 700; font-family: var(--ff-body); margin-right: .4em; }
+.video-transcript-body p { margin-bottom: .5rem; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
 /* ── Service cards ─────────────────────────────────── */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
 .service-card {

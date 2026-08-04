@@ -95,6 +95,10 @@ function setLang(lang, persist) {
   const privacyHref = lang === 'en' ? 'privacy.html' : 'datenschutz.html';
   document.querySelectorAll('a[data-privacy-link]').forEach(a => { a.href = privacyHref; });
 
+  // Imprint (Impressum) links follow language
+  const imprintHref = lang === 'en' ? 'imprint.html' : 'impressum.html';
+  document.querySelectorAll('a[data-imprint-link]').forEach(a => { a.href = imprintHref; });
+
   document.dispatchEvent(new CustomEvent('hn:langchange', { detail: { lang } }));
 }
 
@@ -114,6 +118,30 @@ function acceptCookies() {
   if (b) b.style.display = 'none';
 }
 
+// ── Explainer video: click-to-play facade (2026-08-04) ─
+// No request to YouTube fires until the user explicitly clicks —
+// matches "keine Tracking-Cookies" and TDDDG §25 pre-consent rules
+// (the same third-party-loads-before-consent check the Website-Check
+// itself flags on other sites).
+function initVideoFacade() {
+  document.querySelectorAll('.video-poster').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const frame = btn.closest('.video-frame');
+      const videoId = btn.getAttribute('data-video-id');
+      if (!frame || !videoId) return;
+      const heading = frame.closest('section')?.querySelector('h2');
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.title = heading ? heading.textContent.trim() : 'Video';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'eager';
+      frame.replaceChild(iframe, btn);
+      iframe.focus();
+    });
+  });
+}
+
 // ── Scroll reveal ────────────────────────────────────
 function initReveal() {
   const obs = new IntersectionObserver(
@@ -130,4 +158,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setLang(currentLang, false);
   initCookieBanner();
   initReveal();
+  initVideoFacade();
 });
