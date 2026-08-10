@@ -81,6 +81,11 @@ const COMMON_EN = {
 
 const ENGLISH_HOSTS = new Set(['hansaneuron.com', 'www.hansaneuron.com']);
 
+// English equivalent of preise.html's Service.serviceType ("Website-Sicherheit,
+// Compliance & Wartung für Arzt- und Zahnarztpraxen"). Kept as a constant like
+// COMMON_EN above since it's schema-only copy, not sourced from a data-i18n key.
+const SERVICE_TYPE_EN = 'Website security, compliance and maintenance for medical and dental practices';
+
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
@@ -137,14 +142,71 @@ export async function onRequest(context) {
     return new Response(html, response);
   }
 
-  let meta, translations;
+  let meta, translations, i18nFull;
   try {
+    i18nFull = JSON.parse(transMatch[1]);
     meta = JSON.parse(metaMatch[1]).en;
-    translations = { ...COMMON_EN, ...JSON.parse(transMatch[1]).en };
+    translations = { ...COMMON_EN, ...i18nFull.en };
   } catch (err) {
     // Malformed i18n JSON on the page — fail safe and serve the original
     // (German) HTML rather than risk a broken page.
     return new Response(html, response);
+  }
+
+  // Structured data (JSON-LD): unlike every other piece of text on the page,
+  // the embedded schema.org script is authored once in German and shipped
+  // unchanged to the English hosts. That's a real SEO defect, not just a
+  // cosmetic one: ProfessionalService/Service self-reference the .de URL from
+  // a .com page, and a FAQPage schema in German on an English page won't earn
+  // (and may actively hurt) rich-result eligibility for English queries. Fix
+  // it in place, string-level, before the HTMLRewriter pass below, reusing
+  // the same i18n data already loaded above rather than hardcoding new copy.
+  let processedHtml = html;
+  const ldMatch = processedHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (ldMatch) {
+    try {
+      const data = JSON.parse(ldMatch[1]);
+      let changed = false;
+      if (data['@type'] === 'ProfessionalService') {
+        if (data.url === 'https://hansaneuron.de/') {
+          data.url = 'https://hansaneuron.com/';
+          changed = true;
+        }
+        if (meta?.desc) {
+          data.description = meta.desc;
+          changed = true;
+        }
+      } else if (data['@type'] === 'Service') {
+        data.serviceType = SERVICE_TYPE_EN;
+        changed = true;
+        if (data.provider?.url === 'https://hansaneuron.de/') {
+          data.provider.url = 'https://hansaneuron.com/';
+          changed = true;
+        }
+      } else if (data['@type'] === 'FAQPage' && Array.isArray(data.mainEntity) && i18nFull.de && i18nFull.en) {
+        // Match each German question in the schema back to its q{n} key via
+        // the page's own translation table, then swap in the English pair.
+        const deToKey = {};
+        Object.keys(i18nFull.de).forEach((k) => {
+          if (k.endsWith('.q')) deToKey[i18nFull.de[k]] = k.slice(0, -2);
+        });
+        data.mainEntity = data.mainEntity.map((item) => {
+          const key = deToKey[item.name];
+          const enQ = key && i18nFull.en[`${key}.q`];
+          const enA = key && i18nFull.en[`${key}.a`];
+          if (enQ && enA) {
+            changed = true;
+            return { '@type': 'Question', name: enQ, acceptedAnswer: { '@type': 'Answer', text: enA } };
+          }
+          return item; // no English match found — leave this entry as-is rather than drop it
+        });
+      }
+      if (changed) {
+        processedHtml = processedHtml.replace(ldMatch[0], `<script type="application/ld+json">\n${JSON.stringify(data, null, 2)}\n</script>`);
+      }
+    } catch (err) {
+      // Malformed or unrecognized JSON-LD — leave it untouched rather than risk breaking the page.
+    }
   }
 
   class HtmlLang {
@@ -250,5 +312,5 @@ export async function onRequest(context) {
     .on('#contact-email-link', new ContactEmailLink())
     .on('#contact-email-value', new ContactEmailValue());
 
-  return rewriter.transform(new Response(html, response));
+  return rewriter.transform(new Response(processedHtml, response));
 }
