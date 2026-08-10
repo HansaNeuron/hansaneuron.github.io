@@ -107,6 +107,23 @@ export async function onRequest(context) {
     return new Response(rewritten, response);
   }
 
+  // sitemap.xml: the underlying static file lists only hansaneuron.de <loc>
+  // URLs. Google Search Console requires every <loc> in a sitemap to be on
+  // the same host as the sitemap itself (a sitemap served from
+  // hansaneuron.de can't list hansaneuron.com URLs, and vice versa) - so on
+  // the English hosts we rewrite each <loc> (only <loc>, not the hreflang
+  // xhtml:link alternates, which are expected/allowed to point cross-domain)
+  // to the matching hansaneuron.com URL, swapping the German-named legal
+  // pages for their English filenames.
+  if (url.pathname === '/sitemap.xml') {
+    const text = await response.text();
+    const rewritten = text
+      .replace(/<loc>https:\/\/hansaneuron\.de\/impressum\.html<\/loc>/, '<loc>https://hansaneuron.com/imprint.html</loc>')
+      .replace(/<loc>https:\/\/hansaneuron\.de\/datenschutz\.html<\/loc>/, '<loc>https://hansaneuron.com/privacy.html</loc>')
+      .replace(/<loc>https:\/\/hansaneuron\.de\//g, '<loc>https://hansaneuron.com/');
+    return new Response(rewritten, response);
+  }
+
   const contentType = response.headers.get('content-type') || '';
   if (!contentType.includes('text/html')) return response;
 
