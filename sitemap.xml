@@ -42,18 +42,4 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/datenschutz.html" />
   </url>
-  <url>
-    <loc>https://hansaneuron.com/imprint.html</loc>
-    <lastmod>2026-07-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/impressum.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/imprint.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/impressum.html" />
-  </url>
-  <url>
-    <loc>https://hansaneuron.com/privacy.html</loc>
-    <lastmod>2026-07-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="de" href="https://hansaneuron.de/datenschutz.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hansaneuron.com/privacy.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hansaneuron.de/datenschutz.html" />
-  </url>
 </urlset>
