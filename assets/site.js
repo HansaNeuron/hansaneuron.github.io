@@ -72,6 +72,15 @@ function setLang(lang, persist) {
     if (v !== undefined) el.placeholder = v;
   });
 
+  // Explainer video: DE plays the German-narrated short, EN plays the
+  // English-narrated short. data-video-id-de/-en hold each language's
+  // YouTube ID; data-video-id is what initVideoFacade() actually reads on
+  // click, so keep it in sync with the active language here.
+  document.querySelectorAll('.video-poster[data-video-id-en]').forEach(btn => {
+    const id = lang === 'en' ? btn.getAttribute('data-video-id-en') : btn.getAttribute('data-video-id-de');
+    if (id) btn.setAttribute('data-video-id', id);
+  });
+
   // Title & meta description
   if (window.pageMeta && window.pageMeta[lang]) {
     document.title = window.pageMeta[lang].title;
