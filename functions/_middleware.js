@@ -293,6 +293,15 @@ export async function onRequest(context) {
       el.setInnerContent('info@hansaneuron.com');
     }
   }
+  // Explainer video: swaps the homepage video-poster button's YouTube ID to
+  // the English-narrated short (data-video-id-en, set in index.html) so the
+  // server-rendered English HTML plays the right video, not the German one.
+  class VideoPoster {
+    element(el) {
+      const enId = el.getAttribute('data-video-id-en');
+      if (enId) el.setAttribute('data-video-id', enId);
+    }
+  }
 
   const rewriter = new HTMLRewriter()
     .on('html', new HtmlLang())
@@ -310,7 +319,8 @@ export async function onRequest(context) {
     .on('a[data-privacy-link]', new PrivacyLink())
     .on('a[data-imprint-link]', new ImprintLink())
     .on('#contact-email-link', new ContactEmailLink())
-    .on('#contact-email-value', new ContactEmailValue());
+    .on('#contact-email-value', new ContactEmailValue())
+    .on('.video-poster[data-video-id-en]', new VideoPoster());
 
   return rewriter.transform(new Response(processedHtml, response));
 }
