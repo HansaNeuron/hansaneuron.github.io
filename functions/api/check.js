@@ -5,7 +5,8 @@
  * Performs a technical quick check of a publicly reachable website in two
  * categories:
  *   security   — SSL, https redirect, HSTS, security headers, WordPress
- *                version exposure, mixed content, response time
+ *                version exposure, PHP version exposure/outdated PHP,
+ *                mixed content, response time
  *   compliance — technical indicators relating to German law for practice
  *                websites (§ 5 DDG, Art. 13 DSGVO, § 25 TDDDG, BFSG):
  *                Impressum/Datenschutz reachability & content signals,
@@ -173,6 +174,39 @@ export async function onRequestPost({ request }) {
     sec('wp_version', 'pass', { wordpress: true });
   } else {
     sec('wp_version', 'info', { wordpress: false });
+  }
+
+  // PHP version exposure / outdated PHP (CVE-2026-109618, CVE-2026-109619)
+  // Reads only the response headers already received — no probing of the
+  // vulnerable code path. A version banner cannot prove a server is patched
+  // or unpatched (distributions backport fixes without bumping the number),
+  // so results are worded as indicators and ask the host to confirm.
+  // Fixed releases of 2026-10-21 per php.net:
+  const PHP_FIXED = { '8.5': 12, '8.4': 27, '8.3': 36, '8.2': 35 };
+  const poweredBy = h.get('x-powered-by') || '';
+  const serverHdr = h.get('server') || '';
+  const phpVer = (poweredBy + ' ' + serverHdr).match(/PHP\/(\d+)\.(\d+)(?:\.(\d+))?(?:-?(alpha|beta|RC)(\d*))?/i);
+  const usesPhp = !!phpVer || /php/i.test(poweredBy) || /PHPSESSID/i.test(h.get('set-cookie') || '') || isWp;
+  if (phpVer) {
+    const [, maj, min, pat, pre, preNum] = phpVer;
+    const branch = maj + '.' + min;
+    const version = pat !== undefined ? branch + '.' + pat : branch;
+    const major = Number(maj), minor = Number(min);
+    if (major < 8 || (major === 8 && minor < 2)) {
+      sec('php_version', 'fail', { version, fixed: '8.2.35+' });          // end of life
+    } else if (branch in PHP_FIXED) {
+      if (pat === undefined || Number(pat) < PHP_FIXED[branch]) {
+        sec('php_version', 'fail', { version, fixed: branch + '.' + PHP_FIXED[branch] });
+      } else {
+        sec('php_version', 'warn', { version });                          // current, but exposed
+      }
+    } else if (branch === '8.6' && pre && !(/^rc$/i.test(pre) && Number(preNum) >= 4)) {
+      sec('php_version', 'fail', { version: version + pre + (preNum || ''), fixed: '8.6.0RC4' }); // pre-release without fix
+    } else {
+      sec('php_version', 'warn', { version });                            // newer branch
+    }
+  } else if (usesPhp) {
+    sec('php_version', 'info');                                           // PHP in use, version hidden
   }
 
   // Mixed content (http:// resources on an https page)
